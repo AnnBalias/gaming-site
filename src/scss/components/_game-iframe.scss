@@ -1,0 +1,162 @@
+.game-section {
+  @include section-padding;
+  background: $dark-surface;
+  
+  &__header {
+    text-align: center;
+    margin-bottom: $spacing-3xl;
+  }
+  
+  &__content {
+    display: grid;
+    gap: $spacing-3xl;
+  }
+}
+
+.game-preview {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  
+  &__image {
+    width: 100%;
+    height: auto;
+    border-radius: $border-radius-lg;
+    box-shadow: $shadow-xl;
+    transition: transform $transition-normal;
+    
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+}
+
+.game-iframe {
+  &__container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  &__wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: $border-radius-lg;
+    overflow: hidden;
+    box-shadow: $shadow-xl;
+    background: $dark-bg;
+  }
+  
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    @include flex-center;
+    background: rgba($dark-bg, 0.9);
+    backdrop-filter: blur(10px);
+    z-index: 2;
+    transition: opacity $transition-normal;
+    
+    &.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+}
+
+.game-overlay {
+  &__content {
+    @include flex-column;
+    align-items: center;
+    gap: $spacing-lg;
+    text-align: center;
+    max-width: 400px;
+    padding: $spacing-xl;
+  }
+  
+  &__icon {
+    font-size: $font-size-4xl;
+    margin-bottom: $spacing-md;
+  }
+  
+  &__title {
+    @include heading-3;
+    color: $primary-color;
+    margin-bottom: $spacing-sm;
+  }
+  
+  &__text {
+    @include body-text;
+    color: $dark-text-secondary;
+    margin-bottom: $spacing-lg;
+  }
+  
+  &__btn {
+    min-width: 200px;
+  }
+}
+
+.game-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: $dark-bg;
+}
+
+.game-features {
+  .features__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: $spacing-xl;
+    
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: $spacing-lg;
+    }
+  }
+}
+
+.feature-card {
+  @include flex-column;
+  gap: $spacing-lg;
+  padding: $spacing-xl;
+  background: rgba($dark-bg, 0.5);
+  border: 1px solid rgba($dark-border, 0.3);
+  border-radius: $border-radius-lg;
+  @include hover-lift;
+  
+  &__icon {
+    width: 64px;
+    height: 64px;
+    @include flex-center;
+    background: $gradient-primary;
+    border-radius: $border-radius-md;
+    
+    img {
+      width: 32px;
+      height: 32px;
+      filter: brightness(0) invert(1);
+    }
+  }
+  
+  &__content {
+    @include flex-column;
+    gap: $spacing-md;
+  }
+  
+  &__title {
+    @include heading-4;
+    color: $primary-color;
+    margin-bottom: 0;
+  }
+  
+  &__description {
+    @include body-text;
+    color: $dark-text-secondary;
+    margin-bottom: 0;
+  }
+}

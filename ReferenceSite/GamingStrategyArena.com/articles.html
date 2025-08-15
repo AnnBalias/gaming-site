@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Articles</title>
+
+  <meta name="description"
+    content="Play Ninja Veggie Slice – a fast-paced, high-precision slicing battle where reflexes, combos, and mastery of the blade decide the outcome. Only on GamingStrategyArena.com." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet" />
+
+  <link rel="shortcut icon" href="./img/hero-banner.jpg" type="image/x-icon" />
+
+  <link rel="stylesheet" href="./css/page/news-page.css" />
+</head>
+
+<body>
+  <header class="header"></header>
+  <main>
+    <section class="hero" id="hero-section">
+      <div class="hero__container">
+        <img src="" alt="Game Image" id="hero-image" class="hero__image" />
+        <div class="hero__text">
+          <h1 id="hero-title" class="main-title"></h1>
+          <p id="hero-subtitle" class="text"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="title">Latest news</h2>
+        <ul class="cards-grid" id="news-list"></ul>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"></footer>
+  <div id="cookie-modal" class="cookie-modal">
+    <div class="cookie-modal-content">
+      <p class="text" style="margin-bottom: 0">
+        We use cookies to ensure you get the best experience on our website.
+        By continuing, you agree to our
+        <a href="./cookie.html">Cookie Policy</a>.
+      </p>
+      <button id="accept-cookies" class="cookie-btn">Accept</button>
+    </div>
+  </div>
+
+  <script src="./js/utils/builder.js"></script>
+  <script src="./js/data/hero.js"></script>
+  <script src="./js/data/articles.js"></script>
+  <script src="./js/utils/cookies-modal.js"></script>
+</body>
+
+</html>

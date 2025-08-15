@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberStrike Arena - Futuristic FPS Combat</title>
+  <meta name="description" content="Experience next-generation FPS warfare with cutting-edge weapons, tactical gameplay, and intense arena battles.">
+  <meta name="keywords" content="cyberstrike, fps, gaming, arena, combat, futuristic, weapons">
+  
+  <!-- Preconnect to external domains -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/main.min.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+  <div class="container">
+    <div class="header__content">
+      <div class="header__logo">
+        <a href="index.html" class="logo">
+          <span class="logo__text">CyberStrike</span>
+          <span class="logo__accent">Arena</span>
+        </a>
+      </div>
+
+      <nav class="header__nav">
+        <ul class="nav__list">
+          <li class="nav__item">
+            <a href="#hero" class="nav__link">Home</a>
+          </li>
+          <li class="nav__item">
+            <a href="#game" class="nav__link">Game</a>
+          </li>
+          <li class="nav__item">
+            <a href="#how-to-play" class="nav__link">How to Play</a>
+          </li>
+          <li class="nav__item">
+            <a href="#news" class="nav__link">News</a>
+          </li>
+          <li class="nav__item">
+            <a href="#contact" class="nav__link">Contact</a>
+          </li>
+        </ul>
+      </nav>
+
+      <button class="header__mobile-toggle" aria-label="Toggle mobile menu">
+        <span class="mobile-toggle__line"></span>
+        <span class="mobile-toggle__line"></span>
+        <span class="mobile-toggle__line"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <div class="mobile-menu__overlay"></div>
+    <div class="mobile-menu__content">
+      <button class="mobile-menu__close" aria-label="Close mobile menu">
+        <span class="mobile-menu__close-icon">×</span>
+      </button>
+      <ul class="mobile-menu__list">
+        <li class="mobile-menu__item">
+          <a href="#hero" class="mobile-menu__link">Home</a>
+        </li>
+        <li class="mobile-menu__item">
+          <a href="#game" class="mobile-menu__link">Game</a>
+        </li>
+        <li class="mobile-menu__item">
+          <a href="#how-to-play" class="mobile-menu__link">How to Play</a>
+        </li>
+        <li class="mobile-menu__item">
+          <a href="#news" class="mobile-menu__link">News</a>
+        </li>
+        <li class="mobile-menu__item">
+          <a href="#contact" class="mobile-menu__link">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+  
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+  <div class="hero__background">
+    <div class="hero__gradient-overlay"></div>
+    <div class="hero__animated-elements">
+      <div class="hero__floating-shapes">
+        <div class="floating-shape floating-shape--1"></div>
+        <div class="floating-shape floating-shape--2"></div>
+        <div class="floating-shape floating-shape--3"></div>
+        <div class="floating-shape floating-shape--4"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="hero__content">
+      <div class="hero__text">
+        <div class="hero__badge">
+          <span class="hero__badge-text">🎵 Rhythm Game</span>
+        </div>
+        <h1 class="hero__title" id="hero-title">Friday Night Funkin</h1>
+        <p class="hero__subtitle" id="hero-subtitle">Unblocked Music Battle</p>
+        <p class="hero__description" id="hero-description">
+          Immerse yourself in the crazy beats and supercharged duels. Tap the
+          arrows in sync with the beats to nail every note and stay on rhythm!
+          Face off against all kinds of funky foes.
+        </p>
+        <div class="hero__features">
+          <div class="hero__feature">
+            <span class="hero__feature-icon">🎮</span>
+            <span class="hero__feature-text">Free to Play</span>
+          </div>
+          <div class="hero__feature">
+            <span class="hero__feature-icon">🎵</span>
+            <span class="hero__feature-text">Amazing Music</span>
+          </div>
+          <div class="hero__feature">
+            <span class="hero__feature-icon">⚡</span>
+            <span class="hero__feature-text">Fast Paced</span>
+          </div>
+        </div>
+        <div class="hero__actions">
+          <button class="btn btn--primary" id="play-now-btn">
+            <span class="btn__text">Play Now</span>
+            <span class="btn__icon">▶</span>
+          </button>
+          <button class="btn btn--secondary" id="watch-trailer-btn">
+            <span class="btn__text">How to Play</span>
+            <span class="btn__icon">📖</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="hero__visual">
+        <div class="hero__game-preview">
+          <div class="game-preview__content">
+            <div class="game-preview__icon">🎵</div>
+            <h3 class="game-preview__title">Friday Night Funkin</h3>
+            <p class="game-preview__subtitle">Music Rhythm Battle</p>
+            <div class="game-preview__stats">
+              <div class="game-preview__stat">
+                <span class="stat__value">4.8</span>
+                <span class="stat__label">Rating</span>
+              </div>
+              <div class="game-preview__stat">
+                <span class="stat__value">1M+</span>
+                <span class="stat__label">Players</span>
+              </div>
+              <div class="game-preview__stat">
+                <span class="stat__value">50+</span>
+                <span class="stat__label">Songs</span>
+              </div>
+            </div>
+          </div>
+          <div class="game-preview__glow"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  
+  <!-- Game Section with iFrame -->
+  <section class="game-section" id="game">
+  <div class="container">
+    <div class="game-section__header">
+      <h2 class="section-title" id="game-title">
+        Friday Night Funkin Unblocked
+      </h2>
+      <p class="section-description" id="game-description">
+        Friday Night Funkin Unblocked is a wildly popular casual arcade music
+        game where you can immerse yourself in the crazy beats and supercharged
+        duels. Tap the arrows in sync with the beats to nail every note and stay
+        on rhythm! Face off against all kinds of funky foes. The pace is getting
+        faster and the challenges more exciting! Super original beats and music
+        tracks, let you get addicted to FNFs unique sound tour world!
+      </p>
+    </div>
+
+    <div class="game-section__content">
+      <div class="game-preview">
+        <img
+          src="assets/images/fnf-game-preview.jpg"
+          alt="Friday Night Funkin Game Preview"
+          class="game-preview__image"
+        />
+      </div>
+      <div class="game-iframe__container">
+        <div class="game-iframe__wrapper">
+          <iframe
+            id="game-iframe"
+            class="game-iframe"
+            src="https://games.construct.net/254/latest"
+            title="Friday Night Funkin Unblocked"
+            frameborder="0"
+            allowfullscreen
+            scrolling="no"
+            allow="accelerometer; gyroscope; autoplay; fullscreen; microphone; camera; midi; encrypted-media"
+          >
+          </iframe>
+          <div class="game-iframe__overlay" id="game-overlay">
+            <div class="game-overlay__content">
+              <div class="game-overlay__icon">🎮</div>
+              <h3 class="game-overlay__title">Ready to Play?</h3>
+              <p class="game-overlay__text">
+                Click to start your cyber combat experience
+              </p>
+              <button
+                class="btn btn--primary game-overlay__btn"
+                id="start-game-btn"
+              >
+                Start Game
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-features">
+        <div class="features__grid" id="features-grid">
+          <!-- Features will be populated by JavaScript -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  
+  <!-- How to Play Section -->
+  <section class="how-to-play" id="how-to-play">
+  <div class="container">
+    <div class="how-to-play__header">
+      <h2 class="section-title" id="how-to-play-title">How to Play</h2>
+      <p class="section-description">
+        Master the basics and become a cyber warrior in just a few steps
+      </p>
+    </div>
+    
+    <div class="how-to-play__content">
+      <div class="steps__container" id="steps-container">
+        <!-- Steps will be populated by JavaScript -->
+      </div>
+    </div>
+  </div>
+</section>
+
+  
+  <!-- Reviews Section -->
+  <section class="reviews" id="reviews">
+  <div class="container">
+    <div class="reviews__header">
+      <h2 class="section-title" id="reviews-title">Player Reviews</h2>
+      <p class="section-description">
+        See what our community says about CyberStrike Arena
+      </p>
+    </div>
+    
+    <div class="reviews__content">
+      <div class="reviews__grid" id="reviews-grid">
+        <!-- Reviews will be populated by JavaScript -->
+      </div>
+    </div>
+  </div>
+</section>
+
+  
+  <!-- News Section -->
+  <section class="news" id="news">
+  <div class="container">
+    <div class="news__header">
+      <h2 class="section-title" id="news-title">Latest News</h2>
+      <p class="section-description">
+        Stay updated with the latest developments and announcements
+      </p>
+    </div>
+    
+    <div class="news__content">
+      <div class="news__grid" id="news-grid">
+        <!-- News articles will be populated by JavaScript -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- News Modal -->
+<div class="modal" id="news-modal">
+  <div class="modal__overlay" id="modal-overlay"></div>
+  <div class="modal__container">
+    <div class="modal__header">
+      <h3 class="modal__title" id="modal-title"></h3>
+      <button class="modal__close" id="modal-close" aria-label="Close modal">
+        <span class="modal__close-icon">×</span>
+      </button>
+    </div>
+    <div class="modal__content">
+      <div class="modal__image">
+        <img id="modal-image" src="" alt="" />
+      </div>
+      <div class="modal__text">
+        <p class="modal__date" id="modal-date"></p>
+        <div class="modal__body" id="modal-body"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+  <div class="container">
+    <div class="contact__header">
+      <h2 class="section-title" id="contact-title">Contact Us</h2>
+      <p class="section-description" id="contact-description">
+        Have questions or feedback? We'd love to hear from you.
+      </p>
+    </div>
+
+    <div class="contact__content">
+      <div class="contact__info">
+        <div class="contact__item">
+          <div class="contact__icon">📧</div>
+          <div class="contact__details">
+            <h3 class="contact__label">Email</h3>
+            <a
+              href="mailto:support@cyberstrikearena.com"
+              class="contact__value"
+              id="contact-email"
+            >
+              support@cyberstrikearena.com
+            </a>
+          </div>
+        </div>
+
+        <div class="contact__social">
+          <h3 class="contact__label">Follow Us</h3>
+          <div class="social__links">
+            <a
+              href="https://discord.gg/cyberstrike"
+              class="social__link social__link--discord"
+              target="_blank"
+              rel="noopener"
+            >
+              <span class="social__icon">🎮</span>
+              <span class="social__text">Discord</span>
+            </a>
+            <a
+              href="https://twitter.com/cyberstrikearena"
+              class="social__link social__link--twitter"
+              target="_blank"
+              rel="noopener"
+            >
+              <span class="social__icon">🐦</span>
+              <span class="social__text">Twitter</span>
+            </a>
+            <a
+              href="https://youtube.com/cyberstrikearena"
+              class="social__link social__link--youtube"
+              target="_blank"
+              rel="noopener"
+            >
+              <span class="social__icon">📺</span>
+              <span class="social__text">YouTube</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact__form">
+        <form class="form" id="contact-form">
+          <div class="form__group">
+            <label for="form-name" class="form__label">Name</label>
+            <input
+              type="text"
+              id="form-name"
+              name="name"
+              class="form__input"
+              required
+            />
+          </div>
+
+          <div class="form__group">
+            <label for="form-email" class="form__label">Email</label>
+            <input
+              type="email"
+              id="form-email"
+              name="email"
+              class="form__input"
+              required
+            />
+          </div>
+
+          <div class="form__group">
+            <label for="form-subject" class="form__label">Subject</label>
+            <input
+              type="text"
+              id="form-subject"
+              name="subject"
+              class="form__input"
+              required
+            />
+          </div>
+
+          <div class="form__group">
+            <label for="form-message" class="form__label">Message</label>
+            <textarea
+              id="form-message"
+              name="message"
+              class="form__textarea"
+              rows="3"
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn btn--primary form__submit">
+            <span class="btn__text">Send Message</span>
+            <span class="btn__icon">📤</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+  
+  <!-- Footer -->
+  <footer class="footer">
+  <div class="container">
+    <div class="footer__content">
+      <div class="footer__main">
+        <div class="footer__brand">
+          <div class="footer__logo">
+            <span class="logo__text">CyberStrike</span>
+            <span class="logo__accent">Arena</span>
+          </div>
+          <p class="footer__description">
+            The future of competitive gaming is here. Join the arena and prove
+            your worth.
+          </p>
+        </div>
+
+        <div class="footer__links">
+          <div class="footer__section">
+            <h4 class="footer__title">Game</h4>
+            <ul class="footer__list">
+              <li><a href="#game" class="footer__link">Overview</a></li>
+              <li>
+                <a href="#how-to-play" class="footer__link">How to Play</a>
+              </li>
+              <li><a href="#reviews" class="footer__link">Reviews</a></li>
+            </ul>
+          </div>
+
+          <div class="footer__section">
+            <h4 class="footer__title">Community</h4>
+            <ul class="footer__list">
+              <li><a href="#news" class="footer__link">News</a></li>
+              <li><a href="#contact" class="footer__link">Contact</a></li>
+              <li>
+                <a
+                  href="https://discord.gg/cyberstrike"
+                  class="footer__link"
+                  target="_blank"
+                  >Discord</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer__section">
+            <h4 class="footer__title">Legal</h4>
+            <ul class="footer__list">
+              <li>
+                <a href="privacy.html" class="footer__link">Privacy Policy</a>
+              </li>
+              <li>
+                <a href="terms.html" class="footer__link">Terms of Service</a>
+              </li>
+              <li>
+                <a href="cookies.html" class="footer__link">Cookie Policy</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copyright" id="footer-copyright">
+          © 2024 CyberStrike Arena. All rights reserved.
+        </p>
+        <div class="footer__social">
+          <a
+            href="/"
+            class="footer__social-link"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="social__icon">🐦</span>
+          </a>
+          <a
+            href="/"
+            class="footer__social-link"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="social__icon">📺</span>
+          </a>
+          <a
+            href="/"
+            class="footer__social-link"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="social__icon">🎮</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  
+  <!-- Cookie Bar -->
+  <div class="cookie-bar" id="cookie-bar">
+  <div class="container">
+    <div class="cookie-bar__content">
+      <div class="cookie-bar__text">
+        <p>
+          We use cookies to enhance your gaming experience and analyze site
+          traffic. By continuing to use our site, you agree to our
+          <a href="cookies.html" class="cookie-bar__link">Cookie Policy</a>.
+        </p>
+      </div>
+      <div class="cookie-bar__actions">
+        <button class="btn btn--secondary cookie-bar__btn" id="cookie-accept">
+          Accept All
+        </button>
+        <button class="btn btn--outline cookie-bar__btn" id="cookie-decline">
+          Decline
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+  <!-- Scripts -->
+  <script src="js/data.json"></script>
+  <script src="js/main.min.js"></script>
+</body>
+</html>

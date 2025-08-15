@@ -1,0 +1,130 @@
+.footer {
+  background: $dark-bg;
+  border-top: 1px solid rgba($dark-border, 0.3);
+  padding: $spacing-3xl 0 $spacing-xl;
+  
+  &__content {
+    @include flex-column;
+    gap: $spacing-2xl;
+  }
+  
+  &__main {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: $spacing-3xl;
+    
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: $spacing-2xl;
+    }
+  }
+  
+  &__brand {
+    @include flex-column;
+    gap: $spacing-lg;
+  }
+  
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    font-family: $font-primary;
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    
+    .logo__text {
+      color: $dark-text;
+    }
+    
+    .logo__accent {
+      @include gradient-text;
+    }
+  }
+  
+  &__description {
+    @include body-text;
+    color: $dark-text-secondary;
+    max-width: 300px;
+  }
+  
+  &__links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-2xl;
+    
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: $spacing-xl;
+    }
+  }
+  
+  &__section {
+    @include flex-column;
+    gap: $spacing-md;
+  }
+  
+  &__title {
+    @include heading-5;
+    color: $primary-color;
+    margin-bottom: 0;
+  }
+  
+  &__list {
+    @include flex-column;
+    gap: $spacing-sm;
+  }
+  
+  &__link {
+    color: $dark-text-secondary;
+    transition: color $transition-normal;
+    
+    &:hover {
+      color: $primary-color;
+    }
+  }
+  
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: $spacing-xl;
+    border-top: 1px solid rgba($dark-border, 0.3);
+    
+    @include mobile {
+      flex-direction: column;
+      gap: $spacing-lg;
+      text-align: center;
+    }
+  }
+  
+  &__copyright {
+    @include body-text;
+    color: $dark-text-secondary;
+    font-size: $font-size-sm;
+  }
+  
+  &__social {
+    display: flex;
+    gap: $spacing-md;
+  }
+}
+
+.footer__social-link {
+  @include flex-center;
+  width: 40px;
+  height: 40px;
+  background: rgba($dark-text, 0.1);
+  border-radius: 50%;
+  color: $dark-text-secondary;
+  transition: all $transition-normal;
+  
+  &:hover {
+    background: $primary-color;
+    color: $dark-text;
+    transform: translateY(-2px);
+  }
+  
+  .social__icon {
+    font-size: $font-size-lg;
+  }
+}

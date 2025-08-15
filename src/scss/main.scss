@@ -1,0 +1,29 @@
+// Variables and mixins
+@import 'variables';
+@import 'mixins';
+
+// Base styles
+@import 'base/reset';
+@import 'base/typography';
+@import 'base/utilities';
+
+// Components
+@import 'components/buttons';
+@import 'components/header';
+@import 'components/hero';
+@import 'components/game-iframe';
+@import 'components/how-to-play';
+@import 'components/reviews';
+@import 'components/news';
+@import 'components/contact';
+@import 'components/footer';
+@import 'components/cookie-bar';
+@import 'components/modal';
+
+// Layout
+@import 'layout/container';
+@import 'layout/grid';
+
+// Pages
+@import 'pages/home';
+@import 'pages/policies';

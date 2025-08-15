@@ -1,0 +1,148 @@
+{
+  "site": {
+    "title": "Friday Night Funkin Unblocked",
+    "description": "Play Friday Night Funkin unblocked - the ultimate rhythm game with amazing music and challenging gameplay",
+    "keywords": "friday night funkin, fnf, rhythm game, music game, unblocked games, browser games, online games"
+  },
+  "hero": {
+    "title": "Friday Night Funkin",
+    "subtitle": "Unblocked Music Battle",
+    "description": "Immerse yourself in the crazy beats and supercharged duels. Tap the arrows in sync with the beats to nail every note and stay on rhythm! Face off against all kinds of funky foes.",
+    "cta": "Play Now"
+  },
+  "game": {
+    "title": "Friday Night Funkin Unblocked",
+    "description": "Friday Night Funkin Unblocked is a wildly popular casual arcade music game where you can immerse yourself in the crazy beats and supercharged duels. Tap the arrows in sync with the beats to nail every note and stay on rhythm! Face off against all kinds of funky foes. The pace is getting faster and the challenges more exciting! Super original beats and music tracks, let you get addicted to FNFs unique sound tour world!",
+    "features": [
+      {
+        "title": "Rhythm Gameplay",
+        "description": "Test your timing and rhythm skills with challenging beat-matching gameplay",
+        "icon": "assets/images/rhythm-icon.png"
+      },
+      {
+        "title": "Amazing Music",
+        "description": "Enjoy incredible original music tracks with catchy beats and melodies",
+        "icon": "assets/images/music-icon.png"
+      },
+      {
+        "title": "Multiple Levels",
+        "description": "Progress through various levels with increasing difficulty and unique challenges",
+        "icon": "assets/images/levels-icon.png"
+      },
+      {
+        "title": "Unblocked Access",
+        "description": "Play Friday Night Funkin unblocked anywhere, anytime with no restrictions",
+        "icon": "assets/images/unblocked-icon.png"
+      }
+    ]
+  },
+  "howToPlay": {
+    "title": "How to Play Friday Night Funkin",
+    "steps": [
+      {
+        "step": 1,
+        "title": "Start the Game",
+        "description": "Click the 'Start Game' button to begin your rhythm adventure"
+      },
+      {
+        "step": 2,
+        "title": "Learn the Controls",
+        "description": "Use arrow keys or WASD to match the rhythm and beat patterns"
+      },
+      {
+        "step": 3,
+        "title": "Follow the Beat",
+        "description": "Watch the arrows and press the corresponding keys in time with the music"
+      },
+      {
+        "step": 4,
+        "title": "Build Your Combo",
+        "description": "Hit the notes accurately to build combos and achieve higher scores"
+      },
+      {
+        "step": 5,
+        "title": "Master the Levels",
+        "description": "Progress through different levels and challenge yourself with harder difficulties"
+      }
+    ]
+  },
+  "reviews": {
+    "title": "Player Reviews",
+    "reviews": [
+      {
+        "player": "RhythmMaster",
+        "rating": 5,
+        "comment": "Amazing rhythm game! The music is incredible and the gameplay is so addictive. Best FNF unblocked version!",
+        "avatar": "assets/images/avatar1.jpg"
+      },
+      {
+        "player": "MusicLover",
+        "rating": 5,
+        "comment": "Friday Night Funkin is the best rhythm game ever! Love playing it unblocked with all the original tracks.",
+        "avatar": "assets/images/avatar2.jpg"
+      },
+      {
+        "player": "BeatPlayer",
+        "rating": 4,
+        "comment": "Great unblocked version of FNF! Smooth gameplay and all the classic levels are here.",
+        "avatar": "assets/images/avatar3.jpg"
+      }
+    ]
+  },
+  "news": {
+    "title": "Latest News",
+    "articles": [
+      {
+        "id": 1,
+        "title": "Friday Night Funkin Unblocked Now Available",
+        "excerpt": "Play the complete Friday Night Funkin game unblocked with all original levels and music tracks.",
+        "image": "assets/images/news1.jpg",
+        "date": "2024-01-15",
+        "content": "Friday Night Funkin is now available to play unblocked! Experience the full game with all the original levels, characters, and music tracks. No downloads required - just pure rhythm gaming fun."
+      },
+      {
+        "id": 2,
+        "title": "New Mod Support Coming Soon",
+        "excerpt": "Custom mods and additional content will be available for enhanced gameplay experience.",
+        "image": "assets/images/news2.jpg",
+        "date": "2024-01-10",
+        "content": "We're working on adding mod support to Friday Night Funkin unblocked. Soon you'll be able to play custom mods with new songs, characters, and gameplay mechanics."
+      },
+      {
+        "id": 3,
+        "title": "Mobile Version in Development",
+        "excerpt": "Friday Night Funkin will soon be optimized for mobile devices with touch controls.",
+        "image": "assets/images/news3.jpg",
+        "date": "2024-01-05",
+        "content": "We're developing a mobile-optimized version of Friday Night Funkin with touch controls and responsive design. Play your favorite rhythm game on any device!"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contact Us",
+    "description": "Have questions or feedback about Friday Night Funkin unblocked? We'd love to hear from you.",
+    "email": "support@fnfunblocked.com",
+    "social": {
+      "discord": "https://discord.gg/fnfunblocked",
+      "twitter": "https://twitter.com/fnfunblocked",
+      "youtube": "https://youtube.com/fnfunblocked"
+    }
+  },
+  "footer": {
+    "copyright": "© 2024 Friday Night Funkin Unblocked. All rights reserved.",
+    "links": [
+      {
+        "text": "Privacy Policy",
+        "url": "privacy.html"
+      },
+      {
+        "text": "Terms of Service",
+        "url": "terms.html"
+      },
+      {
+        "text": "Cookie Policy",
+        "url": "cookies.html"
+      }
+    ]
+  }
+}

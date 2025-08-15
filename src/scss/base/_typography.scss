@@ -1,0 +1,169 @@
+// Typography styles
+h1, .h1 {
+  @include heading-1;
+  @include gradient-text;
+  margin-bottom: $spacing-lg;
+}
+
+h2, .h2 {
+  @include heading-2;
+  margin-bottom: $spacing-md;
+}
+
+h3, .h3 {
+  @include heading-3;
+  margin-bottom: $spacing-sm;
+}
+
+h4, .h4 {
+  font-family: $font-primary;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  line-height: 1.4;
+  margin-bottom: $spacing-sm;
+}
+
+h5, .h5 {
+  font-family: $font-primary;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-medium;
+  line-height: 1.4;
+  margin-bottom: $spacing-sm;
+}
+
+h6, .h6 {
+  font-family: $font-primary;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  line-height: 1.4;
+  margin-bottom: $spacing-sm;
+}
+
+p {
+  @include body-text;
+  margin-bottom: $spacing-md;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.section-title {
+  @include heading-2;
+  text-align: center;
+  margin-bottom: $spacing-lg;
+  
+  @include mobile {
+    margin-bottom: $spacing-md;
+  }
+}
+
+.section-description {
+  @include body-text;
+  text-align: center;
+  color: $dark-text-secondary;
+  max-width: 600px;
+  margin: 0 auto $spacing-2xl;
+  
+  @include mobile {
+    margin-bottom: $spacing-xl;
+  }
+}
+
+.text-gradient {
+  @include gradient-text;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-muted {
+  color: $dark-text-secondary;
+}
+
+.text-primary {
+  color: $primary-color;
+}
+
+.text-secondary {
+  color: $secondary-color;
+}
+
+.text-accent {
+  color: $accent-color;
+}
+
+// Font weights
+.font-light {
+  font-weight: $font-weight-light;
+}
+
+.font-normal {
+  font-weight: $font-weight-normal;
+}
+
+.font-medium {
+  font-weight: $font-weight-medium;
+}
+
+.font-semibold {
+  font-weight: $font-weight-semibold;
+}
+
+.font-bold {
+  font-weight: $font-weight-bold;
+}
+
+.font-black {
+  font-weight: $font-weight-black;
+}
+
+// Font sizes
+.text-xs {
+  font-size: $font-size-xs;
+}
+
+.text-sm {
+  font-size: $font-size-sm;
+}
+
+.text-base {
+  font-size: $font-size-base;
+}
+
+.text-lg {
+  font-size: $font-size-lg;
+}
+
+.text-xl {
+  font-size: $font-size-xl;
+}
+
+.text-2xl {
+  font-size: $font-size-2xl;
+}
+
+.text-3xl {
+  font-size: $font-size-3xl;
+}
+
+.text-4xl {
+  font-size: $font-size-4xl;
+}
+
+.text-5xl {
+  font-size: $font-size-5xl;
+}
+
+.text-6xl {
+  font-size: $font-size-6xl;
+}

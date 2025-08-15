@@ -1,0 +1,31 @@
+.behind-the-scenes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.behind-the-scenes__decor {
+  width: 180px;
+  height: 180px;
+  background-color: var(--item-color);
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.behind-the-scenes__content {
+  max-width: 600px;
+}
+
+.behind-the-scenes__content h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.behind-the-scenes__content p {
+  font-size: 1rem;
+  line-height: 1.6;
+}

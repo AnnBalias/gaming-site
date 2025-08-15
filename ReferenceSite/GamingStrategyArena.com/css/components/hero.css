@@ -1,0 +1,21 @@
+.hero {
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.hero__container {
+  display: grid;
+  align-items: center;
+  gap: 50px;
+  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+  max-width: 1000px;
+  width: 100%;
+}
+
+.hero__image {
+  width: 100%;
+  background: #ccc;
+  object-fit: cover;
+  border-radius: 10px;
+}

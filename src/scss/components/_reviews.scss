@@ -1,0 +1,74 @@
+.reviews {
+  @include section-padding;
+  background: $dark-surface;
+  
+  &__header {
+    text-align: center;
+    margin-bottom: $spacing-3xl;
+  }
+  
+  &__content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: $spacing-xl;
+    
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: $spacing-lg;
+    }
+  }
+}
+
+.review-card {
+  @include flex-column;
+  gap: $spacing-lg;
+  padding: $spacing-xl;
+  background: rgba($dark-bg, 0.5);
+  border: 1px solid rgba($dark-border, 0.3);
+  border-radius: $border-radius-lg;
+  @include hover-lift;
+  
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+  }
+  
+  &__avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid $primary-color;
+  }
+  
+  &__info {
+    @include flex-column;
+    gap: $spacing-xs;
+  }
+  
+  &__player {
+    @include heading-5;
+    color: $primary-color;
+    margin-bottom: 0;
+  }
+  
+  &__rating {
+    font-size: $font-size-lg;
+    color: $secondary-color;
+    letter-spacing: 2px;
+  }
+  
+  &__comment {
+    @include body-text;
+    color: $dark-text-secondary;
+    font-style: italic;
+    margin-bottom: 0;
+    line-height: 1.7;
+  }
+}

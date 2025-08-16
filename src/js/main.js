@@ -519,6 +519,12 @@ class FridayNightFunkin {
         if (fullscreenBtnText && this.data.playGame) {
           fullscreenBtnText.textContent = this.data.playGame.fullscreenButton;
         }
+      } else {
+        // Entered fullscreen
+        if (fullscreenBtnText && this.data.playGame) {
+          fullscreenBtnText.textContent =
+            this.data.playGame.exitFullscreenButton;
+        }
       }
     });
 
@@ -566,7 +572,7 @@ class FridayNightFunkin {
       });
     }
 
-    // Keyboard controls for the game
+    // Setup keyboard controls for the game
     this.setupKeyboardControls(gameIframe);
   }
 
@@ -602,9 +608,35 @@ class FridayNightFunkin {
       }
     };
 
+    // Функція для відправки події через postMessage
+    const sendKeyboardEvent = (eventType, event) => {
+      try {
+        // Відправляємо подію через postMessage
+        gameIframe.contentWindow.postMessage(
+          {
+            type: "keyboardEvent",
+            eventType: eventType,
+            key: event.key,
+            code: event.code,
+            keyCode: event.keyCode,
+            which: event.which,
+            shiftKey: event.shiftKey,
+            ctrlKey: event.ctrlKey,
+            altKey: event.altKey,
+            metaKey: event.metaKey,
+            timestamp: Date.now(),
+          },
+          "*"
+        );
+      } catch (error) {
+        // PostMessage failed silently
+      }
+    };
+
     // Фокусуємо iframe при кліку на нього
     gameIframe.addEventListener("click", focusIframe);
 
+    // Обробка натискання клавіш
     document.addEventListener("keydown", (e) => {
       // Перевіряємо, чи активний iframe і чи це клавіша гри
       if (
@@ -617,11 +649,12 @@ class FridayNightFunkin {
         // Фокусуємо iframe перед відправкою події
         focusIframe();
 
-        // Відправляємо подію в iframe
-        this.sendKeyEventToIframe(gameIframe, "keydown", e);
+        // Відправляємо подію через postMessage
+        sendKeyboardEvent("keydown", e);
       }
     });
 
+    // Обробка відпускання клавіш
     document.addEventListener("keyup", (e) => {
       if (
         gameIframe.classList.contains("game-active") &&
@@ -630,8 +663,8 @@ class FridayNightFunkin {
         e.preventDefault();
         e.stopPropagation();
 
-        // Відправляємо подію в iframe
-        this.sendKeyEventToIframe(gameIframe, "keyup", e);
+        // Відправляємо подію через postMessage
+        sendKeyboardEvent("keyup", e);
       }
     });
 
@@ -639,70 +672,6 @@ class FridayNightFunkin {
     gameIframe.addEventListener("load", () => {
       setTimeout(focusIframe, 1000); // Фокусуємо через 1 секунду після завантаження
     });
-  }
-
-  sendKeyEventToIframe(iframe, eventType, originalEvent) {
-    try {
-      // Method 1: Direct event sending via postMessage
-      iframe.contentWindow.postMessage(
-        {
-          type: "keyboardEvent",
-          eventType: eventType,
-          key: originalEvent.key,
-          code: originalEvent.code,
-          keyCode: originalEvent.keyCode,
-          which: originalEvent.which,
-          shiftKey: originalEvent.shiftKey,
-          ctrlKey: originalEvent.ctrlKey,
-          altKey: originalEvent.altKey,
-          metaKey: originalEvent.metaKey,
-          timestamp: Date.now(),
-        },
-        "*"
-      );
-
-      // Method 2: Try to directly dispatch event to iframe
-      if (iframe.contentWindow && iframe.contentWindow.document) {
-        const iframeEvent = new KeyboardEvent(eventType, {
-          key: originalEvent.key,
-          code: originalEvent.code,
-          keyCode: originalEvent.keyCode,
-          which: originalEvent.which,
-          shiftKey: originalEvent.shiftKey,
-          ctrlKey: originalEvent.ctrlKey,
-          altKey: originalEvent.altKey,
-          metaKey: originalEvent.metaKey,
-          bubbles: true,
-          cancelable: true,
-        });
-
-        iframe.contentWindow.document.dispatchEvent(iframeEvent);
-      }
-
-      // Method 3: Send event to iframe body
-      if (
-        iframe.contentWindow &&
-        iframe.contentWindow.document &&
-        iframe.contentWindow.document.body
-      ) {
-        const bodyEvent = new KeyboardEvent(eventType, {
-          key: originalEvent.key,
-          code: originalEvent.code,
-          keyCode: originalEvent.keyCode,
-          which: originalEvent.which,
-          shiftKey: originalEvent.shiftKey,
-          ctrlKey: originalEvent.ctrlKey,
-          altKey: originalEvent.altKey,
-          metaKey: originalEvent.metaKey,
-          bubbles: true,
-          cancelable: true,
-        });
-
-        iframe.contentWindow.document.body.dispatchEvent(bodyEvent);
-      }
-    } catch (error) {
-      // Event sending failed silently - this is expected for cross-origin iframes
-    }
   }
 
   toggleFullscreen(wrapper, btnText) {

@@ -84,10 +84,9 @@ iframe {
   border: none;
 }
 
-// Focus styles
+// Remove default focus styles
 :focus {
-  outline: 2px solid $primary-color;
-  outline-offset: 2px;
+  outline: none;
 }
 
 // Selection styles

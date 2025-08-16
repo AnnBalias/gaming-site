@@ -119,16 +119,13 @@
       transition: width $transition-normal;
     }
     
-    &:hover {
+    &:hover,
+    &:focus {
       color: $primary-color;
       
       &::after {
         width: 100%;
       }
-    }
-    
-    &:focus {
-      outline: none;
     }
     
     &.active {
@@ -192,8 +189,19 @@
     cursor: pointer;
     @include flex-center;
     transition: all $transition-normal;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 9999;
     
-    &:hover {
+    .mobile-menu.active & {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+    
+    &:hover,
+    &:focus {
       background: rgba($primary-color, 0.2);
       border-color: $primary-color;
       transform: scale(1.1);

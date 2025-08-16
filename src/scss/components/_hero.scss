@@ -119,18 +119,6 @@
     }
   }
   
-  &__subtitle {
-    font-family: $font-primary;
-    font-size: $font-size-2xl;
-    font-weight: $font-weight-semibold;
-    color: $primary-color;
-    margin-bottom: $spacing-md;
-    
-    @include mobile {
-      font-size: $font-size-xl;
-    }
-  }
-  
   &__description {
     @include body-text;
     font-size: $font-size-lg;
@@ -168,7 +156,8 @@
     backdrop-filter: blur(10px);
     transition: all $transition-normal;
     
-    &:hover {
+    &:hover,
+    &:focus {
       background: rgba(0, 212, 255, 0.1);
       border-color: rgba(0, 212, 255, 0.3);
       transform: translateY(-2px);
@@ -195,6 +184,7 @@
     @include mobile {
       flex-direction: column;
       align-items: center;
+      margin-bottom: $spacing-xl;
     }
   }
   
@@ -210,20 +200,22 @@
     position: relative;
     width: 100%;
     max-width: 500px;
-    aspect-ratio: 16/10;
+    min-height: 300px;
     border-radius: $border-radius-xl;
     overflow: hidden;
     @include glass-effect;
     box-shadow: $shadow-xl;
     transition: all $transition-normal;
     
-    &:hover {
+    &:hover,
+    &:focus {
       transform: translateY(-10px) scale(1.02);
       box-shadow: 0 30px 40px -10px rgba(0, 212, 255, 0.3);
     }
     
     @include mobile {
       max-width: 100%;
+      min-height: 250px;
     }
   }
   
@@ -302,10 +294,11 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     padding: $spacing-2xl;
     background: linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, rgba(124, 58, 237, 0.05) 100%);
     text-align: center;
+    box-sizing: border-box;
   }
   
   &__icon {
@@ -318,15 +311,6 @@
     @include heading-3;
     color: $primary-color;
     margin-bottom: $spacing-sm;
-  }
-  
-  &__subtitle {
-    font-family: $font-primary;
-    font-size: $font-size-lg;
-    color: $dark-text-secondary;
-    margin-bottom: $spacing-xl;
-    text-transform: uppercase;
-    letter-spacing: 1px;
   }
   
   &__stats {

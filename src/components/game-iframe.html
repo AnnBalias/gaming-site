@@ -1,55 +1,54 @@
 <section class="game-section" id="game">
   <div class="container">
     <div class="game-section__header">
-      <h2 class="section-title" id="game-title">
-        Friday Night Funkin Unblocked
-      </h2>
-      <p class="section-description" id="game-description">
-        Friday Night Funkin Unblocked is a wildly popular casual arcade music
-        game where you can immerse yourself in the crazy beats and supercharged
-        duels. Tap the arrows in sync with the beats to nail every note and stay
-        on rhythm! Face off against all kinds of funky foes. The pace is getting
-        faster and the challenges more exciting! Super original beats and music
-        tracks, let you get addicted to FNFs unique sound tour world!
+      <h2 class="section-title game__title">Грати Friday Night Funkin</h2>
+      <p class="section-description game__description">
+        Натисніть кнопку нижче, щоб почати гру
       </p>
     </div>
 
     <div class="game-section__content">
-      <div class="game-preview">
-        <img
-          src="assets/images/fnf-game-preview.jpg"
-          alt="Friday Night Funkin Game Preview"
-          class="game-preview__image"
-        />
-      </div>
       <div class="game-iframe__container">
-        <div class="game-iframe__wrapper">
+        <div class="game-iframe__wrapper" id="game-wrapper">
           <iframe
             id="game-iframe"
             class="game-iframe"
-            src="https://games.construct.net/254/latest"
-            title="Friday Night Funkin Unblocked"
+            src="https://html5.gamemonetize.co/8g62o78s1wjhsiu54xlmql32h7pagsek/"
+            title="Friday Night Funkin Game"
             frameborder="0"
-            allowfullscreen
+            allowfullscreen="true"
             scrolling="no"
-            allow="accelerometer; gyroscope; autoplay; fullscreen; microphone; camera; midi; encrypted-media"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; fullscreen; gyroscope; microphone; midi; payment; picture-in-picture; web-share"
+            sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+            loading="lazy"
           >
           </iframe>
           <div class="game-iframe__overlay" id="game-overlay">
             <div class="game-overlay__content">
               <div class="game-overlay__icon">🎮</div>
-              <h3 class="game-overlay__title">Ready to Play?</h3>
+              <h3 class="game-overlay__title">Готові грати?</h3>
               <p class="game-overlay__text">
-                Click to start your cyber combat experience
+                Натисніть, щоб почати музичну битву
               </p>
               <button
                 class="btn btn--primary game-overlay__btn"
                 id="start-game-btn"
               >
-                Start Game
+                Почати гру
               </button>
             </div>
           </div>
+        </div>
+        <div class="game-iframe__controls">
+          <button
+            class="btn btn--secondary game-fullscreen-btn"
+            id="fullscreen-btn"
+          >
+            <span class="btn__text" id="fullscreen-btn-text"
+              >На весь екран</span
+            >
+            <span class="btn__icon">⛶</span>
+          </button>
         </div>
       </div>
 

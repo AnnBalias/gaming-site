@@ -64,7 +64,8 @@
     color: $dark-text;
     transition: all $transition-normal;
     
-    &:hover {
+    &:hover,
+    &:focus {
       background: $primary-color;
       color: $dark-text;
       transform: scale(1.1);

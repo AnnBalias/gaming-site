@@ -102,6 +102,7 @@
 @mixin button-base {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: $spacing-sm;
   padding: $spacing-md $spacing-xl;
   border: none;
@@ -114,8 +115,10 @@
   transition: all $transition-normal;
   position: relative;
   overflow: hidden;
+  text-align: center;
   
-  &:hover {
+  &:hover,
+  &:focus {
     transform: translateY(-2px);
     box-shadow: $shadow-lg;
   }
@@ -144,7 +147,8 @@
 @mixin hover-lift {
   transition: transform $transition-normal, box-shadow $transition-normal;
   
-  &:hover {
+  &:hover,
+  &:focus {
     transform: translateY(-4px);
     box-shadow: $shadow-xl;
   }

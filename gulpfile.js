@@ -53,6 +53,14 @@ function assets() {
     .pipe(browserSync.stream());
 }
 
+// Data task
+function data() {
+  return gulp
+    .src("src/data.json")
+    .pipe(gulp.dest("dist"))
+    .pipe(browserSync.stream());
+}
+
 // Watch task
 function watch() {
   browserSync.init({
@@ -65,10 +73,11 @@ function watch() {
   gulp.watch("src/scss/**/*.scss", styles);
   gulp.watch("src/js/**/*.js", scripts);
   gulp.watch("src/assets/**/*", assets);
+  gulp.watch("src/data.json", data);
 }
 
 // Build task
-const build = gulp.series(html, styles, scripts, assets);
+const build = gulp.series(html, styles, scripts, assets, data);
 
 // Dev task
 const dev = gulp.series(build, watch);
@@ -77,6 +86,7 @@ exports.html = html;
 exports.styles = styles;
 exports.scripts = scripts;
 exports.assets = assets;
+exports.data = data;
 exports.watch = watch;
 exports.build = build;
 exports.dev = dev;

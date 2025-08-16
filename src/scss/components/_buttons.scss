@@ -5,7 +5,8 @@
     background: $gradient-primary;
     color: $dark-text;
     
-    &:hover {
+    &:hover,
+    &:focus {
       background: linear-gradient(135deg, $primary-dark 0%, darken($accent-color, 10%) 100%);
     }
   }
@@ -14,7 +15,8 @@
     background: $secondary-color;
     color: $dark-text;
     
-    &:hover {
+    &:hover,
+    &:focus {
       background: darken($secondary-color, 10%);
     }
   }
@@ -24,7 +26,8 @@
     color: $primary-color;
     border: 2px solid $primary-color;
     
-    &:hover {
+    &:hover,
+    &:focus {
       background: $primary-color;
       color: $dark-text;
     }
@@ -34,7 +37,8 @@
     background: transparent;
     color: $dark-text;
     
-    &:hover {
+    &:hover,
+    &:focus {
       background: rgba($dark-text, 0.1);
     }
   }

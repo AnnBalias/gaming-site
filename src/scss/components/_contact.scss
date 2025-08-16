@@ -87,7 +87,8 @@
     color: $dark-text;
     transition: all $transition-normal;
     
-    &:hover {
+    &:hover,
+    &:focus {
       background: $primary-color;
       color: $dark-text;
       transform: translateY(-2px);
@@ -142,7 +143,7 @@
   }
   
   &__textarea {
-    resize: vertical;
+    resize: none;
     min-height: 80px;
   }
   
@@ -150,5 +151,11 @@
     margin-top: $spacing-sm;
     padding: $spacing-sm $spacing-lg;
     font-size: $font-size-sm;
+    justify-content: center;
+    text-align: center;
+    
+    .btn__text {
+      text-align: center;
+    }
   }
 }

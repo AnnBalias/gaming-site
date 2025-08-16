@@ -1,5 +1,6 @@
 .game-section {
-  @include section-padding;
+  padding-top: $spacing-3xl;
+  padding-bottom: 0; // Прибираємо нижній падінг
   background: $dark-surface;
   
   &__header {
@@ -26,7 +27,8 @@
     box-shadow: $shadow-xl;
     transition: transform $transition-normal;
     
-    &:hover {
+    &:hover,
+    &:focus {
       transform: scale(1.02);
     }
   }
@@ -37,16 +39,57 @@
     width: 100%;
     max-width: 1000px;
     margin: 0 auto;
+    max-height: 80vh; // Обмежуємо висоту контейнера 80% вюпорта
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-lg;
   }
   
   &__wrapper {
     position: relative;
     width: 100%;
-    aspect-ratio: 16/9;
+    max-width: 720px;
+    margin: 0 auto;
     border-radius: $border-radius-lg;
     overflow: hidden;
     box-shadow: $shadow-xl;
     background: $dark-bg;
+    max-height: 80vh; // Обмежуємо висоту wrapper 80% вюпорта
+    
+    // Responsive iframe container з обмеженням висоти
+    &::before {
+      content: '';
+      display: block;
+      width: 100%;
+      padding-top: 177.78%; // 1280/720 = 1.7778 aspect ratio
+      max-height: 80vh; // Обмежуємо максимальну висоту
+    }
+    
+    // Медіа-запити для різних розмірів екрану
+    @include mobile {
+      max-height: 70vh; // Менша висота на мобільних
+      
+      &::before {
+        max-height: 70vh;
+      }
+    }
+    
+    @include tablet {
+      max-height: 75vh; // Середня висота на планшетах
+      
+      &::before {
+        max-height: 75vh;
+      }
+    }
+    
+    @include desktop {
+      max-height: 80vh; // Повна висота на десктопі
+      
+      &::before {
+        max-height: 80vh;
+      }
+    }
   }
   
   &__overlay {
@@ -60,6 +103,7 @@
     backdrop-filter: blur(10px);
     z-index: 2;
     transition: opacity $transition-normal;
+    max-height: 100vh; // Обмежуємо висоту overlay вюпортом
     
     &.hidden {
       opacity: 0;
@@ -101,10 +145,69 @@
 }
 
 .game-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   border: none;
   background: $dark-bg;
+  object-fit: contain; // Забезпечує правильне масштабування
+  transition: opacity $transition-normal;
+  
+  &.loaded {
+    opacity: 1;
+  }
+  
+  &:not(.loaded) {
+    opacity: 0.8;
+  }
+}
+
+.game-iframe__controls {
+  display: flex;
+  justify-content: center;
+  gap: $spacing-md;
+  width: 100%;
+  
+  .game-fullscreen-btn {
+    min-width: 160px;
+    
+    &:hover,
+    &:focus {
+      transform: translateY(-2px);
+    }
+  }
+}
+
+// Fullscreen стилі
+.game-iframe__wrapper.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  max-width: none;
+  max-height: none;
+  z-index: 9999;
+  border-radius: 0;
+  
+  &::before {
+    padding-top: 0;
+    max-height: none;
+  }
+  
+  .game-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .game-iframe__overlay {
+    max-height: none;
+  }
 }
 
 .game-features {

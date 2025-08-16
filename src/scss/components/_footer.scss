@@ -31,6 +31,13 @@
     font-family: $font-primary;
     font-size: $font-size-2xl;
     font-weight: $font-weight-bold;
+    text-decoration: none;
+    transition: transform $transition-normal;
+    
+    &:hover,
+    &:focus {
+      transform: scale(1.05);
+    }
     
     .logo__text {
       color: $dark-text;
@@ -78,7 +85,8 @@
     color: $dark-text-secondary;
     transition: color $transition-normal;
     
-    &:hover {
+    &:hover,
+    &:focus {
       color: $primary-color;
     }
   }
@@ -118,7 +126,8 @@
   color: $dark-text-secondary;
   transition: all $transition-normal;
   
-  &:hover {
+  &:hover,
+  &:focus {
     background: $primary-color;
     color: $dark-text;
     transform: translateY(-2px);

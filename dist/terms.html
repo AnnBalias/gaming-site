@@ -214,7 +214,16 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer">
+    <!-- SVG Sprite for icons -->
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+  <defs>
+    <symbol id="youtube" viewBox="0 0 32 32"><path d="M12.781 20.137v-8.979c3.188 1.5 5.656 2.949 8.576 4.511-2.408 1.336-5.389 2.834-8.576 4.468zM30.546 6.693c-.55-.724-1.487-1.288-2.485-1.474-2.933-.557-21.227-.558-24.158 0-.8.15-1.512.512-2.124 1.075C-.8 8.687.008 21.523.63 23.602c.261.9.599 1.549 1.025 1.975.548.563 1.299.951 2.161 1.125 2.415.499 14.854.779 24.195.075a4.184 4.184 0 0 0 2.223-1.138c2.384-2.384 2.222-15.94.312-18.947z"/></symbol>
+    <symbol id="bird" viewBox="0 0 32 32"><path d="m29.555 9.168-2.904-1.936C25.658 4.173 22.834 2 19.501 2A7.502 7.502 0 0 0 12 9.5v2.149L.219 26.375A1 1 0 0 0 1 28h13c7.176-.008 12.992-5.824 13-12.999v-2.466l2.555-1.703a1 1 0 0 0 .003-1.662l-.004-.002zM13.768 17.64l-5 6a1 1 0 1 1-1.535-1.282l-.001.002 5-6a1 1 0 1 1 1.535 1.282l.001-.002zM20.5 10A1.5 1.5 0 1 1 22 8.5a1.5 1.5 0 0 1-1.5 1.5z"/></symbol>
+    <symbol id="gamepad" viewBox="0 0 32 32"><path d="m14.223 8.179-.669-.474a5.653 5.653 0 0 0-3.267-1.039H9.47c-.539 0-1.083.034-1.591.214-3.177 1.127-5.362 5.246-5.204 14.589.032 1.883.472 3.963 2.171 4.775a4.27 4.27 0 0 0 1.857.421c.848 0 1.521-.242 2.041-.582.545-.357 1.025-.821 1.505-1.286.593-.574 1.185-1.147 1.9-1.517a5.473 5.473 0 0 1 2.52-.615h2.664c.877 0 1.741.211 2.52.615.715.371 1.307.944 1.9 1.517.48.464.96.928 1.505 1.286.52.341 1.193.582 2.041.582.707 0 1.327-.168 1.857-.421 1.699-.812 2.139-2.893 2.171-4.775.158-9.343-2.027-13.463-5.204-14.589-.508-.18-1.052-.214-1.591-.214h-.817c-1.17 0-2.311.363-3.266 1.039l-.669.474a3.077 3.077 0 0 1-3.555 0zM22.333 12a1 1 0 1 1 0 2 1 1 0 0 1 0-2zM10 12.333a1 1 0 0 1 1 1v1h1a1 1 0 0 1 0 2h-1v1a1 1 0 0 1-2 0v-1H8a1 1 0 0 1 0-2h1v-1a1 1 0 0 1 1-1zM25.333 15a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-5 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 1a1 1 0 1 0-2 0 1 1 0 0 0 2 0z"/></symbol>
+  </defs>
+</svg>
+
+<footer class="footer">
   <div class="container">
     <div class="footer__content">
       <div class="footer__main">
@@ -278,7 +287,11 @@
             target="_blank"
             rel="noopener"
           >
-            <span class="social__icon">🐦</span>
+            <span class="social__icon">
+              <svg class="icon icon--bird" aria-hidden="true">
+                <use href="#bird"></use>
+              </svg>
+            </span>
           </a>
           <a
             href="/"
@@ -286,7 +299,11 @@
             target="_blank"
             rel="noopener"
           >
-            <span class="social__icon">📺</span>
+            <span class="social__icon">
+              <svg class="icon icon--youtube" aria-hidden="true">
+                <use href="#youtube"></use>
+              </svg>
+            </span>
           </a>
           <a
             href="/"
@@ -294,7 +311,11 @@
             target="_blank"
             rel="noopener"
           >
-            <span class="social__icon">🎮</span>
+            <span class="social__icon">
+              <svg class="icon icon--gamepad" aria-hidden="true">
+                <use href="#gamepad"></use>
+              </svg>
+            </span>
           </a>
         </div>
       </div>

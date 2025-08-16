@@ -17,6 +17,12 @@ $light-border: #e9ecef;
 $light-text: #212529;
 $light-text-secondary: #6c757d;
 
+// Status colors
+$success-color: #10b981;
+$error-color: #ef4444;
+$warning-color: #f59e0b;
+$info-color: #3b82f6;
+
 // Gradients
 $gradient-primary: linear-gradient(135deg, $primary-color 0%, $accent-color 100%);
 $gradient-dark: linear-gradient(135deg, $dark-bg 0%, #1a1a1a 100%);

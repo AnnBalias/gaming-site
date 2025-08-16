@@ -56,7 +56,7 @@ function assets() {
 // Data task
 function data() {
   return gulp
-    .src("src/data.json")
+    .src(["src/data.json", "src/config/*.js"])
     .pipe(gulp.dest("dist"))
     .pipe(browserSync.stream());
 }
@@ -67,6 +67,9 @@ function watch() {
     server: {
       baseDir: "./dist",
     },
+    port: 9998,
+    open: false,
+    notify: false
   });
 
   gulp.watch("src/**/*.html", html);

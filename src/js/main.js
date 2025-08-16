@@ -20,6 +20,9 @@ class FridayNightFunkin {
       this.setupEventListeners();
       this.renderContent();
       this.initializeComponents();
+
+      // Initialize YYGGames SDK after components are loaded
+      this.initializeYYGGames();
     } catch (error) {
       // Failed to initialize silently
     }
@@ -28,14 +31,9 @@ class FridayNightFunkin {
   setupGlobalErrorHandlers() {
     // Handle unhandled promise rejections
     window.addEventListener("unhandledrejection", (event) => {
-      // Check if rejection is from external sources
+      // Check if rejection should be handled silently
       if (event.reason && typeof event.reason === "string") {
-        if (
-          event.reason.includes("gamemonetize") ||
-          event.reason.includes("YYGGames") ||
-          event.reason.includes("cocos2d") ||
-          event.reason.includes("about:blank")
-        ) {
+        if (window.EnvironmentHelpers?.shouldSilentFail(event.reason)) {
           event.preventDefault();
           return;
         }
@@ -46,31 +44,58 @@ class FridayNightFunkin {
 
     // Handle global errors
     window.addEventListener("error", (event) => {
-      // Check if error is from external sources (like game iframe)
+      // Check if error should be handled silently
+      const errorMessage = event.message || "";
+      const errorFilename = event.filename || "";
+
       if (
-        event.filename &&
-        (event.filename.includes("gamemonetize") ||
-          event.filename.includes("YYGGames") ||
-          event.filename.includes("cocos2d") ||
-          event.filename.includes("sdk.js") ||
-          event.filename.includes("index.js") ||
-          event.filename.includes("about:blank"))
+        window.EnvironmentHelpers?.shouldSilentFail(errorMessage) ||
+        window.EnvironmentHelpers?.shouldSilentFail(errorFilename)
       ) {
         // Silently handle external script errors
         event.preventDefault();
         return false;
       }
 
-      // Handle YYGGames specific errors
-      if (event.message && event.message.includes("YYGGames")) {
+      // Handle CSP violations
+      if (errorMessage.includes("Content Security Policy")) {
         event.preventDefault();
         return false;
       }
+    });
+
+    // Handle CSP violations
+    document.addEventListener("securitypolicyviolation", (event) => {
+      // Silently handle CSP violations
+      event.preventDefault();
     });
   }
 
   async loadData() {
     try {
+      // First try backend config endpoint
+      try {
+        const backendUrl =
+          window.EnvironmentHelpers?.getBackendUrl() || "http://localhost:9998";
+        const backendResponse = await fetch(`${backendUrl}/config`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          signal: AbortSignal.timeout(3000), // 3 second timeout
+        });
+
+        if (backendResponse.ok) {
+          this.data = await backendResponse.json();
+          return;
+        }
+      } catch (backendError) {
+        // Backend not available, continue with local data
+        if (window.EnvironmentHelpers?.isDevelopment()) {
+          console.warn("Backend not available, using local data");
+        }
+      }
+
       // Try multiple paths for data.json
       const paths = ["data.json", "./data.json", "/data.json", "../data.json"];
 
@@ -131,7 +156,7 @@ class FridayNightFunkin {
           },
         },
         hero: {
-          badge: "🎮 Нова гра",
+          badge: "Нова гра",
           title: "CyberStrike Arena",
           description: "Пориньте у божевільні ритми та надзвичайні дуелі.",
           actions: {
@@ -139,9 +164,9 @@ class FridayNightFunkin {
             howToPlay: "Як грати",
           },
           features: [
-            { icon: "🎵", text: "Ритмічна музика" },
-            { icon: "⚡", text: "Швидкі дуелі" },
-            { icon: "🏆", text: "Турніри" },
+            { icon: "music", text: "Ритмічна музика" },
+            { icon: "energy", text: "Швидкі дуелі" },
+            { icon: "gamepad", text: "Турніри" },
           ],
           gamePreview: {
             title: "Попередній перегляд",
@@ -543,24 +568,26 @@ class FridayNightFunkin {
               e.preventDefault();
             });
 
-            // Check for YYGGames object and handle initialization
-            try {
-              if (
-                gameIframe.contentWindow &&
-                gameIframe.contentWindow.YYGGames &&
-                typeof gameIframe.contentWindow.YYGGames === "object"
-              ) {
-                // Safely initialize YYGGames if available
+            // Check for YYGGames object and handle initialization with timeout
+            setTimeout(() => {
+              try {
                 if (
-                  typeof gameIframe.contentWindow.YYGGames.init === "function"
+                  gameIframe.contentWindow &&
+                  gameIframe.contentWindow.YYGGames &&
+                  typeof gameIframe.contentWindow.YYGGames === "object"
                 ) {
-                  gameIframe.contentWindow.YYGGames.init();
+                  // Safely initialize YYGGames if available
+                  if (
+                    typeof gameIframe.contentWindow.YYGGames.init === "function"
+                  ) {
+                    gameIframe.contentWindow.YYGGames.init();
+                  }
                 }
+              } catch (error) {
+                // YYGGames initialization failed - ignore silently
+                // This is expected for cross-origin iframes or blocked scripts
               }
-            } catch (error) {
-              // YYGGames initialization failed - ignore silently
-              // This is expected for cross-origin iframes
-            }
+            }, 2000); // Wait 2 seconds for SDK to load
           }
         } catch (error) {
           // Cross-origin error - ignore silently
@@ -569,6 +596,12 @@ class FridayNightFunkin {
 
       gameIframe.addEventListener("error", () => {
         // Handle iframe loading errors silently
+      });
+
+      // Handle sandbox errors
+      gameIframe.addEventListener("securitypolicyviolation", (e) => {
+        // Silently handle sandbox policy violations
+        e.preventDefault();
       });
     }
 
@@ -643,6 +676,20 @@ class FridayNightFunkin {
         gameIframe.classList.contains("game-active") &&
         gameKeys.includes(e.code)
       ) {
+        // Перевіряємо, чи користувач не вводить текст в форму
+        const activeElement = document.activeElement;
+        const isTypingInForm =
+          activeElement &&
+          (activeElement.tagName === "INPUT" ||
+            activeElement.tagName === "TEXTAREA" ||
+            activeElement.tagName === "SELECT" ||
+            activeElement.contentEditable === "true");
+
+        // Якщо користувач вводить текст в форму, не блокуємо клавіші
+        if (isTypingInForm) {
+          return;
+        }
+
         e.preventDefault();
         e.stopPropagation();
 
@@ -660,6 +707,20 @@ class FridayNightFunkin {
         gameIframe.classList.contains("game-active") &&
         gameKeys.includes(e.code)
       ) {
+        // Перевіряємо, чи користувач не вводить текст в форму
+        const activeElement = document.activeElement;
+        const isTypingInForm =
+          activeElement &&
+          (activeElement.tagName === "INPUT" ||
+            activeElement.tagName === "TEXTAREA" ||
+            activeElement.tagName === "SELECT" ||
+            activeElement.contentEditable === "true");
+
+        // Якщо користувач вводить текст в форму, не блокуємо клавіші
+        if (isTypingInForm) {
+          return;
+        }
+
         e.preventDefault();
         e.stopPropagation();
 
@@ -731,6 +792,39 @@ class FridayNightFunkin {
       contactForm.addEventListener("submit", (e) => {
         e.preventDefault();
         this.handleContactForm(e.target);
+      });
+
+      // Додаємо обробники для автозаповнення
+      const inputs = contactForm.querySelectorAll("input, textarea");
+      inputs.forEach((input) => {
+        // Обробник для виявлення автозаповнення
+        input.addEventListener("animationstart", (e) => {
+          if (e.animationName === "onAutoFillStart") {
+            input.classList.add("autofilled");
+          }
+        });
+
+        // Обробник для зміни значення
+        input.addEventListener("input", () => {
+          if (input.value) {
+            input.classList.add("has-value");
+          } else {
+            input.classList.remove("has-value");
+          }
+
+          // Очищаємо стани валідації при введенні
+          input.classList.remove("error", "invalid", "valid");
+        });
+
+        // Обробник для фокусу
+        input.addEventListener("focus", () => {
+          input.classList.add("focused");
+        });
+
+        // Обробник для втрати фокусу
+        input.addEventListener("blur", () => {
+          input.classList.remove("focused");
+        });
       });
     }
   }
@@ -928,7 +1022,11 @@ class FridayNightFunkin {
       .map(
         (feature) => `
         <div class="hero__feature">
-          <span class="hero__feature-icon">${feature.icon}</span>
+          <span class="hero__feature-icon">
+            <svg class="icon icon--${feature.icon}" aria-hidden="true">
+              <use href="#${feature.icon}"></use>
+            </svg>
+          </span>
           <span class="hero__feature-text">${feature.text}</span>
         </div>
       `
@@ -1122,7 +1220,9 @@ class FridayNightFunkin {
   }
 
   renderContact() {
-    if (!this.data.contact) return;
+    if (!this.data.contact) {
+      return;
+    }
 
     const contactTitle = document.getElementById("contact-title");
     const contactDescription = document.querySelector(
@@ -1130,9 +1230,12 @@ class FridayNightFunkin {
     );
     const contactEmail = document.getElementById("contact-email");
 
-    if (contactTitle) contactTitle.textContent = this.data.contact.title;
-    if (contactDescription)
+    if (contactTitle) {
+      contactTitle.textContent = this.data.contact.title;
+    }
+    if (contactDescription) {
       contactDescription.textContent = this.data.contact.description;
+    }
 
     if (contactEmail && this.data.contact.info) {
       contactEmail.href = `mailto:${this.data.contact.info.email}`;
@@ -1150,35 +1253,51 @@ class FridayNightFunkin {
   }
 
   updateContactForm() {
-    if (!this.data.contact?.form) return;
+    if (!this.data.contact?.form) {
+      return;
+    }
 
     const form = this.data.contact.form;
 
     // Update name field
     const nameLabel = document.querySelector('label[for="contact-name"]');
     const nameInput = document.getElementById("contact-name");
-    if (nameLabel) nameLabel.textContent = form.name.label;
-    if (nameInput) nameInput.placeholder = form.name.placeholder;
+    if (nameLabel) {
+      nameLabel.textContent = form.name.label;
+    }
+    if (nameInput) {
+      nameInput.placeholder = form.name.placeholder;
+    }
 
     // Update email field
     const emailLabel = document.querySelector(
       'label[for="contact-email-input"]'
     );
     const emailInput = document.getElementById("contact-email-input");
-    if (emailLabel) emailLabel.textContent = form.email.label;
-    if (emailInput) emailInput.placeholder = form.email.placeholder;
+    if (emailLabel) {
+      emailLabel.textContent = form.email.label;
+    }
+    if (emailInput) {
+      emailInput.placeholder = form.email.placeholder;
+    }
 
     // Update message field
     const messageLabel = document.querySelector('label[for="contact-message"]');
     const messageInput = document.getElementById("contact-message");
-    if (messageLabel) messageLabel.textContent = form.message.label;
-    if (messageInput) messageInput.placeholder = form.message.placeholder;
+    if (messageLabel) {
+      messageLabel.textContent = form.message.label;
+    }
+    if (messageInput) {
+      messageInput.placeholder = form.message.placeholder;
+    }
 
     // Update submit button
     const submitBtn = document.querySelector(
       ".contact-form .btn--primary .btn__text"
     );
-    if (submitBtn) submitBtn.textContent = form.submit;
+    if (submitBtn) {
+      submitBtn.textContent = form.submit;
+    }
   }
 
   renderFooter() {
@@ -1323,6 +1442,55 @@ class FridayNightFunkin {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
 
+    console.log("📝 Дані форми:", data);
+
+    // Очищаємо попередні стани валідації
+    this.clearValidationStates(form);
+
+    // Валідація даних
+    const errors = [];
+    const nameInput = form.querySelector("#contact-name");
+    const emailInput = form.querySelector("#contact-email-input");
+    const messageInput = form.querySelector("#contact-message");
+
+    if (!data.name || data.name.trim().length < 2) {
+      errors.push("Ім'я повинно містити мінімум 2 символи");
+      if (nameInput) {
+        nameInput.classList.add("error");
+        nameInput.classList.remove("valid");
+      }
+    } else if (nameInput) {
+      nameInput.classList.add("valid");
+      nameInput.classList.remove("error");
+    }
+
+    if (!data.email || !data.email.includes("@")) {
+      errors.push("Введіть коректний email");
+      if (emailInput) {
+        emailInput.classList.add("error");
+        emailInput.classList.remove("valid");
+      }
+    } else if (emailInput) {
+      emailInput.classList.add("valid");
+      emailInput.classList.remove("error");
+    }
+
+    if (!data.message || data.message.trim().length < 10) {
+      errors.push("Повідомлення повинно містити мінімум 10 символів");
+      if (messageInput) {
+        messageInput.classList.add("error");
+        messageInput.classList.remove("valid");
+      }
+    } else if (messageInput) {
+      messageInput.classList.add("valid");
+      messageInput.classList.remove("error");
+    }
+
+    if (errors.length > 0) {
+      alert("Помилки валідації:\n" + errors.join("\n"));
+      return;
+    }
+
     // Simulate form submission
     const submitBtn = form.querySelector(".form__submit");
     const originalText = submitBtn.innerHTML;
@@ -1334,7 +1502,6 @@ class FridayNightFunkin {
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
-      // Show success message
       alert(this.data.contact.form.success);
       form.reset();
     } catch (error) {
@@ -1343,6 +1510,13 @@ class FridayNightFunkin {
       submitBtn.innerHTML = originalText;
       submitBtn.disabled = false;
     }
+  }
+
+  clearValidationStates(form) {
+    const inputs = form.querySelectorAll("input, textarea");
+    inputs.forEach((input) => {
+      input.classList.remove("error", "invalid", "valid");
+    });
   }
 
   openMobileMenu(mobileToggle, mobileMenu) {
@@ -1423,5 +1597,105 @@ class FridayNightFunkin {
 
   initializeComponents() {
     // Add any additional component initialization here
+    this.loadExternalScriptsSafely();
+  }
+
+  loadExternalScriptsSafely() {
+    // Check if external services are enabled
+    if (!window.EnvironmentHelpers?.isServiceEnabled("GAMEMONETIZE")) {
+      return;
+    }
+
+    // Safe loading of external scripts with fallbacks
+    const scripts = [
+      {
+        id: "gamemonetize-sdk",
+        src:
+          window.Environment?.EXTERNAL_SERVICES?.GAMEMONETIZE?.SDK_URL ||
+          "https://html5.gamemonetize.co/sdk.js",
+        async: true,
+        fallback: () => {
+          // Handle gamemonetize SDK failure
+          if (window.EnvironmentHelpers?.isDevelopment()) {
+            console.warn(
+              "Gamemonetize SDK failed to load - continuing without ads"
+            );
+          }
+        },
+      },
+    ];
+
+    scripts.forEach((scriptConfig) => {
+      try {
+        const script = document.createElement("script");
+        script.id = scriptConfig.id;
+        script.src = scriptConfig.src;
+        script.async = scriptConfig.async || false;
+
+        script.onerror = () => {
+          // Script failed to load - use fallback
+          if (scriptConfig.fallback) {
+            scriptConfig.fallback();
+          }
+        };
+
+        script.onload = () => {
+          // Script loaded successfully
+          if (window.EnvironmentHelpers?.isDevelopment()) {
+            console.log(`${scriptConfig.id} loaded successfully`);
+          }
+        };
+
+        document.head.appendChild(script);
+      } catch (error) {
+        // Failed to create or append script - use fallback
+        if (scriptConfig.fallback) {
+          scriptConfig.fallback();
+        }
+      }
+    });
+  }
+
+  initializeYYGGames() {
+    // Check if YYGGames service is enabled
+    if (!window.EnvironmentHelpers?.isServiceEnabled("YYGGAMES")) {
+      return;
+    }
+
+    // Safe initialization of YYGGames SDK
+    const maxAttempts =
+      window.Environment?.EXTERNAL_SERVICES?.YYGGAMES?.MAX_ATTEMPTS || 10;
+    const initTimeout =
+      window.Environment?.EXTERNAL_SERVICES?.YYGGAMES?.INIT_TIMEOUT || 5000;
+    let attempts = 0;
+
+    const tryInitialize = () => {
+      try {
+        if (window.YYGGames && typeof window.YYGGames.init === "function") {
+          window.YYGGames.init();
+          if (window.EnvironmentHelpers?.isDevelopment()) {
+            console.log("YYGGames SDK initialized successfully");
+          }
+          return;
+        }
+      } catch (error) {
+        // YYGGames not available or failed to initialize
+      }
+
+      attempts++;
+      if (attempts < maxAttempts) {
+        // Try again after 500ms
+        setTimeout(tryInitialize, 500);
+      } else {
+        if (window.EnvironmentHelpers?.isDevelopment()) {
+          console.warn(
+            "YYGGames SDK not available - continuing without game monetization"
+          );
+        }
+      }
+    };
+
+    // Start trying to initialize
+    setTimeout(tryInitialize, 1000);
   }
 }

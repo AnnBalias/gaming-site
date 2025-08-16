@@ -1,0 +1,187 @@
+// Загальні стилі для інпутів з підтримкою автозаповнення
+
+// Базові стилі для всіх інпутів
+input,
+textarea,
+select {
+  // Базові стилі
+  padding: $spacing-sm $spacing-md;
+  background: rgba($dark-bg, 0.5);
+  border: 1px solid rgba($dark-border, 0.3);
+  border-radius: $border-radius-md;
+  color: $dark-text;
+  transition: border-color $transition-normal;
+  font-size: $font-size-sm;
+  font-family: inherit;
+  
+  &:focus {
+    border-color: $primary-color;
+    outline: none;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba($primary-color, 0.2);
+  }
+  
+  &::placeholder {
+    color: $dark-text-secondary;
+  }
+  
+  // Стилі для автозаповнення (Chrome, Safari, Edge)
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px rgba($dark-bg, 0.5) inset !important;
+    -webkit-text-fill-color: $dark-text !important;
+    -webkit-background-clip: content-box !important;
+    background: rgba($dark-bg, 0.5) !important;
+    border-color: rgba($dark-border, 0.3) !important;
+    color: $dark-text !important;
+    font-size: $font-size-sm !important;
+    font-family: inherit !important;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+  
+  // Стилі для автозаповнення з помилками
+  &.error:-webkit-autofill,
+  &.invalid:-webkit-autofill {
+    border-color: $error-color !important;
+  }
+  
+  // Стилі для автозаповнення з успішним заповненням
+  &.valid:-webkit-autofill {
+    border-color: $success-color !important;
+  }
+  
+  // Для Firefox
+  &:-moz-autofill {
+    background-color: rgba($dark-bg, 0.5) !important;
+    color: $dark-text !important;
+  }
+  
+  // Для Edge/IE
+  &:-ms-input-placeholder {
+    color: $dark-text-secondary !important;
+  }
+  
+  // Додаткові стилі для кращої сумісності
+  &[autocomplete] {
+    background: rgba($dark-bg, 0.5) !important;
+    color: $dark-text !important;
+  }
+  
+  // Додаткові стилі для автозаповнення
+  &:-webkit-autofill {
+    animation-name: onAutoFillStart;
+  }
+  
+  &:not(:-webkit-autofill) {
+    animation-name: onAutoFillCancel;
+  }
+  
+  // Стилі для помилок (тільки після спроби відправки)
+  &.error,
+  &.invalid {
+    border-color: $error-color;
+    
+    &:focus {
+      border-color: $error-color;
+    }
+  }
+
+  // Стилі для успішного заповнення (тільки після валідації)
+  &.valid {
+    border-color: $success-color;
+    
+    &:focus {
+      border-color: $primary-color;
+    }
+  }
+  
+  // Додаткові стани для кращого контролю
+  &.autofilled {
+    background: rgba($dark-bg, 0.5) !important;
+    color: $dark-text !important;
+    border-color: rgba($dark-border, 0.3) !important;
+  }
+  
+  &.has-value {
+    border-color: rgba($primary-color, 0.5);
+  }
+  
+  &.focused {
+    border-color: $primary-color;
+    box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
+  }
+  
+  @keyframes onAutoFillStart {
+    from {/**/}
+    to {/**/}
+  }
+  
+  @keyframes onAutoFillCancel {
+    from {/**/}
+    to {/**/}
+  }
+}
+
+// Специфічні стилі для різних типів інпутів
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
+input[type="number"] {
+  // Додаткові стилі для текстових інпутів
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  &[type="number"] {
+    -moz-appearance: textfield;
+  }
+}
+
+// Стилі для textarea
+textarea {
+  resize: vertical;
+  min-height: 80px;
+  line-height: 1.5;
+}
+
+// Стилі для select
+select {
+  cursor: pointer;
+  
+  option {
+    background: $dark-bg;
+    color: $dark-text;
+  }
+}
+
+// Стилі для disabled стану
+input:disabled,
+textarea:disabled,
+select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: rgba($dark-bg, 0.3) !important;
+}
+
+// Стилі для readonly стану
+input[readonly],
+textarea[readonly] {
+  background: rgba($dark-bg, 0.3) !important;
+  cursor: default;
+}
+
+// Стилі для мобільних пристроїв
+@include mobile {
+  input,
+  textarea,
+  select {
+    font-size: 16px; // Запобігає зумі на iOS
+  }
+}

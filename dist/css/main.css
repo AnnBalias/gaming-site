@@ -647,6 +647,399 @@ body.menu-open {
     text-align: right !important;
   }
 }
+input,
+textarea,
+select {
+  padding: 0.5rem 1rem;
+  background: rgba(10, 10, 10, 0.5);
+  border: 1px solid rgba(51, 51, 51, 0.3);
+  border-radius: 0.5rem;
+  color: #ffffff;
+  transition: border-color 0.3s ease-in-out;
+  font-size: 0.875rem;
+  font-family: inherit;
+}
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #00d4ff;
+  outline: none;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 212, 255, 0.2);
+}
+input::-moz-placeholder, textarea::-moz-placeholder, select::-moz-placeholder {
+  color: #a0a0a0;
+}
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+  color: #a0a0a0;
+}
+input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+textarea:-webkit-autofill:active,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus,
+select:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px rgba(10, 10, 10, 0.5) inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+  -webkit-background-clip: content-box !important;
+  background: rgba(10, 10, 10, 0.5) !important;
+  border-color: rgba(51, 51, 51, 0.3) !important;
+  color: #ffffff !important;
+  font-size: 0.875rem !important;
+  font-family: inherit !important;
+  -webkit-transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000s ease-in-out 0s;
+}
+input.error:-webkit-autofill, input.invalid:-webkit-autofill,
+textarea.error:-webkit-autofill,
+textarea.invalid:-webkit-autofill,
+select.error:-webkit-autofill,
+select.invalid:-webkit-autofill {
+  border-color: #ef4444 !important;
+}
+input.valid:-webkit-autofill,
+textarea.valid:-webkit-autofill,
+select.valid:-webkit-autofill {
+  border-color: #10b981 !important;
+}
+input:-moz-autofill,
+textarea:-moz-autofill,
+select:-moz-autofill {
+  background-color: rgba(10, 10, 10, 0.5) !important;
+  color: #ffffff !important;
+}
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder,
+select:-ms-input-placeholder {
+  color: #a0a0a0 !important;
+}
+input[autocomplete],
+textarea[autocomplete],
+select[autocomplete] {
+  background: rgba(10, 10, 10, 0.5) !important;
+  color: #ffffff !important;
+}
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  animation-name: onAutoFillStart;
+}
+input:not(:-webkit-autofill),
+textarea:not(:-webkit-autofill),
+select:not(:-webkit-autofill) {
+  animation-name: onAutoFillCancel;
+}
+input.error, input.invalid,
+textarea.error,
+textarea.invalid,
+select.error,
+select.invalid {
+  border-color: #ef4444;
+}
+input.error:focus, input.invalid:focus,
+textarea.error:focus,
+textarea.invalid:focus,
+select.error:focus,
+select.invalid:focus {
+  border-color: #ef4444;
+}
+input.valid,
+textarea.valid,
+select.valid {
+  border-color: #10b981;
+}
+input.valid:focus,
+textarea.valid:focus,
+select.valid:focus {
+  border-color: #00d4ff;
+}
+input.autofilled,
+textarea.autofilled,
+select.autofilled {
+  background: rgba(10, 10, 10, 0.5) !important;
+  color: #ffffff !important;
+  border-color: rgba(51, 51, 51, 0.3) !important;
+}
+input.has-value,
+textarea.has-value,
+select.has-value {
+  border-color: rgba(0, 212, 255, 0.5);
+}
+input.focused,
+textarea.focused,
+select.focused {
+  border-color: #00d4ff;
+  box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.2);
+}
+@keyframes onAutoFillStart {
+  from { /**/ }
+  to { /**/ }
+}
+@keyframes onAutoFillCancel {
+  from { /**/ }
+  to { /**/ }
+}
+
+input[type=text]::-webkit-outer-spin-button, input[type=text]::-webkit-inner-spin-button,
+input[type=email]::-webkit-outer-spin-button,
+input[type=email]::-webkit-inner-spin-button,
+input[type=password]::-webkit-outer-spin-button,
+input[type=password]::-webkit-inner-spin-button,
+input[type=search]::-webkit-outer-spin-button,
+input[type=search]::-webkit-inner-spin-button,
+input[type=tel]::-webkit-outer-spin-button,
+input[type=tel]::-webkit-inner-spin-button,
+input[type=url]::-webkit-outer-spin-button,
+input[type=url]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=text][type=number],
+input[type=email][type=number],
+input[type=password][type=number],
+input[type=search][type=number],
+input[type=tel][type=number],
+input[type=url][type=number],
+input[type=number][type=number] {
+  -moz-appearance: textfield;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+  line-height: 1.5;
+}
+
+select {
+  cursor: pointer;
+}
+select option {
+  background: #0a0a0a;
+  color: #ffffff;
+}
+
+input:disabled,
+textarea:disabled,
+select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: rgba(10, 10, 10, 0.3) !important;
+}
+
+input[readonly],
+textarea[readonly] {
+  background: rgba(10, 10, 10, 0.3) !important;
+  cursor: default;
+}
+
+@media (max-width: 767px) {
+  input,
+  textarea,
+  select {
+    font-size: 16px;
+  }
+}
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  vertical-align: middle;
+  transition: all 0.3s ease-in-out;
+}
+.icon--sm {
+  width: 0.875em;
+  height: 0.875em;
+}
+.icon--md {
+  width: 1.25em;
+  height: 1.25em;
+}
+.icon--lg {
+  width: 1.5em;
+  height: 1.5em;
+}
+.icon--xl {
+  width: 2em;
+  height: 2em;
+}
+.icon--music {
+  fill: #00d4ff;
+}
+.icon--music:hover {
+  fill: rgb(51, 220.6, 255);
+  transform: scale(1.1);
+}
+.icon--gamepad {
+  fill: #7c3aed;
+}
+.icon--gamepad:hover {
+  fill: rgb(155.0744186047, 104.7302325581, 241.2697674419);
+  transform: scale(1.1);
+}
+.icon--energy {
+  fill: #f59e0b;
+}
+.icon--energy:hover {
+  fill: rgb(247.0078740157, 177.4763779528, 59.9921259843);
+  transform: scale(1.1);
+}
+.icon--play {
+  fill: #00d4ff;
+}
+.icon--play:hover {
+  fill: rgb(51, 220.6, 255);
+  transform: scale(1.1);
+}
+.icon--clip {
+  fill: #3b82f6;
+}
+.icon--clip:hover {
+  fill: rgb(107.7609756098, 161.0975609756, 248.2390243902);
+  transform: scale(1.1);
+}
+.icon--email {
+  fill: #00d4ff;
+}
+.icon--email:hover {
+  fill: rgb(51, 220.6, 255);
+  transform: scale(1.1);
+}
+.icon--location {
+  fill: #10b981;
+}
+.icon--location:hover {
+  fill: rgb(20.0597014925, 231.9402985075, 161.7313432836);
+  transform: scale(1.1);
+}
+.icon--youtube {
+  fill: #ff0000;
+}
+.icon--youtube:hover {
+  fill: #ff3333;
+  transform: scale(1.1);
+}
+.icon--bird {
+  fill: #1da1f2;
+}
+.icon--bird:hover {
+  fill: rgb(77.2259414226, 181.0585774059, 244.7740585774);
+  transform: scale(1.1);
+}
+
+.hero .icon--music {
+  fill: rgba(0, 212, 255, 0.9);
+}
+.hero .icon--gamepad {
+  fill: rgba(124, 58, 237, 0.9);
+}
+.hero .icon--energy {
+  fill: rgba(245, 158, 11, 0.9);
+}
+.hero .icon--play {
+  fill: #ffffff;
+}
+.hero .icon--clip {
+  fill: rgba(59, 130, 246, 0.9);
+}
+.hero .hero__feature-icon .icon {
+  width: 1.5em;
+  height: 1.5em;
+}
+.hero .btn__icon .icon {
+  width: 1em;
+  height: 1em;
+}
+.hero .game-preview__icon .icon {
+  width: 2.5em;
+  height: 2.5em;
+  fill: #00d4ff;
+}
+
+.contact .icon--email {
+  fill: #00d4ff;
+}
+.contact .icon--location {
+  fill: #10b981;
+}
+.contact .contact__icon .icon {
+  width: 1.5em;
+  height: 1.5em;
+}
+.contact .social__icon .icon {
+  width: 1.25em;
+  height: 1.25em;
+}
+.contact .btn__icon .icon {
+  width: 1em;
+  height: 1em;
+  fill: #ffffff;
+}
+.contact .btn__icon .icon:hover {
+  fill: #ffffff;
+}
+
+.footer .social__icon .icon {
+  width: 1.25em;
+  height: 1.25em;
+  transition: all 0.3s ease-in-out;
+}
+.footer .social__icon .icon:hover {
+  transform: scale(1.2);
+}
+
+.game-iframe .game-overlay__icon .icon {
+  width: 3em;
+  height: 3em;
+  fill: #00d4ff;
+}
+
+@media (max-width: 767px) {
+  .icon--lg {
+    width: 1.25em;
+    height: 1.25em;
+  }
+  .icon--xl {
+    width: 1.5em;
+    height: 1.5em;
+  }
+  .hero .game-preview__icon .icon {
+    width: 2em;
+    height: 2em;
+  }
+  .game-iframe .game-overlay__icon .icon {
+    width: 2.5em;
+    height: 2.5em;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .icon--xl {
+    width: 1.75em;
+    height: 1.75em;
+  }
+}
+.icon[class*="--"]:hover {
+  transition: all 0.3s ease-in-out ease-in-out;
+}
+
+.icon:focus {
+  outline: 2px solid #00d4ff;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .icon--music, .icon--gamepad, .icon--energy, .icon--play, .icon--clip, .icon--email, .icon--location {
+    filter: brightness(1.1);
+  }
+}
 .btn {
   display: inline-flex;
   align-items: center;
@@ -2079,24 +2472,17 @@ body.menu-open {
   font-weight: 500;
   color: #ffffff;
 }
-.form__input, .form__textarea {
-  padding: 0.5rem 1rem;
-  background: rgba(10, 10, 10, 0.5);
-  border: 1px solid rgba(51, 51, 51, 0.3);
-  border-radius: 0.5rem;
-  color: #ffffff;
-  transition: border-color 0.3s ease-in-out;
-  font-size: 0.875rem;
+.form__input.error, .form__input.invalid, .form__textarea.error, .form__textarea.invalid {
+  border-color: #ef4444;
 }
-.form__input:focus, .form__textarea:focus {
+.form__input.error:focus, .form__input.invalid:focus, .form__textarea.error:focus, .form__textarea.invalid:focus {
+  border-color: #ef4444;
+}
+.form__input.valid, .form__textarea.valid {
+  border-color: #10b981;
+}
+.form__input.valid:focus, .form__textarea.valid:focus {
   border-color: #00d4ff;
-  outline: none;
-}
-.form__input::-moz-placeholder, .form__textarea::-moz-placeholder {
-  color: #a0a0a0;
-}
-.form__input::placeholder, .form__textarea::placeholder {
-  color: #a0a0a0;
 }
 .form__textarea {
   resize: none;

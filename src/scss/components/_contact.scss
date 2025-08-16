@@ -124,21 +124,26 @@
   
   &__input,
   &__textarea {
-    padding: $spacing-sm $spacing-md;
-    background: rgba($dark-bg, 0.5);
-    border: 1px solid rgba($dark-border, 0.3);
-    border-radius: $border-radius-md;
-    color: $dark-text;
-    transition: border-color $transition-normal;
-    font-size: $font-size-sm;
+    // Базові стилі наслідуються з _inputs.scss
+    // Додаткові стилі специфічні для форми контактів
     
-    &:focus {
-      border-color: $primary-color;
-      outline: none;
+    // Стилі для помилок (тільки після спроби відправки)
+    &.error,
+    &.invalid {
+      border-color: $error-color;
+      
+      &:focus {
+        border-color: $error-color;
+      }
     }
-    
-    &::placeholder {
-      color: $dark-text-secondary;
+
+    // Стилі для успішного заповнення (тільки після валідації)
+    &.valid {
+      border-color: $success-color;
+      
+      &:focus {
+        border-color: $primary-color;
+      }
     }
   }
   

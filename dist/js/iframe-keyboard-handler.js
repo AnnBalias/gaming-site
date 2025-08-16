@@ -1,206 +1,180 @@
-// Keyboard Event Handler for iframe content
-// This script should be injected into the iframe or included in the game
+// Iframe Keyboard Handler for Game Controls
+// This script runs inside the iframe to handle keyboard events from parent window
 
-(function () {
-  "use strict";
+(function() {
+  'use strict';
 
   // Configuration for keyboard controls
   const KEYBOARD_CONFIG = {
-    // Arrow keys
-    ArrowUp: { action: "moveUp", keyCode: 38 },
-    ArrowDown: { action: "moveDown", keyCode: 40 },
-    ArrowLeft: { action: "moveLeft", keyCode: 37 },
-    ArrowRight: { action: "moveRight", keyCode: 39 },
-
-    // WASD keys
-    KeyW: { action: "moveUp", keyCode: 87 },
-    KeyA: { action: "moveLeft", keyCode: 65 },
-    KeyS: { action: "moveDown", keyCode: 83 },
-    KeyD: { action: "moveRight", keyCode: 68 },
-
-    // Additional game keys
-    Space: { action: "jump", keyCode: 32 },
-    Enter: { action: "confirm", keyCode: 13 },
-    Escape: { action: "pause", keyCode: 27 },
-    KeyZ: { action: "action1", keyCode: 90 },
-    KeyX: { action: "action2", keyCode: 88 },
-    KeyC: { action: "action3", keyCode: 67 },
+    'ArrowUp': 'up',
+    'ArrowDown': 'down', 
+    'ArrowLeft': 'left',
+    'ArrowRight': 'right',
+    'KeyW': 'up',
+    'KeyS': 'down',
+    'KeyA': 'left',
+    'KeyD': 'right',
+    'Space': 'space',
+    'Enter': 'enter',
+    'Escape': 'escape',
+    'KeyZ': 'z',
+    'KeyX': 'x',
+    'KeyC': 'c'
   };
 
   // Game control functions
   const gameControls = {
-    moveUp: () => {
-      console.log("Move Up");
-      // Implement game-specific move up logic
-      if (
-        window.gameInstance &&
-        typeof window.gameInstance.moveUp === "function"
-      ) {
-        window.gameInstance.moveUp();
+    up: () => {
+      try {
+        // Simulate up arrow key press
+        const event = new KeyboardEvent('keydown', { key: 'ArrowUp', code: 'ArrowUp' });
+        document.dispatchEvent(event);
+      } catch (error) {
+        // Handle error silently
       }
     },
-
-    moveDown: () => {
-      console.log("Move Down");
-      // Implement game-specific move down logic
-      if (
-        window.gameInstance &&
-        typeof window.gameInstance.moveDown === "function"
-      ) {
-        window.gameInstance.moveDown();
+    down: () => {
+      try {
+        // Simulate down arrow key press
+        const event = new KeyboardEvent('keydown', { key: 'ArrowDown', code: 'ArrowDown' });
+        document.dispatchEvent(event);
+      } catch (error) {
+        // Handle error silently
       }
     },
-
-    moveLeft: () => {
-      console.log("Move Left");
-      // Implement game-specific move left logic
-      if (
-        window.gameInstance &&
-        typeof window.gameInstance.moveLeft === "function"
-      ) {
-        window.gameInstance.moveLeft();
+    left: () => {
+      try {
+        // Simulate left arrow key press
+        const event = new KeyboardEvent('keydown', { key: 'ArrowLeft', code: 'ArrowLeft' });
+        document.dispatchEvent(event);
+      } catch (error) {
+        // Handle error silently
       }
     },
-
-    moveRight: () => {
-      console.log("Move Right");
-      // Implement game-specific move right logic
-      if (
-        window.gameInstance &&
-        typeof window.gameInstance.moveRight === "function"
-      ) {
-        window.gameInstance.moveRight();
+    right: () => {
+      try {
+        // Simulate right arrow key press
+        const event = new KeyboardEvent('keydown', { key: 'ArrowRight', code: 'ArrowRight' });
+        document.dispatchEvent(event);
+      } catch (error) {
+        // Handle error silently
       }
     },
-
-    jump: () => {
-      console.log("Jump");
-      // Implement game-specific jump logic
-      if (
-        window.gameInstance &&
-        typeof window.gameInstance.jump === "function"
-      ) {
-        window.gameInstance.jump();
+    space: () => {
+      try {
+        // Simulate space key press
+        const event = new KeyboardEvent('keydown', { key: ' ', code: 'Space' });
+        document.dispatchEvent(event);
+      } catch (error) {
+        // Handle error silently
       }
     },
-
-    confirm: () => {
-      console.log("Confirm");
-      // Implement game-specific confirm logic
-      if (
-        window.gameInstance &&
-        typeof window.gameInstance.confirm === "function"
-      ) {
-        window.gameInstance.confirm();
+    enter: () => {
+      try {
+        // Simulate enter key press
+        const event = new KeyboardEvent('keydown', { key: 'Enter', code: 'Enter' });
+        document.dispatchEvent(event);
+      } catch (error) {
+        // Handle error silently
       }
     },
-
-    pause: () => {
-      console.log("Pause");
-      // Implement game-specific pause logic
-      if (
-        window.gameInstance &&
-        typeof window.gameInstance.pause === "function"
-      ) {
-        window.gameInstance.pause();
+    escape: () => {
+      try {
+        // Simulate escape key press
+        const event = new KeyboardEvent('keydown', { key: 'Escape', code: 'Escape' });
+        document.dispatchEvent(event);
+      } catch (error) {
+        // Handle error silently
       }
     },
-
-    action1: () => {
-      console.log("Action 1");
-      // Implement game-specific action1 logic
-      if (
-        window.gameInstance &&
-        typeof window.gameInstance.action1 === "function"
-      ) {
-        window.gameInstance.action1();
+    z: () => {
+      try {
+        // Simulate Z key press
+        const event = new KeyboardEvent('keydown', { key: 'z', code: 'KeyZ' });
+        document.dispatchEvent(event);
+      } catch (error) {
+        // Handle error silently
       }
     },
-
-    action2: () => {
-      console.log("Action 2");
-      // Implement game-specific action2 logic
-      if (
-        window.gameInstance &&
-        typeof window.gameInstance.action2 === "function"
-      ) {
-        window.gameInstance.action2();
+    x: () => {
+      try {
+        // Simulate X key press
+        const event = new KeyboardEvent('keydown', { key: 'x', code: 'KeyX' });
+        document.dispatchEvent(event);
+      } catch (error) {
+        // Handle error silently
       }
     },
-
-    action3: () => {
-      console.log("Action 3");
-      // Implement game-specific action3 logic
-      if (
-        window.gameInstance &&
-        typeof window.gameInstance.action3 === "function"
-      ) {
-        window.gameInstance.action3();
+    c: () => {
+      try {
+        // Simulate C key press
+        const event = new KeyboardEvent('keydown', { key: 'c', code: 'KeyC' });
+        document.dispatchEvent(event);
+      } catch (error) {
+        // Handle error silently
       }
-    },
+    }
   };
 
-  // Function to handle keyboard events
+  // Handle keyboard events from parent window
   function handleKeyboardEvent(eventData) {
-    const { eventType, code, key } = eventData;
+    try {
+      const { eventType, code } = eventData;
+      
+      if (!code || !KEYBOARD_CONFIG[code]) {
+        return;
+      }
 
-    // Check if the key is configured
-    if (!KEYBOARD_CONFIG[code]) {
-      return;
+      const action = KEYBOARD_CONFIG[code];
+      const controlFunction = gameControls[action];
+
+      if (controlFunction && typeof controlFunction === 'function') {
+        if (eventType === 'keydown') {
+          controlFunction();
+        }
+        // Handle keyup if needed
+      }
+    } catch (error) {
+      // Handle any errors silently
     }
-
-    const config = KEYBOARD_CONFIG[code];
-    const controlFunction = gameControls[config.action];
-
-    if (!controlFunction) {
-      return;
-    }
-
-    // Execute the control function
-    if (eventType === "keydown") {
-      controlFunction();
-    }
-    // You can add keyup handling here if needed
   }
 
-  // Listen for postMessage events from parent window
-  window.addEventListener("message", function (event) {
-    // Verify the message is from our parent window
-    if (
-      event.origin !== window.location.origin &&
-      !event.origin.includes("gamemonetize.co") &&
-      !event.origin.includes("localhost")
-    ) {
-      return;
-    }
+  // Listen for messages from parent window
+  try {
+    window.addEventListener('message', function(event) {
+      try {
+        // Validate message origin for security
+        if (event.origin !== window.location.origin && 
+            !event.origin.includes('gamemonetize.co')) {
+          return;
+        }
 
-    const data = event.data;
+        const { type, eventType, code } = event.data;
 
-    // Check if this is a keyboard event message
-    if (data && data.type === "keyboardEvent") {
-      handleKeyboardEvent(data);
-    }
-  });
-
-  // Alternative: Direct keyboard event handling (for same-origin iframes)
-  document.addEventListener("keydown", function (event) {
-    const config = KEYBOARD_CONFIG[event.code];
-    if (config) {
-      event.preventDefault();
-      const controlFunction = gameControls[config.action];
-      if (controlFunction) {
-        controlFunction();
+        if (type === 'keyboardEvent' && eventType && code) {
+          handleKeyboardEvent({ eventType, code });
+        }
+      } catch (error) {
+        // Handle message processing errors silently
       }
+    });
+  } catch (error) {
+    // Handle event listener errors silently
+  }
+
+  // Initialize iframe when ready
+  try {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function() {
+        // Iframe is ready
+        console.log('Iframe keyboard handler initialized');
+      });
+    } else {
+      // Iframe is already loaded
+      console.log('Iframe keyboard handler initialized');
     }
-  });
+  } catch (error) {
+    // Handle initialization errors silently
+  }
 
-  // Initialize the keyboard handler
-  console.log("Keyboard handler initialized for iframe");
-
-  // Make the handler available globally for debugging
-  window.keyboardHandler = {
-    gameControls,
-    KEYBOARD_CONFIG,
-    handleKeyboardEvent,
-  };
 })();

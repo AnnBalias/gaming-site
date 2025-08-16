@@ -125,7 +125,10 @@ class FridayNightFunkin {
         } catch (backendError) {
           // Backend not available or CORS error, continue with local data
           if (window.EnvironmentHelpers?.isDevelopment()) {
-            console.warn("Backend not available or CORS error, using local data:", backendError.message);
+            console.warn(
+              "Backend not available or CORS error, using local data:",
+              backendError.message
+            );
           }
         }
       }
@@ -512,19 +515,23 @@ class FridayNightFunkin {
 
     const initializeAudioContext = () => {
       if (audioContextInitialized) return;
-      
+
       try {
         if (window.AudioContext || window.webkitAudioContext) {
-          const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          const AudioContextClass =
+            window.AudioContext || window.webkitAudioContext;
           audioContext = new AudioContextClass();
-          
+
           if (audioContext.state === "suspended") {
-            audioContext.resume().then(() => {
-              window.gameAudioContext = audioContext;
-              audioContextInitialized = true;
-            }).catch(() => {
-              // AudioContext resume failed silently
-            });
+            audioContext
+              .resume()
+              .then(() => {
+                window.gameAudioContext = audioContext;
+                audioContextInitialized = true;
+              })
+              .catch(() => {
+                // AudioContext resume failed silently
+              });
           } else {
             window.gameAudioContext = audioContext;
             audioContextInitialized = true;
@@ -537,13 +544,15 @@ class FridayNightFunkin {
 
     // Initialize AudioContext on first user interaction
     document.addEventListener("click", initializeAudioContext, { once: true });
-    document.addEventListener("keydown", initializeAudioContext, { once: true });
+    document.addEventListener("keydown", initializeAudioContext, {
+      once: true,
+    });
 
     if (startGameBtn && gameOverlay && gameIframe) {
       startGameBtn.addEventListener("click", async () => {
         // Initialize AudioContext on game start
         initializeAudioContext();
-        
+
         // The iframe is already loaded with the game URL
         // Just hide the overlay to reveal the game
         gameOverlay.style.display = "none";
@@ -940,6 +949,9 @@ class FridayNightFunkin {
     // Render news
     this.renderNews();
 
+    // Render disclaimer
+    this.renderDisclaimer();
+
     // Render contact info
     this.renderContact();
 
@@ -1251,6 +1263,34 @@ class FridayNightFunkin {
           this.openNewsModal(articleId);
         });
       });
+    }
+  }
+
+  renderDisclaimer() {
+    if (!this.data.disclaimer) return;
+
+    const disclaimerTitle = document.querySelector(".disclaimer__title");
+    const disclaimerDescription = document.querySelector(
+      ".disclaimer__description"
+    );
+    const disclaimerContent = document.querySelector(".disclaimer-content");
+
+    if (disclaimerTitle)
+      disclaimerTitle.textContent = this.data.disclaimer.title;
+    if (disclaimerDescription)
+      disclaimerDescription.textContent = this.data.disclaimer.description;
+
+    if (disclaimerContent && this.data.disclaimer.blocks) {
+      disclaimerContent.innerHTML = this.data.disclaimer.blocks
+        .map(
+          (block) => `
+          <div class="disclaimer-block">
+            <h3>${block.title}</h3>
+            <p>${block.content}</p>
+          </div>
+        `
+        )
+        .join("");
     }
   }
 
@@ -1731,12 +1771,17 @@ class FridayNightFunkin {
               console.warn("YYGGames.init() failed:", initError);
             }
           }
-        } else if (window.YYGGamesForGamemonetize && typeof window.YYGGamesForGamemonetize.init === "function") {
+        } else if (
+          window.YYGGamesForGamemonetize &&
+          typeof window.YYGGamesForGamemonetize.init === "function"
+        ) {
           // Alternative SDK name
           try {
             window.YYGGamesForGamemonetize.init();
             if (window.EnvironmentHelpers?.isDevelopment()) {
-              console.log("YYGGamesForGamemonetize SDK initialized successfully");
+              console.log(
+                "YYGGamesForGamemonetize SDK initialized successfully"
+              );
             }
             return;
           } catch (initError) {

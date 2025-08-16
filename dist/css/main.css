@@ -2355,6 +2355,92 @@ textarea[readonly] {
   padding: 0.5rem 1rem;
 }
 
+.disclaimer-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #0a0a0a 0%, black 100%);
+}
+@media (max-width: 767px) {
+  .disclaimer-section {
+    padding: 60px 0;
+  }
+}
+.disclaimer-section .disclaimer-section__header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+@media (max-width: 767px) {
+  .disclaimer-section .disclaimer-section__header {
+    margin-bottom: 40px;
+  }
+}
+.disclaimer-section .disclaimer__title {
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #00d4ff 0%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.disclaimer-section .disclaimer__description {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+@media (max-width: 767px) {
+  .disclaimer-section .disclaimer__description {
+    font-size: 1rem;
+  }
+}
+.disclaimer-section .disclaimer-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.disclaimer-section .disclaimer-block {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 30px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+.disclaimer-section .disclaimer-block:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(0, 212, 255, 0.3);
+  transform: translateY(-2px);
+}
+@media (max-width: 767px) {
+  .disclaimer-section .disclaimer-block {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+}
+.disclaimer-section .disclaimer-block h3 {
+  color: #00d4ff;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+@media (max-width: 767px) {
+  .disclaimer-section .disclaimer-block h3 {
+    font-size: 1.2rem;
+  }
+}
+.disclaimer-section .disclaimer-block p {
+  color: #ffffff;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+.disclaimer-section .disclaimer-block p a {
+  color: #7c3aed;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.disclaimer-section .disclaimer-block p a:hover {
+  color: rgb(155.0744186047, 104.7302325581, 241.2697674419);
+  text-decoration: underline;
+}
+
 .contact {
   padding: 4rem 0;
   background: #1a1a1a;

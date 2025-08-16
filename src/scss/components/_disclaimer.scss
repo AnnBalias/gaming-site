@@ -1,0 +1,90 @@
+.disclaimer-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, $dark-bg 0%, darken($dark-bg, 5%) 100%);
+  
+  @include mobile {
+    padding: 60px 0;
+  }
+  
+  .disclaimer-section__header {
+    text-align: center;
+    margin-bottom: 60px;
+    
+    @include mobile {
+      margin-bottom: 40px;
+    }
+  }
+  
+  .disclaimer__title {
+    margin-bottom: 20px;
+    background: $gradient-primary;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .disclaimer__description {
+    color: rgba(#ffffff, 0.7);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    
+    @include mobile {
+      font-size: 1rem;
+    }
+  }
+  
+  .disclaimer-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .disclaimer-block {
+    background: rgba(#ffffff, 0.05);
+    border: 1px solid rgba(#ffffff, 0.1);
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background: rgba(#ffffff, 0.08);
+      border-color: rgba($primary-color, 0.3);
+      transform: translateY(-2px);
+    }
+    
+    @include mobile {
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    
+    h3 {
+      color: $primary-color;
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+      
+      @include mobile {
+        font-size: 1.2rem;
+      }
+    }
+    
+    p {
+      color: #ffffff;
+      line-height: 1.6;
+      margin-bottom: 0;
+      
+      a {
+        color: $accent-color;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        
+        &:hover {
+          color: lighten($accent-color, 10%);
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

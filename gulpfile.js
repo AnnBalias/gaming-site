@@ -61,13 +61,19 @@ function data() {
     .pipe(browserSync.stream());
 }
 
+// Clean task
+function clean() {
+  const del = require("del");
+  return del(["dist/**/*"]);
+}
+
 // Watch task
 function watch() {
   browserSync.init({
     server: {
       baseDir: "./dist",
     },
-    port: 9998,
+    port: 3000,
     open: false,
     notify: false
   });
@@ -77,10 +83,11 @@ function watch() {
   gulp.watch("src/js/**/*.js", scripts);
   gulp.watch("src/assets/**/*", assets);
   gulp.watch("src/data.json", data);
+  gulp.watch("src/config/*.js", data);
 }
 
 // Build task
-const build = gulp.series(html, styles, scripts, assets, data);
+const build = gulp.series(clean, gulp.parallel(html, styles, scripts, assets, data));
 
 // Dev task
 const dev = gulp.series(build, watch);
@@ -90,6 +97,7 @@ exports.styles = styles;
 exports.scripts = scripts;
 exports.assets = assets;
 exports.data = data;
+exports.clean = clean;
 exports.watch = watch;
 exports.build = build;
 exports.dev = dev;

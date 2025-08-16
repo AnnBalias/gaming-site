@@ -1,180 +1,178 @@
-# Friday Night Funkin - Ритмічна музична битва
+# CyberStrike Arena - Gaming Website
 
-Сайт для гри Friday Night Funkin з українським перекладом та системою управління контентом через JSON.
+A modern, responsive gaming website featuring Friday Night Funkin with keyboard controls, contact forms, and comprehensive gaming content.
 
-## Особливості
+## 🎮 Features
 
-- 🌍 Повний український переклад
-- 📄 Система управління контентом через JSON
-- 🎮 Інтерактивна гра Friday Night Funkin
-- 📱 Адаптивний дизайн
-- ⚡ Швидка завантаження
+- **Interactive Game**: Friday Night Funkin with keyboard controls via postMessage
+- **Responsive Design**: Fully adaptive layout for all devices
+- **Contact Form**: Functional contact form with validation and autofill support
+- **Modern UI**: Gaming-themed design with smooth animations
+- **Accessibility**: Keyboard navigation and screen reader support
+- **Performance**: Optimized assets and minified code
 
-## Структура проекту
+## 🚀 Quick Start
 
-```
-gaming-site/
-├── src/
-│   ├── data.json          # Всі текстові дані сайту
-│   ├── index.html         # Головна сторінка
-│   ├── components/        # HTML компоненти
-│   ├── js/
-│   │   └── main.js        # Основний JavaScript
-│   ├── scss/              # Стилі
-│   └── assets/
-│       └── images/        # Зображення
-├── dist/                  # Зібраний проект
-└── ReferenceSite/         # Приклад структури
-```
+### Prerequisites
 
-## Управління контентом
+- Node.js (v14 or higher)
+- npm or yarn
 
-Весь текст сайту зберігається в файлі `src/data.json`. Для оновлення контенту достатньо відредагувати цей файл.
+### Installation
 
-### Структура data.json
-
-```json
-{
-  "meta": {
-    "title": "Заголовок сторінки",
-    "description": "Опис для SEO",
-    "keywords": "Ключові слова"
-  },
-  "header": {
-    "logo": {
-      "text": "Friday Night",
-      "accent": "Funkin"
-    },
-    "navigation": {
-      "home": "Головна",
-      "game": "Гра",
-      "howToPlay": "Як грати",
-      "news": "Новини",
-      "contact": "Контакти"
-    }
-  },
-  "hero": {
-    "title": "Friday Night Funkin",
-    "subtitle": "Неблокована музична битва",
-    "description": "Опис гри...",
-    "features": [...],
-    "actions": {...}
-  }
-  // ... інші секції
-}
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/gaming-site.git
+cd gaming-site
 ```
 
-### Як оновити контент
-
-1. Відкрийте файл `src/data.json`
-2. Знайдіть потрібну секцію
-3. Відредагуйте текст
-4. Збережіть файл
-5. Перезапустіть сервер: `npm run serve`
-
-## Встановлення та запуск
-
-### Вимоги
-
-- Node.js (версія 14 або вище)
-- npm
-
-### Встановлення залежностей
-
+2. Install dependencies:
 ```bash
 npm install
 ```
 
-### Розробка
-
+3. Start development server:
 ```bash
 npm run dev
 ```
 
-### Збірка проекту
+The site will be available at `http://localhost:3000`
+
+### Build for Production
 
 ```bash
 npm run build
 ```
 
-### Запуск сервера
+The built files will be in the `dist/` directory, ready for deployment.
 
-```bash
-npm run serve
+## 📁 Project Structure
+
+```
+gaming-site/
+├── src/
+│   ├── components/          # HTML components
+│   ├── scss/               # Stylesheets
+│   ├── js/                 # JavaScript files
+│   ├── assets/             # Images, icons, etc.
+│   ├── config/             # Configuration files
+│   └── *.html              # Main HTML files
+├── dist/                   # Built files (generated)
+├── gulpfile.js            # Build configuration
+└── package.json           # Dependencies and scripts
 ```
 
-## Секції сайту
+## 🎯 Key Components
 
-### 1. Header (Шапка)
+### Game Controls
+- Keyboard-based controls using postMessage API
+- WASD and arrow key support
+- Focus management for accessibility
 
-- Логотип
-- Навігаційне меню
-- Мобільне меню
+### Contact Form
+- Client-side validation
+- Autofill support with custom styling
+- Success/error feedback
 
-### 2. Hero (Головна секція)
+### Responsive Design
+- Mobile-first approach
+- CSS Grid and Flexbox
+- Optimized for all screen sizes
 
-- Заголовок гри
-- Опис
-- Кнопки дій
-- Статистика
+## 🛠️ Development
 
-### 3. Game (Гра)
+### Available Scripts
 
-- iframe з грою
-- Кнопка запуску
+- `npm run dev` - Start development server with live reload
+- `npm run build` - Build for production
+- `npm run watch` - Watch files for changes
+- `npm run clean` - Clean build directory
 
-### 4. How to Play (Як грати)
+### File Structure
 
-- Покрокові інструкції
-- Пояснення механік
+The project uses Gulp for build automation with the following tasks:
 
-### 5. Reviews (Відгуки)
+- **HTML**: Template processing with file includes
+- **SCSS**: Compilation, autoprefixing, and minification
+- **JavaScript**: Minification and optimization
+- **Assets**: Copy and optimize images and other assets
+- **Data**: Process JSON configuration files
 
-- Відгуки гравців
-- Рейтинги
+## 🌐 Deployment
 
-### 6. News (Новини)
+### GitHub Pages
 
-- Статті
-- Модальні вікна
+1. Build the project:
+```bash
+npm run build
+```
 
-### 7. Contact (Контакти)
+2. Push the `dist/` directory to the `gh-pages` branch or configure GitHub Pages to serve from the `dist/` directory.
 
-- Контактна форма
-- Соціальні мережі
+3. Enable GitHub Pages in your repository settings.
 
-### 8. Footer (Підвал)
+### Other Platforms
 
-- Посилання
-- Правова інформація
+The built files in `dist/` can be deployed to any static hosting service:
 
-## Переклад
+- Netlify
+- Vercel
+- AWS S3
+- Any web server
 
-Сайт повністю перекладений українською мовою. Назва гри "Friday Night Funkin" залишена без змін, як і було запитано.
+## 🎨 Customization
 
-### Основні переклади:
+### Styling
+- Modify `src/scss/_variables.scss` for colors and spacing
+- Update component styles in `src/scss/components/`
+- Add new styles following the existing pattern
 
-- Заголовки та описи
-- Навігація
-- Кнопки та форми
-- Відгуки та новини
-- Правова інформація
+### Content
+- Edit `src/data.json` for dynamic content
+- Update HTML components in `src/components/`
+- Modify JavaScript functionality in `src/js/`
 
-## Технології
+### Configuration
+- Environment settings in `src/config/environment.js`
+- Build settings in `gulpfile.js`
 
-- HTML5
-- CSS3/SCSS
-- JavaScript (ES6+)
-- Gulp (збірка)
-- JSON (управління контентом)
+## 🔧 Technical Details
 
-## Ліцензія
+### Technologies Used
+- **HTML5**: Semantic markup and accessibility
+- **SCSS**: Advanced CSS with variables and mixins
+- **JavaScript (ES6+)**: Modern JavaScript features
+- **Gulp**: Build automation and optimization
+- **Browser-Sync**: Development server with live reload
 
-© Всі права захищені, 2025
+### Browser Support
+- Chrome 60+
+- Firefox 55+
+- Safari 12+
+- Edge 79+
 
-## Підтримка
+### Performance Features
+- Minified CSS and JavaScript
+- Optimized images
+- Efficient asset loading
+- Responsive images
 
-Якщо у вас є питання або пропозиції, звертайтеся:
+## 📝 License
 
-- Email: support@fridaynightfunkin.com
-- Discord: https://discord.gg/fridaynightfunkin
+This project is licensed under the ISC License.
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## 📞 Support
+
+For questions or issues, please open an issue on GitHub.
+
+---
+
+**CyberStrike Arena** - Where gaming meets innovation! 🎮⚡

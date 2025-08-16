@@ -23,8 +23,8 @@ const Environment = {
     },
     YYGGAMES: {
       ENABLED: true,
-      INIT_TIMEOUT: 3000,
-      MAX_ATTEMPTS: 3,
+      INIT_TIMEOUT: 2000,
+      MAX_ATTEMPTS: 2,
       FALLBACK: true,
     },
   },
@@ -54,15 +54,17 @@ const Environment = {
       "blocked by adblocker",
       "favicon.ico",
       "404",
+      "cors",
+      "access-control-allow-origin",
     ],
-    LOG_LEVEL: "warn", // 'error', 'warn', 'info', 'debug'
+    LOG_LEVEL: "error", // Only show errors in production
   },
 
   // Development settings
   DEVELOPMENT: {
     DEBUG_MODE: false,
     LOG_EXTERNAL_ERRORS: false,
-    SHOW_FALLBACK_MESSAGES: true,
+    SHOW_FALLBACK_MESSAGES: false,
   },
 };
 
@@ -73,7 +75,8 @@ const EnvironmentHelpers = {
     return (
       window.location.hostname === "localhost" ||
       window.location.hostname === "127.0.0.1" ||
-      window.location.port === "9998"
+      window.location.port === "9998" ||
+      window.location.port === "3000"
     );
   },
 
@@ -84,6 +87,7 @@ const EnvironmentHelpers = {
 
   // Check if error should be handled silently
   shouldSilentFail(errorMessage) {
+    if (!errorMessage) return true;
     return Environment.ERROR_HANDLING.SILENT_FAILURES.some((keyword) =>
       errorMessage.toLowerCase().includes(keyword.toLowerCase())
     );
@@ -94,17 +98,14 @@ const EnvironmentHelpers = {
     if (this.isDevelopment()) {
       return Environment.BACKEND.URL;
     }
-    // In production, you might want to use a different URL
+    // In production, use relative paths
     return window.location.origin;
   },
 
   // Log message based on environment
   log(message, level = "info") {
-    if (
-      Environment.DEVELOPMENT.DEBUG_MODE ||
-      level === "error" ||
-      level === "warn"
-    ) {
+    // Only log errors in production, unless in development mode
+    if (this.isDevelopment() || level === "error") {
       console[level](message);
     }
   },

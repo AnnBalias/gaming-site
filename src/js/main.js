@@ -21,8 +21,7 @@ class FridayNightFunkin {
       this.renderContent();
       this.initializeComponents();
 
-      // Initialize YYGGames SDK after components are loaded
-      this.initializeYYGGames();
+      // YYGGames will be initialized after external scripts are loaded
     } catch (error) {
       // Failed to initialize silently
     }
@@ -38,6 +37,18 @@ class FridayNightFunkin {
           return;
         }
       }
+
+      // Handle YYGGames specific errors
+      if (
+        event.reason &&
+        typeof event.reason === "string" &&
+        (event.reason.includes("YYGGames") ||
+          event.reason.includes("is not a function"))
+      ) {
+        event.preventDefault();
+        return;
+      }
+
       // Silently handle other promise rejections from external scripts
       event.preventDefault();
     });
@@ -57,8 +68,26 @@ class FridayNightFunkin {
         return false;
       }
 
+      // Handle YYGGames specific errors
+      if (
+        errorMessage.includes("YYGGames") ||
+        errorMessage.includes("is not a function")
+      ) {
+        event.preventDefault();
+        return false;
+      }
+
       // Handle CSP violations
       if (errorMessage.includes("Content Security Policy")) {
+        event.preventDefault();
+        return false;
+      }
+
+      // Handle AudioContext errors
+      if (
+        errorMessage.includes("AudioContext") ||
+        errorMessage.includes("must be resumed")
+      ) {
         event.preventDefault();
         return false;
       }
@@ -73,26 +102,31 @@ class FridayNightFunkin {
 
   async loadData() {
     try {
-      // First try backend config endpoint
-      try {
-        const backendUrl =
-          window.EnvironmentHelpers?.getBackendUrl() || "http://localhost:9998";
-        const backendResponse = await fetch(`${backendUrl}/config`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          signal: AbortSignal.timeout(3000), // 3 second timeout
-        });
+      // First try backend config endpoint (only in development)
+      if (window.EnvironmentHelpers?.isDevelopment()) {
+        try {
+          const backendUrl =
+            window.EnvironmentHelpers?.getBackendUrl() ||
+            "http://localhost:9998";
+          const backendResponse = await fetch(`${backendUrl}/config`, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            mode: "cors", // Explicitly request CORS
+            credentials: "omit", // Don't send cookies for cross-origin
+            signal: AbortSignal.timeout(3000), // 3 second timeout
+          });
 
-        if (backendResponse.ok) {
-          this.data = await backendResponse.json();
-          return;
-        }
-      } catch (backendError) {
-        // Backend not available, continue with local data
-        if (window.EnvironmentHelpers?.isDevelopment()) {
-          console.warn("Backend not available, using local data");
+          if (backendResponse.ok) {
+            this.data = await backendResponse.json();
+            return;
+          }
+        } catch (backendError) {
+          // Backend not available or CORS error, continue with local data
+          if (window.EnvironmentHelpers?.isDevelopment()) {
+            console.warn("Backend not available or CORS error, using local data:", backendError.message);
+          }
         }
       }
 
@@ -472,8 +506,44 @@ class FridayNightFunkin {
     const fullscreenBtn = document.getElementById("fullscreen-btn");
     const fullscreenBtnText = document.getElementById("fullscreen-btn-text");
 
+    // Initialize AudioContext after user gesture
+    let audioContext = null;
+    let audioContextInitialized = false;
+
+    const initializeAudioContext = () => {
+      if (audioContextInitialized) return;
+      
+      try {
+        if (window.AudioContext || window.webkitAudioContext) {
+          const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          audioContext = new AudioContextClass();
+          
+          if (audioContext.state === "suspended") {
+            audioContext.resume().then(() => {
+              window.gameAudioContext = audioContext;
+              audioContextInitialized = true;
+            }).catch(() => {
+              // AudioContext resume failed silently
+            });
+          } else {
+            window.gameAudioContext = audioContext;
+            audioContextInitialized = true;
+          }
+        }
+      } catch (error) {
+        // AudioContext creation failed silently
+      }
+    };
+
+    // Initialize AudioContext on first user interaction
+    document.addEventListener("click", initializeAudioContext, { once: true });
+    document.addEventListener("keydown", initializeAudioContext, { once: true });
+
     if (startGameBtn && gameOverlay && gameIframe) {
       startGameBtn.addEventListener("click", async () => {
+        // Initialize AudioContext on game start
+        initializeAudioContext();
+        
         // The iframe is already loaded with the game URL
         // Just hide the overlay to reveal the game
         gameOverlay.style.display = "none";
@@ -483,49 +553,6 @@ class FridayNightFunkin {
 
         // Optional: Add a class to indicate the game is active
         gameIframe.classList.add("game-active");
-
-        // Activate audio context for the entire page after user interaction
-        try {
-          // Create AudioContext for the main page
-          if (window.AudioContext || window.webkitAudioContext) {
-            const AudioContextClass =
-              window.AudioContext || window.webkitAudioContext;
-            const audioContext = new AudioContextClass();
-
-            // Resume AudioContext if suspended
-            if (audioContext.state === "suspended") {
-              await audioContext.resume();
-            }
-
-            // Store AudioContext for future use
-            window.gameAudioContext = audioContext;
-          }
-
-          // Also try to activate AudioContext in iframe if possible
-          if (
-            gameIframe.contentWindow &&
-            gameIframe.contentWindow.AudioContext
-          ) {
-            try {
-              // Create AudioContext only after user interaction
-              const iframeAudioContext =
-                new gameIframe.contentWindow.AudioContext();
-
-              // Resume AudioContext if suspended
-              if (iframeAudioContext.state === "suspended") {
-                await iframeAudioContext.resume();
-              }
-
-              // Store AudioContext for future use
-              gameIframe.audioContext = iframeAudioContext;
-            } catch (iframeError) {
-              // Iframe AudioContext error handling - ignore silently
-              // This is expected for cross-origin iframes
-            }
-          }
-        } catch (error) {
-          // AudioContext error handling - ignore silently
-        }
       });
     }
 
@@ -990,7 +1017,15 @@ class FridayNightFunkin {
     const playNowBtn = document.getElementById("play-now-btn");
     const watchTrailerBtn = document.getElementById("watch-trailer-btn");
 
-    if (heroBadge) heroBadge.textContent = this.data.hero.badge;
+    if (heroBadge) {
+      // Рендеримо hero badge з SVG іконкою
+      heroBadge.innerHTML = `
+        <svg class="icon icon--music" aria-hidden="true">
+          <use href="#music"></use>
+        </svg>
+        ${this.data.hero.badge}
+      `;
+    }
     if (heroTitle) heroTitle.textContent = this.data.hero.title;
     if (heroDescription)
       heroDescription.textContent = this.data.hero.description;
@@ -1614,6 +1649,16 @@ class FridayNightFunkin {
           window.Environment?.EXTERNAL_SERVICES?.GAMEMONETIZE?.SDK_URL ||
           "https://html5.gamemonetize.co/sdk.js",
         async: true,
+        onload: () => {
+          // Script loaded successfully - initialize YYGGames after a delay
+          if (window.EnvironmentHelpers?.isDevelopment()) {
+            console.log("Gamemonetize SDK loaded successfully");
+          }
+          // Initialize YYGGames after SDK is loaded
+          setTimeout(() => {
+            this.initializeYYGGames();
+          }, 1000);
+        },
         fallback: () => {
           // Handle gamemonetize SDK failure
           if (window.EnvironmentHelpers?.isDevelopment()) {
@@ -1641,8 +1686,8 @@ class FridayNightFunkin {
 
         script.onload = () => {
           // Script loaded successfully
-          if (window.EnvironmentHelpers?.isDevelopment()) {
-            console.log(`${scriptConfig.id} loaded successfully`);
+          if (scriptConfig.onload) {
+            scriptConfig.onload();
           }
         };
 
@@ -1664,28 +1709,53 @@ class FridayNightFunkin {
 
     // Safe initialization of YYGGames SDK
     const maxAttempts =
-      window.Environment?.EXTERNAL_SERVICES?.YYGGAMES?.MAX_ATTEMPTS || 10;
+      window.Environment?.EXTERNAL_SERVICES?.YYGGAMES?.MAX_ATTEMPTS || 3;
     const initTimeout =
-      window.Environment?.EXTERNAL_SERVICES?.YYGGAMES?.INIT_TIMEOUT || 5000;
+      window.Environment?.EXTERNAL_SERVICES?.YYGGAMES?.INIT_TIMEOUT || 3000;
     let attempts = 0;
 
     const tryInitialize = () => {
       try {
+        // Check if YYGGames SDK is loaded and ready
         if (window.YYGGames && typeof window.YYGGames.init === "function") {
-          window.YYGGames.init();
-          if (window.EnvironmentHelpers?.isDevelopment()) {
-            console.log("YYGGames SDK initialized successfully");
+          // Wrap in try-catch to handle any initialization errors
+          try {
+            window.YYGGames.init();
+            if (window.EnvironmentHelpers?.isDevelopment()) {
+              console.log("YYGGames SDK initialized successfully");
+            }
+            return;
+          } catch (initError) {
+            // YYGGames.init() failed
+            if (window.EnvironmentHelpers?.isDevelopment()) {
+              console.warn("YYGGames.init() failed:", initError);
+            }
           }
-          return;
+        } else if (window.YYGGamesForGamemonetize && typeof window.YYGGamesForGamemonetize.init === "function") {
+          // Alternative SDK name
+          try {
+            window.YYGGamesForGamemonetize.init();
+            if (window.EnvironmentHelpers?.isDevelopment()) {
+              console.log("YYGGamesForGamemonetize SDK initialized successfully");
+            }
+            return;
+          } catch (initError) {
+            if (window.EnvironmentHelpers?.isDevelopment()) {
+              console.warn("YYGGamesForGamemonetize.init() failed:", initError);
+            }
+          }
         }
       } catch (error) {
         // YYGGames not available or failed to initialize
+        if (window.EnvironmentHelpers?.isDevelopment()) {
+          console.warn("YYGGames not available:", error);
+        }
       }
 
       attempts++;
       if (attempts < maxAttempts) {
-        // Try again after 500ms
-        setTimeout(tryInitialize, 500);
+        // Try again after 2 seconds
+        setTimeout(tryInitialize, 2000);
       } else {
         if (window.EnvironmentHelpers?.isDevelopment()) {
           console.warn(
@@ -1695,7 +1765,7 @@ class FridayNightFunkin {
       }
     };
 
-    // Start trying to initialize
-    setTimeout(tryInitialize, 1000);
+    // Start trying to initialize after a longer delay to ensure SDK is loaded
+    setTimeout(tryInitialize, 3000);
   }
 }

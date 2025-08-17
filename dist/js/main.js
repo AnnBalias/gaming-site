@@ -469,8 +469,7 @@ class FridayNightFunkin {
     // Cookie bar
     this.setupCookieBar();
 
-    // Game iframe
-    this.setupGameIframe();
+    // Game iframe - removed due to missing game files
 
     // News modals
     this.setupNewsModals();
@@ -510,303 +509,18 @@ class FridayNightFunkin {
   }
 
   setupGameIframe() {
-    const startGameBtn = document.getElementById("start-game-btn");
-    const gameOverlay = document.getElementById("game-overlay");
-    const gameIframe = document.getElementById("game-iframe");
-    const gameWrapper = document.getElementById("game-wrapper");
-    const fullscreenBtn = document.getElementById("fullscreen-btn");
-    const fullscreenBtnText = document.getElementById("fullscreen-btn-text");
-
-    // Initialize AudioContext after user gesture
-    let audioContext = null;
-    let audioContextInitialized = false;
-
-    const initializeAudioContext = () => {
-      if (audioContextInitialized) return;
-
-      try {
-        if (window.AudioContext || window.webkitAudioContext) {
-          const AudioContextClass =
-            window.AudioContext || window.webkitAudioContext;
-          audioContext = new AudioContextClass();
-
-          if (audioContext.state === "suspended") {
-            audioContext
-              .resume()
-              .then(() => {
-                window.gameAudioContext = audioContext;
-                audioContextInitialized = true;
-              })
-              .catch(() => {
-                // AudioContext resume failed silently
-              });
-          } else {
-            window.gameAudioContext = audioContext;
-            audioContextInitialized = true;
-          }
-        }
-      } catch (error) {
-        // AudioContext creation failed silently
-      }
-    };
-
-    // Initialize AudioContext on first user interaction
-    document.addEventListener("click", initializeAudioContext, { once: true });
-    document.addEventListener("keydown", initializeAudioContext, {
-      once: true,
-    });
-
-    if (startGameBtn && gameOverlay && gameIframe) {
-      startGameBtn.addEventListener("click", async () => {
-        // Initialize AudioContext on game start
-        initializeAudioContext();
-
-        // The iframe is already loaded with the game URL
-        // Just hide the overlay to reveal the game
-        gameOverlay.style.display = "none";
-
-        // Focus the iframe for better user experience
-        gameIframe.focus();
-
-        // Optional: Add a class to indicate the game is active
-        gameIframe.classList.add("game-active");
-      });
-    }
-
-    // Fullscreen functionality
-    if (fullscreenBtn && gameWrapper && fullscreenBtnText) {
-      fullscreenBtn.addEventListener("click", () => {
-        this.toggleFullscreen(gameWrapper, fullscreenBtnText);
-      });
-    }
-
-    // Listen for fullscreen changes
-    document.addEventListener("fullscreenchange", () => {
-      if (!document.fullscreenElement) {
-        // Exited fullscreen
-        gameWrapper.classList.remove("fullscreen");
-        if (fullscreenBtnText && this.data.playGame) {
-          fullscreenBtnText.textContent = this.data.playGame.fullscreenButton;
-        }
-      } else {
-        // Entered fullscreen
-        if (fullscreenBtnText && this.data.playGame) {
-          fullscreenBtnText.textContent =
-            this.data.playGame.exitFullscreenButton;
-        }
-      }
-    });
-
-    // Handle iframe load errors
-    if (gameIframe) {
-      gameIframe.addEventListener("load", () => {
-        // Iframe loaded successfully
-        gameIframe.classList.add("loaded");
-
-        // Try to handle game initialization errors
-        try {
-          if (gameIframe.contentWindow) {
-            // Add error handler for game window
-            gameIframe.contentWindow.addEventListener("error", (e) => {
-              // Silently handle game errors
-              e.preventDefault();
-            });
-
-            // Check for YYGGames object and handle initialization with timeout
-            setTimeout(() => {
-              try {
-                if (
-                  gameIframe.contentWindow &&
-                  gameIframe.contentWindow.YYGGames &&
-                  typeof gameIframe.contentWindow.YYGGames === "object"
-                ) {
-                  // Safely initialize YYGGames if available
-                  if (
-                    typeof gameIframe.contentWindow.YYGGames.init === "function"
-                  ) {
-                    gameIframe.contentWindow.YYGGames.init();
-                  }
-                }
-              } catch (error) {
-                // YYGGames initialization failed - ignore silently
-                // This is expected for cross-origin iframes or blocked scripts
-              }
-            }, 2000); // Wait 2 seconds for SDK to load
-          }
-        } catch (error) {
-          // Cross-origin error - ignore silently
-        }
-      });
-
-      gameIframe.addEventListener("error", () => {
-        // Handle iframe loading errors silently
-      });
-
-      // Handle sandbox errors
-      gameIframe.addEventListener("securitypolicyviolation", (e) => {
-        // Silently handle sandbox policy violations
-        e.preventDefault();
-      });
-    }
-
-    // Setup keyboard controls for the game
-    this.setupKeyboardControls(gameIframe);
+    // Game iframe functionality removed due to missing game files
   }
 
   setupKeyboardControls(gameIframe) {
-    if (!gameIframe) return;
+    // Keyboard controls removed due to missing game files
+    return;
 
     // List of keys to redirect to iframe
-    const gameKeys = [
-      "ArrowUp",
-      "ArrowDown",
-      "ArrowLeft",
-      "ArrowRight",
-      "KeyW",
-      "KeyA",
-      "KeyS",
-      "KeyD", // WASD
-      "Space",
-      "Enter",
-      "Escape",
-      "KeyZ", // Additional game keys
-      "KeyX",
-      "KeyC",
-    ];
-
-    // Function to focus iframe
-    const focusIframe = () => {
-      try {
-        if (gameIframe.contentWindow) {
-          gameIframe.contentWindow.focus();
-        }
-      } catch (error) {
-        // Focus failed silently
-      }
-    };
-
-    // Function to send event via postMessage
-    const sendKeyboardEvent = (eventType, event) => {
-      try {
-        // Send event via postMessage
-        gameIframe.contentWindow.postMessage(
-          {
-            type: "keyboardEvent",
-            eventType: eventType,
-            key: event.key,
-            code: event.code,
-            keyCode: event.keyCode,
-            which: event.which,
-            shiftKey: event.shiftKey,
-            ctrlKey: event.ctrlKey,
-            altKey: event.altKey,
-            metaKey: event.metaKey,
-            timestamp: Date.now(),
-          },
-          "*"
-        );
-      } catch (error) {
-        // PostMessage failed silently
-      }
-    };
-
-    // Focus iframe when clicking on it
-    gameIframe.addEventListener("click", focusIframe);
-
-    // Handle key press
-    document.addEventListener("keydown", (e) => {
-      // Check if iframe is active and if it's a game key
-      if (
-        gameIframe.classList.contains("game-active") &&
-        gameKeys.includes(e.code)
-      ) {
-        // Check if user is not typing in a form
-        const activeElement = document.activeElement;
-        const isTypingInForm =
-          activeElement &&
-          (activeElement.tagName === "INPUT" ||
-            activeElement.tagName === "TEXTAREA" ||
-            activeElement.tagName === "SELECT" ||
-            activeElement.contentEditable === "true");
-
-        // If user is typing in a form, don't block keys
-        if (isTypingInForm) {
-          return;
-        }
-
-        e.preventDefault();
-        e.stopPropagation();
-
-        // Focus iframe before sending event
-        focusIframe();
-
-        // Send event via postMessage
-        sendKeyboardEvent("keydown", e);
-      }
-    });
-
-    // Handle key release
-    document.addEventListener("keyup", (e) => {
-      if (
-        gameIframe.classList.contains("game-active") &&
-        gameKeys.includes(e.code)
-      ) {
-        // Check if user is not typing in a form
-        const activeElement = document.activeElement;
-        const isTypingInForm =
-          activeElement &&
-          (activeElement.tagName === "INPUT" ||
-            activeElement.tagName === "TEXTAREA" ||
-            activeElement.tagName === "SELECT" ||
-            activeElement.contentEditable === "true");
-
-        // If user is typing in a form, don't block keys
-        if (isTypingInForm) {
-          return;
-        }
-
-        e.preventDefault();
-        e.stopPropagation();
-
-        // Send event via postMessage
-        sendKeyboardEvent("keyup", e);
-      }
-    });
-
-    // Add handler for automatic focusing when game loads
-    gameIframe.addEventListener("load", () => {
-      setTimeout(focusIframe, 1000); // Focus after 1 second of loading
-    });
   }
 
   toggleFullscreen(wrapper, btnText) {
-    if (!document.fullscreenElement) {
-      // Enter fullscreen
-      wrapper
-        .requestFullscreen()
-        .then(() => {
-          wrapper.classList.add("fullscreen");
-          if (btnText && this.data.playGame) {
-            btnText.textContent = this.data.playGame.exitFullscreenButton;
-          }
-        })
-        .catch((err) => {
-          // Fullscreen entry failed silently
-        });
-    } else {
-      // Exit fullscreen
-      document
-        .exitFullscreen()
-        .then(() => {
-          wrapper.classList.remove("fullscreen");
-          if (btnText && this.data.playGame) {
-            btnText.textContent = this.data.playGame.fullscreenButton;
-          }
-        })
-        .catch((err) => {
-          // Fullscreen exit failed silently
-        });
-    }
+    // Fullscreen functionality removed due to missing game files
   }
 
   setupNewsModals() {
@@ -945,8 +659,7 @@ class FridayNightFunkin {
     // Render hero section
     this.renderHero();
 
-    // Render game section
-    this.renderGame();
+    // Render game section - removed due to missing game files
 
     // Render how to play steps
     this.renderHowToPlay();
@@ -1134,28 +847,7 @@ class FridayNightFunkin {
   }
 
   renderGame() {
-    if (!this.data.game) return;
-
-    const gameTitle = document.querySelector(".game__title");
-    const gameDescription = document.querySelector(".game__description");
-    const startGameBtn = document.getElementById("start-game-btn");
-    const gameIframe = document.getElementById("game-iframe");
-    const fullscreenBtnText = document.getElementById("fullscreen-btn-text");
-
-    if (gameTitle) gameTitle.textContent = this.data.game.title;
-    if (gameDescription)
-      gameDescription.textContent = this.data.game.description;
-    if (startGameBtn) startGameBtn.textContent = this.data.game.startButton;
-
-    // Update fullscreen button text
-    if (fullscreenBtnText && this.data.playGame) {
-      fullscreenBtnText.textContent = this.data.playGame.fullscreenButton;
-    }
-
-    // Update iframe with new game URL if available
-    if (gameIframe && this.data.playGame?.iframe) {
-      gameIframe.src = this.data.playGame.iframe.src;
-    }
+    // Game rendering removed due to missing game files
   }
 
   renderHowToPlay() {
@@ -1711,118 +1403,6 @@ class FridayNightFunkin {
 
   initializeComponents() {
     // Add any additional component initialization here
-    this.loadExternalScriptsSafely();
-  }
-
-  loadExternalScriptsSafely() {
-    // Check if external services are enabled
-    if (!window.EnvironmentHelpers?.isServiceEnabled("GAMEMONETIZE")) {
-      return;
-    }
-
-    // Safe loading of external scripts with fallbacks
-    const scripts = [
-      {
-        id: "gamemonetize-sdk",
-        src:
-          window.Environment?.EXTERNAL_SERVICES?.GAMEMONETIZE?.SDK_URL ||
-          "sdk/gamemonetize.js",
-        async: true,
-        onload: () => {
-          // Script loaded successfully - initialize YYGGames after a delay
-          // Initialize YYGGames after SDK is loaded
-          setTimeout(() => {
-            this.initializeYYGGames();
-          }, 1000);
-        },
-        fallback: () => {
-          // Handle gamemonetize SDK failure
-          if (window.EnvironmentHelpers?.isDevelopment()) {
-            console.warn(
-              "Gamemonetize SDK failed to load - continuing without ads"
-            );
-          }
-        },
-      },
-    ];
-
-    scripts.forEach((scriptConfig) => {
-      try {
-        const script = document.createElement("script");
-        script.id = scriptConfig.id;
-        script.src = scriptConfig.src;
-        script.async = scriptConfig.async || false;
-
-        script.onerror = () => {
-          // Script failed to load - use fallback
-          if (scriptConfig.fallback) {
-            scriptConfig.fallback();
-          }
-        };
-
-        script.onload = () => {
-          // Script loaded successfully
-          if (scriptConfig.onload) {
-            scriptConfig.onload();
-          }
-        };
-
-        document.head.appendChild(script);
-      } catch (error) {
-        // Failed to create or append script - use fallback
-        if (scriptConfig.fallback) {
-          scriptConfig.fallback();
-        }
-      }
-    });
-  }
-
-  initializeYYGGames() {
-    // Check if YYGGames service is enabled
-    if (!window.EnvironmentHelpers?.isServiceEnabled("YYGGAMES")) {
-      return;
-    }
-
-    // Safe initialization of YYGGames SDK
-    const maxAttempts =
-      window.Environment?.EXTERNAL_SERVICES?.YYGGAMES?.MAX_ATTEMPTS || 3;
-    const initTimeout =
-      window.Environment?.EXTERNAL_SERVICES?.YYGGAMES?.INIT_TIMEOUT || 3000;
-    let attempts = 0;
-
-    const tryInitialize = () => {
-      try {
-        // Check if YYGGames SDK is loaded and ready
-        if (window.YYGGames && typeof window.YYGGames.init === "function") {
-          // Wrap in try-catch to handle any initialization errors
-          try {
-            window.YYGGames.init();
-            return;
-          } catch (initError) {
-            // YYGGames.init() failed
-          }
-        } else if (
-          window.YYGGamesForGamemonetize &&
-          typeof window.YYGGamesForGamemonetize.init === "function"
-        ) {
-          // Alternative SDK name
-          try {
-            window.YYGGamesForGamemonetize.init();
-            return;
-          } catch (initError) {}
-        }
-      } catch (error) {
-        // YYGGames not available or failed to initialize
-      }
-
-      attempts++;
-      if (attempts < maxAttempts) {
-        // Try again after 2 seconds
-        setTimeout(tryInitialize, 2000);
-      }
-    };
-
-    // Start trying to initialize after a longer delay to ensure SDK is loaded
-    setTimeout(tryInitialize, 3000);
+    // Removed SDK loading due to missing files
   }
 }

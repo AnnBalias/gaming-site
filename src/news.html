@@ -39,7 +39,7 @@
     <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/main.min.css" />
+    <link rel="stylesheet" href="css/main.min.css?v=1.0.1" />
   </head>
   <body>
     <!-- Header -->
@@ -51,7 +51,8 @@
         <div class="news-page-header__content">
           <h1 class="news-page-header__title">Latest News</h1>
           <p class="news-page-header__description">
-            Stay up to date with the latest events, updates, and announcements from QuestSagaOnline.com
+            Stay up to date with the latest events, updates, and announcements
+            from QuestSagaOnline.com
           </p>
         </div>
       </div>
@@ -74,7 +75,11 @@
       <div class="modal__container">
         <div class="modal__header">
           <h3 class="modal__title" id="modal-title"></h3>
-          <button class="modal__close" id="modal-close" aria-label="Close modal">
+          <button
+            class="modal__close"
+            id="modal-close"
+            aria-label="Close modal"
+          >
             <span class="modal__close-icon">×</span>
           </button>
         </div>
@@ -90,8 +95,6 @@
       </div>
     </div>
 
-
-
     <!-- Footer -->
     @@include('./components/footer.html')
 
@@ -99,13 +102,13 @@
     @@include('./components/cookie-bar.html')
 
     <!-- Scripts -->
-    <script src="js/utils/builder.js"></script>
-    <script src="js/data/hero.js"></script>
-    <script src="js/data/main.js"></script>
-    <script src="js/utils/cookies-modal.js"></script>
-    <script src="js/utils/contact-form.js"></script>
-    <script src="js/utils/game-handler.js"></script>
-    <script src="js/utils/news-handler.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/utils/builder.min.js"></script>
+    <script src="js/data/hero.min.js"></script>
+    <script src="js/data/main.min.js"></script>
+    <script src="js/utils/cookies-modal.min.js"></script>
+    <script src="js/utils/contact-form.min.js"></script>
+    <script src="js/utils/game-handler.min.js"></script>
+    <script src="js/utils/news-handler.min.js"></script>
+    <script src="js/main.min.js"></script>
   </body>
 </html>

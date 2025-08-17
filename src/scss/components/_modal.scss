@@ -241,3 +241,86 @@
 body.modal-open {
   overflow: hidden;
 }
+
+// Notification styles
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10000;
+  max-width: 400px;
+  background: $dark-surface;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-xl;
+  border-left: 4px solid $primary-color;
+  animation: slideInRight 0.3s ease-out;
+  
+  @include mobile {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    max-width: none;
+  }
+  
+  &--success {
+    border-left-color: $success-color;
+  }
+  
+  &--error {
+    border-left-color: $error-color;
+  }
+  
+  &--warning {
+    border-left-color: $warning-color;
+  }
+  
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacing-lg;
+    
+    @include mobile {
+      padding: $spacing-md;
+    }
+  }
+  
+  &__message {
+    color: $dark-text;
+    font-size: $font-size-sm;
+    line-height: 1.4;
+    margin-right: $spacing-md;
+  }
+  
+  &__close {
+    background: none;
+    border: none;
+    color: $dark-text-secondary;
+    font-size: $font-size-xl;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $border-radius-sm;
+    transition: all $transition-fast;
+    
+    &:hover {
+      background: rgba($dark-text-secondary, 0.1);
+      color: $dark-text;
+    }
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

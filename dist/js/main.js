@@ -776,7 +776,7 @@ class FridayNightFunkin {
   }
 
   setupNewsModals() {
-    const newsGrid = document.getElementById("news-grid");
+    const newsGrid = document.getElementById("news-list");
     const modal = document.getElementById("news-modal");
     const modalOverlay = document.getElementById("modal-overlay");
     const modalClose = document.getElementById("modal-close");
@@ -1200,7 +1200,7 @@ class FridayNightFunkin {
     const newsDescription = document.querySelector(
       ".news .section-description"
     );
-    const newsGrid = document.getElementById("news-grid");
+    const newsGrid = document.getElementById("news-list");
 
     if (newsTitle) newsTitle.textContent = this.data.news.title;
     if (newsDescription)
@@ -1221,7 +1221,7 @@ class FridayNightFunkin {
                               <span class="news-card__date">${new Date(
                                 article.date
                               ).toLocaleDateString("en-US")}</span>
-              <button class="btn btn--ghost news-card__read-more">Read More</button>
+              <button class="btn btn--ghost news-card__read-more">Read more</button>
               </div>
             </div>
           </div>
@@ -1672,9 +1672,9 @@ class FridayNightFunkin {
     );
 
     if (currentPage.includes("news.html")) {
-      // On news page - change "News" links to point to home page
+      // On news page - change "News" links to point to home page with news section
       newsLinks.forEach((link) => {
-        link.href = "./";
+        link.href = "./#news";
         link.textContent = "Home";
       });
 
@@ -1685,9 +1685,9 @@ class FridayNightFunkin {
         }
       });
     } else {
-      // On home page - ensure "News" links point to news page
+      // On home page - ensure "News" links point to news section
       newsLinks.forEach((link) => {
-        link.href = "./news.html";
+        link.href = "#news";
         link.textContent = "News";
       });
     }

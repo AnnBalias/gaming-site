@@ -381,7 +381,7 @@ function renderNews() {
             <span class="news-card__date">${new Date(
               item.date
             ).toLocaleDateString("en-US")}</span>
-            <button class="btn btn--ghost news-card__read-more">Read More</button>
+            <button class="btn btn--ghost news-card__read-more">Read more</button>
           </div>
         </div>
       </div>
@@ -417,7 +417,7 @@ function renderNews() {
             <span class="news-card__date">${new Date(
               item.date
             ).toLocaleDateString("en-US")}</span>
-            <button class="btn btn--ghost news-card__read-more">Read More</button>
+            <button class="btn btn--ghost news-card__read-more">Read more</button>
           </div>
         </div>
       </div>

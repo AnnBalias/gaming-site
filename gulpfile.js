@@ -25,9 +25,11 @@ function html() {
 function styles() {
   return gulp
     .src("src/scss/main.scss")
-    .pipe(sass({
-      includePaths: ['src/scss']
-    }).on("error", sass.logError))
+    .pipe(
+      sass({
+        includePaths: ["src/scss"],
+      }).on("error", sass.logError)
+    )
     .pipe(autoprefixer())
     .pipe(gulp.dest("dist/css"))
     .pipe(cleanCSS())
@@ -38,6 +40,7 @@ function styles() {
 
 // JS task
 function scripts() {
+  const timestamp = Date.now();
   return gulp
     .src("src/js/**/*.js")
     .pipe(gulp.dest("dist/js"))
@@ -77,7 +80,7 @@ function watch() {
     },
     port: 3000,
     open: false,
-    notify: false
+    notify: false,
   });
 
   gulp.watch("src/**/*.html", html);
@@ -89,7 +92,10 @@ function watch() {
 }
 
 // Build task
-const build = gulp.series(clean, gulp.parallel(html, styles, scripts, assets, data));
+const build = gulp.series(
+  clean,
+  gulp.parallel(html, styles, scripts, assets, data)
+);
 
 // Dev task
 const dev = gulp.series(build, watch);

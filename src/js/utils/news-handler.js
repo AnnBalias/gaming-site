@@ -185,25 +185,26 @@ class NewsHandler {
 
   addMoreNewsButton() {
     // Check if we're on the home page and if the news footer exists
-    const newsSection = document.querySelector('.news');
+    const newsSection = document.querySelector(".news");
     if (!newsSection) return;
 
     // Check if the footer already exists
-    let newsFooter = newsSection.querySelector('.news__footer');
-    
+    let newsFooter = newsSection.querySelector(".news__footer");
+
     if (!newsFooter) {
       // Create the footer if it doesn't exist
-      const newsContent = newsSection.querySelector('.news__content');
+      const newsContent = newsSection.querySelector(".news__content");
       if (newsContent) {
-        newsFooter = document.createElement('div');
-        newsFooter.className = 'news__footer';
+        newsFooter = document.createElement("div");
+        newsFooter.className = "news__footer";
         newsContent.appendChild(newsFooter);
       }
     }
 
     // Add the "More news" button if it doesn't exist
-    if (newsFooter && !newsFooter.querySelector('.btn--primary')) {
-      newsFooter.innerHTML = '<a href="news.html" class="btn btn--primary">More news</a>';
+    if (newsFooter && !newsFooter.querySelector(".btn--primary")) {
+      newsFooter.innerHTML =
+        '<a href="news.html" class="btn btn--primary">More news</a>';
     }
   }
 
@@ -215,53 +216,133 @@ class NewsHandler {
     styles.textContent = `
       .news-page-item {
         background: white;
-        border-radius: 12px;
-        padding: 24px;
-        margin-bottom: 24px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        border-radius: 16px;
+        padding: 28px;
+        margin-bottom: 28px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid rgba(0, 0, 0, 0.05);
       }
       
       .news-page-item:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
       }
       
       .news-page-item__title {
-        font-size: 24px;
+        font-size: 26px;
         font-weight: 700;
         color: #333;
-        margin: 0 0 12px 0;
+        margin: 0 0 16px 0;
+        line-height: 1.3;
       }
       
       .news-page-item__meta {
-        margin-bottom: 16px;
+        margin-bottom: 18px;
       }
       
       .news-page-item__date {
         color: #666;
         font-size: 14px;
+        font-weight: 500;
       }
       
       .news-page-item__excerpt {
         color: #555;
-        line-height: 1.6;
-        margin-bottom: 20px;
+        line-height: 1.7;
+        margin-bottom: 24px;
+        font-size: 16px;
       }
       
       .read-more-btn {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         color: white;
         border: none;
-        padding: 12px 24px;
-        border-radius: 6px;
+        padding: 14px 28px;
+        border-radius: 8px;
         font-weight: 600;
+        font-size: 15px;
         cursor: pointer;
-        transition: transform 0.2s ease;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
       }
       
       .read-more-btn:hover {
-        transform: translateY(-1px);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+      }
+
+      /* Mobile styles for screens 540px and below */
+      @media (max-width: 540px) {
+        .news-page-item {
+          border-radius: 12px;
+          padding: 20px;
+          margin-bottom: 20px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        }
+        
+        .news-page-item:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        .news-page-item__title {
+          font-size: 20px;
+          margin: 0 0 12px 0;
+          line-height: 1.4;
+        }
+        
+        .news-page-item__meta {
+          margin-bottom: 14px;
+        }
+        
+        .news-page-item__date {
+          font-size: 13px;
+        }
+        
+        .news-page-item__excerpt {
+          line-height: 1.6;
+          margin-bottom: 18px;
+          font-size: 15px;
+        }
+        
+        .read-more-btn {
+          padding: 12px 24px;
+          font-size: 14px;
+          border-radius: 6px;
+        }
+      }
+
+      /* Extra small screens */
+      @media (max-width: 360px) {
+        .news-page-item {
+          padding: 16px;
+          margin-bottom: 16px;
+          border-radius: 10px;
+        }
+        
+        .news-page-item__title {
+          font-size: 18px;
+          margin: 0 0 10px 0;
+        }
+        
+        .news-page-item__meta {
+          margin-bottom: 12px;
+        }
+        
+        .news-page-item__date {
+          font-size: 12px;
+        }
+        
+        .news-page-item__excerpt {
+          margin-bottom: 16px;
+          font-size: 14px;
+        }
+        
+        .read-more-btn {
+          padding: 10px 20px;
+          font-size: 13px;
+        }
       }
     `;
 
@@ -325,29 +406,36 @@ class NewsHandler {
 
     const modal = document.createElement("div");
     modal.className = "news-modal";
+
+    // Determine if content needs scrolling
+    const contentLength = (news.content || news.excerpt).length;
+    const needsScroll = contentLength > 500; // Show scroll for long content
+
     modal.innerHTML = `
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2>${news.title}</h2>
-          <button class="modal-close">&times;</button>
-        </div>
-        <div class="modal-body">
-          <div class="news-meta">
-            <span class="news-date">${new Date(news.date).toLocaleDateString(
-              "en-US",
-              {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              }
-            )}</span>
-          </div>
-          <div class="news-content">
-            <p>${news.content || news.excerpt}</p>
-          </div>
-        </div>
-      </div>
-    `;
+       <div class="modal-content ${
+         needsScroll ? "modal-content--scrollable" : "modal-content--no-scroll"
+       }">
+         <div class="modal-header">
+           <h2>${news.title}</h2>
+           <button class="modal-close" type="button" aria-label="Close modal">&times;</button>
+         </div>
+         <div class="modal-body">
+           <div class="news-meta">
+             <span class="news-date">${new Date(news.date).toLocaleDateString(
+               "en-US",
+               {
+                 year: "numeric",
+                 month: "long",
+                 day: "numeric",
+               }
+             )}</span>
+           </div>
+           <div class="news-content">
+             <p>${news.content || news.excerpt}</p>
+           </div>
+         </div>
+       </div>
+     `;
 
     document.body.appendChild(modal);
 
@@ -389,22 +477,52 @@ class NewsHandler {
         z-index: 1000;
         opacity: 0;
         transition: opacity 0.3s ease;
+        padding: 16px;
+        box-sizing: border-box;
       }
       
       .news-modal.show {
         opacity: 1;
       }
       
-      .modal-content {
-        background: white;
-        border-radius: 8px;
-        max-width: 600px;
-        width: 90%;
-        max-height: 80vh;
-        overflow-y: auto;
-        transform: scale(0.9);
-        transition: transform 0.3s ease;
-      }
+             .modal-content {
+         background: white;
+         border-radius: 12px;
+         max-width: 600px;
+         width: 100%;
+         transform: scale(0.9);
+         transition: transform 0.3s ease;
+         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+       }
+       
+       .modal-content--scrollable {
+         max-height: 90vh;
+         overflow-y: auto;
+         scrollbar-width: thin;
+         scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+       }
+       
+       .modal-content--no-scroll {
+         max-height: none;
+         overflow-y: visible;
+       }
+       
+       .modal-content--scrollable::-webkit-scrollbar {
+         width: 6px;
+       }
+       
+       .modal-content--scrollable::-webkit-scrollbar-track {
+         background: transparent;
+       }
+       
+       .modal-content--scrollable::-webkit-scrollbar-thumb {
+         background: rgba(0, 0, 0, 0.2);
+         border-radius: 3px;
+       }
+       
+       .modal-content--scrollable::-webkit-scrollbar-thumb:hover {
+         background: rgba(0, 0, 0, 0.3);
+       }
       
       .news-modal.show .modal-content {
         transform: scale(1);
@@ -413,42 +531,177 @@ class NewsHandler {
       .modal-header {
         display: flex;
         justify-content: space-between;
-        align-items: center;
-        padding: 20px;
+        align-items: flex-start;
+        padding: 24px 24px 20px 24px;
         border-bottom: 1px solid #eee;
+        position: sticky;
+        top: 0;
+        background: white;
+        z-index: 1;
       }
       
       .modal-header h2 {
         margin: 0;
         color: #333;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 1.3;
+        flex: 1;
+        padding-right: 16px;
       }
       
-      .modal-close {
-        background: none;
-        border: none;
-        font-size: 24px;
-        cursor: pointer;
-        color: #666;
-      }
+             .modal-close {
+         background: none;
+         border: none;
+         font-size: 28px;
+         cursor: pointer;
+         color: #666;
+         padding: 4px;
+         border-radius: 50%;
+         width: 40px;
+         height: 40px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         transition: all 0.2s ease;
+         flex-shrink: 0;
+         min-width: 40px;
+         min-height: 40px;
+       }
       
       .modal-close:hover {
         color: #333;
+        background: rgba(0, 0, 0, 0.05);
       }
       
       .modal-body {
-        padding: 20px;
+        padding: 24px;
       }
       
       .news-meta {
-        margin-bottom: 15px;
+        margin-bottom: 20px;
         color: #666;
         font-size: 14px;
+        font-weight: 500;
       }
       
       .news-content p {
-        line-height: 1.6;
+        line-height: 1.7;
         color: #333;
         margin: 0;
+        font-size: 16px;
+      }
+
+      /* Mobile styles for screens 540px and below */
+      @media (max-width: 540px) {
+        .news-modal {
+          padding: 12px;
+          align-items: flex-start;
+          padding-top: 20px;
+        }
+        
+                 .modal-content {
+           border-radius: 16px;
+           width: 100%;
+         }
+         
+         .modal-content--scrollable {
+           max-height: calc(100vh - 40px);
+         }
+         
+         .modal-content--no-scroll {
+           max-height: none;
+         }
+        
+        .modal-header {
+          padding: 20px 20px 16px 20px;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 12px;
+        }
+        
+        .modal-header h2 {
+          font-size: 20px;
+          line-height: 1.4;
+          padding-right: 0;
+        }
+        
+                 .modal-close {
+           position: absolute;
+           top: 16px;
+           right: 16px;
+           width: 36px;
+           height: 36px;
+           min-width: 36px;
+           min-height: 36px;
+           font-size: 24px;
+           background: rgba(0, 0, 0, 0.1);
+           color: #333;
+         }
+        
+        .modal-close:hover {
+          background: rgba(0, 0, 0, 0.15);
+        }
+        
+        .modal-body {
+          padding: 20px;
+        }
+        
+        .news-meta {
+          margin-bottom: 16px;
+          font-size: 13px;
+        }
+        
+        .news-content p {
+          font-size: 15px;
+          line-height: 1.6;
+        }
+      }
+
+      /* Extra small screens */
+      @media (max-width: 360px) {
+        .news-modal {
+          padding: 8px;
+          padding-top: 16px;
+        }
+        
+                 .modal-content {
+           border-radius: 12px;
+         }
+         
+         .modal-content--scrollable {
+           max-height: calc(100vh - 32px);
+         }
+         
+         .modal-content--no-scroll {
+           max-height: none;
+         }
+        
+        .modal-header {
+          padding: 16px 16px 12px 16px;
+        }
+        
+        .modal-header h2 {
+          font-size: 18px;
+        }
+        
+                 .modal-close {
+           top: 12px;
+           right: 12px;
+           width: 32px;
+           height: 32px;
+           min-width: 32px;
+           min-height: 32px;
+           font-size: 20px;
+         }
+        
+        .modal-body {
+          padding: 16px;
+        }
+        
+        .news-content p {
+          font-size: 14px;
+        }
       }
     `;
 

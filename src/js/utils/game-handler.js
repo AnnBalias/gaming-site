@@ -94,7 +94,6 @@ class GameHandler {
   }
 
   onIframeLoad(event) {
-    console.log("Iframe loaded successfully");
     this.loadAttempts = 0;
     this.hideAdBlockerWarning();
 
@@ -143,12 +142,10 @@ class GameHandler {
     // Try loading without sandbox first
     if (this.loadAttempts === 1) {
       this.iframe.removeAttribute("sandbox");
-      console.log("Retrying without sandbox restrictions");
     }
     // Try with minimal sandbox
     else if (this.loadAttempts === 2) {
       this.iframe.setAttribute("sandbox", "allow-scripts allow-same-origin");
-      console.log("Retrying with minimal sandbox");
     }
 
     // Reload iframe

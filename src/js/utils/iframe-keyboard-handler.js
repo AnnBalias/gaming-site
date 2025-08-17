@@ -32,12 +32,10 @@ class IframeKeyboardHandler {
     // Focus management
     this.iframe.addEventListener("focus", () => {
       this.isGameActive = true;
-      console.log("Game iframe focused");
     });
 
     this.iframe.addEventListener("blur", () => {
       this.isGameActive = false;
-      console.log("Game iframe lost focus");
     });
   }
 
@@ -54,7 +52,6 @@ class IframeKeyboardHandler {
 
         switch (data.type) {
           case "GAME_READY":
-            console.log("Game is ready");
             this.isGameActive = true;
             this.hideOverlay();
             break;
@@ -65,7 +62,6 @@ class IframeKeyboardHandler {
             break;
 
           case "GAME_LOADED":
-            console.log("Game loaded successfully");
             this.handleGameLoaded();
             break;
 
@@ -74,8 +70,7 @@ class IframeKeyboardHandler {
             break;
 
           default:
-            // Handle other game messages
-            console.log("Game message:", data);
+          // Handle other game messages
         }
       } catch (error) {
         console.warn("Error processing game message:", error);

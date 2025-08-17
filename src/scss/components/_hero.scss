@@ -213,6 +213,17 @@
       box-shadow: 0 30px 40px -10px rgba(0, 212, 255, 0.3);
     }
     
+    // Адаптивність для проміжку від 960px до мобільної версії
+    @media (max-width: 960px) {
+      max-width: 450px;
+      min-height: 280px;
+    }
+    
+    @media (max-width: 768px) {
+      max-width: 400px;
+      min-height: 260px;
+    }
+    
     @include mobile {
       max-width: 100%;
       min-height: 250px;
@@ -299,23 +310,63 @@
     background: linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, rgba(124, 58, 237, 0.05) 100%);
     text-align: center;
     box-sizing: border-box;
+    
+    // Адаптивність для проміжку від 960px до мобільної версії
+    @media (max-width: 960px) {
+      padding: $spacing-xl;
+    }
+    
+    @media (max-width: 768px) {
+      padding: $spacing-lg;
+    }
   }
   
   &__icon {
     font-size: 4rem;
     margin-bottom: $spacing-md;
     animation: pulse 2s ease-in-out infinite;
+    
+    // Адаптивність для проміжку від 960px до мобільної версії
+    @media (max-width: 960px) {
+      font-size: 3.5rem;
+      margin-bottom: $spacing-sm;
+    }
+    
+    @media (max-width: 768px) {
+      font-size: 3rem;
+      margin-bottom: $spacing-sm;
+    }
   }
   
   &__title {
     @include heading-3;
     color: $primary-color;
     margin-bottom: $spacing-sm;
+    
+    // Адаптивність для проміжку від 960px до мобільної версії
+    @media (max-width: 960px) {
+      font-size: 1.5rem;
+      margin-bottom: $spacing-xs;
+    }
+    
+    @media (max-width: 768px) {
+      font-size: 1.25rem;
+      margin-bottom: $spacing-xs;
+    }
   }
   
   &__stats {
     display: flex;
     gap: $spacing-xl;
+    
+    // Адаптивність для проміжку від 960px до мобільної версії
+    @media (max-width: 960px) {
+      gap: $spacing-lg;
+    }
+    
+    @media (max-width: 768px) {
+      gap: $spacing-md;
+    }
     
     @include mobile {
       gap: $spacing-lg;
@@ -346,6 +397,15 @@
     font-size: $font-size-xl;
     font-weight: $font-weight-bold;
     color: $primary-color;
+    
+    // Адаптивність для проміжку від 960px до мобільної версії
+    @media (max-width: 960px) {
+      font-size: 1.25rem;
+    }
+    
+    @media (max-width: 768px) {
+      font-size: 1.125rem;
+    }
   }
   
   &__label {
@@ -354,6 +414,15 @@
     color: $dark-text-secondary;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    
+    // Адаптивність для проміжку від 960px до мобільної версії
+    @media (max-width: 960px) {
+      font-size: 0.75rem;
+    }
+    
+    @media (max-width: 768px) {
+      font-size: 0.7rem;
+    }
   }
 }
 

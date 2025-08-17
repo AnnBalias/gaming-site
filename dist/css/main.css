@@ -1645,6 +1645,18 @@ textarea[readonly] {
   transform: translateY(-10px) scale(1.02);
   box-shadow: 0 30px 40px -10px rgba(0, 212, 255, 0.3);
 }
+@media (max-width: 960px) {
+  .hero__game-preview {
+    max-width: 450px;
+    min-height: 280px;
+  }
+}
+@media (max-width: 768px) {
+  .hero__game-preview {
+    max-width: 400px;
+    min-height: 260px;
+  }
+}
 @media (max-width: 767px) {
   .hero__game-preview {
     max-width: 100%;
@@ -1727,10 +1739,32 @@ textarea[readonly] {
   text-align: center;
   box-sizing: border-box;
 }
+@media (max-width: 960px) {
+  .game-preview__content {
+    padding: 2rem;
+  }
+}
+@media (max-width: 768px) {
+  .game-preview__content {
+    padding: 1.5rem;
+  }
+}
 .game-preview__icon {
   font-size: 4rem;
   margin-bottom: 1rem;
   animation: pulse 2s ease-in-out infinite;
+}
+@media (max-width: 960px) {
+  .game-preview__icon {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+  }
+}
+@media (max-width: 768px) {
+  .game-preview__icon {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+  }
 }
 .game-preview__title {
   font-family: "Orbitron", sans-serif;
@@ -1740,9 +1774,31 @@ textarea[readonly] {
   color: #00d4ff;
   margin-bottom: 0.5rem;
 }
+@media (max-width: 960px) {
+  .game-preview__title {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+  }
+}
+@media (max-width: 768px) {
+  .game-preview__title {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+  }
+}
 .game-preview__stats {
   display: flex;
   gap: 2rem;
+}
+@media (max-width: 960px) {
+  .game-preview__stats {
+    gap: 1.5rem;
+  }
+}
+@media (max-width: 768px) {
+  .game-preview__stats {
+    gap: 1rem;
+  }
 }
 @media (max-width: 767px) {
   .game-preview__stats {
@@ -1772,12 +1828,32 @@ textarea[readonly] {
   font-weight: 700;
   color: #00d4ff;
 }
+@media (max-width: 960px) {
+  .stat__value {
+    font-size: 1.25rem;
+  }
+}
+@media (max-width: 768px) {
+  .stat__value {
+    font-size: 1.125rem;
+  }
+}
 .stat__label {
   font-family: "Orbitron", sans-serif;
   font-size: 0.75rem;
   color: #a0a0a0;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+}
+@media (max-width: 960px) {
+  .stat__label {
+    font-size: 0.75rem;
+  }
+}
+@media (max-width: 768px) {
+  .stat__label {
+    font-size: 0.7rem;
+  }
 }
 
 .scroll-indicator__text {

@@ -141,6 +141,9 @@ class FridayNightFunkin {
           throw new Error("Failed to load data from all methods");
         }
       }
+
+      // Make data available globally for other scripts
+      window.gameData = this.data;
     } catch (error) {
       // Fallback data
       this.data = {
@@ -338,6 +341,9 @@ class FridayNightFunkin {
           decline: "Decline",
         },
       };
+
+      // Make fallback data available globally for other scripts
+      window.gameData = this.data;
     }
   }
 

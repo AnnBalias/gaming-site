@@ -174,54 +174,54 @@ class FridayNightFunkin {
       // Fallback data
       this.data = {
         meta: {
-          title: "CyberStrike Arena - Ритмічна музична битва",
-          description: "Пориньте у божевільні ритми та надзвичайні дуелі.",
+          title: "QuestSagaOnline.com - Rhythmic Music Battle",
+          description: "Dive into crazy rhythms and extraordinary duels.",
           keywords:
-            "cyberstrike arena, ритм гра, музична гра, танцювальна гра, битва, музика",
+            "questsagaonline, rhythm game, music game, dance game, battle, music",
         },
         header: {
           logo: {
-            text: "CyberStrike",
-            accent: "Arena",
+            text: "QuestSaga",
+            accent: "Online",
           },
           navigation: {
-            home: "Головна",
-            game: "Грати зараз",
-            howToPlay: "Як грати",
-            news: "Новини",
-            contact: "Контакти",
+            home: "Home",
+            game: "Play Now",
+            howToPlay: "How to Play",
+            news: "News",
+            contact: "Contact",
           },
         },
         hero: {
-          badge: "Нова гра",
-          title: "CyberStrike Arena",
-          description: "Пориньте у божевільні ритми та надзвичайні дуелі.",
+          badge: "New Game",
+          title: "QuestSagaOnline.com",
+          description: "Dive into crazy rhythms and extraordinary duels.",
           actions: {
-            playNow: "Грати зараз",
-            howToPlay: "Як грати",
+            playNow: "Play Now",
+            howToPlay: "How to Play",
           },
           features: [
-            { icon: "music", text: "Ритмічна музика" },
-            { icon: "energy", text: "Швидкі дуелі" },
-            { icon: "gamepad", text: "Турніри" },
+            { icon: "music", text: "Rhythmic Music" },
+            { icon: "energy", text: "Fast Duels" },
+            { icon: "gamepad", text: "Tournaments" },
           ],
           gamePreview: {
-            title: "Попередній перегляд",
+            title: "Preview",
             stats: {
-              rating: { value: "4.8", label: "Рейтинг" },
-              players: { value: "10K+", label: "Гравців" },
-              songs: { value: "50+", label: "Пісень" },
+              rating: { value: "4.8", label: "Rating" },
+              players: { value: "10K+", label: "Players" },
+              songs: { value: "50+", label: "Songs" },
             },
           },
         },
         game: {
-          title: "Грати зараз",
-          description: "Натисніть кнопку, щоб почати гру",
-          startButton: "Почати гру",
+          title: "Play Now",
+          description: "Click the button to start the game",
+          startButton: "Start Game",
         },
         playGame: {
-          fullscreenButton: "Повноекранний режим",
-          exitFullscreenButton: "Згорнути",
+          fullscreenButton: "Fullscreen",
+          exitFullscreenButton: "Exit Fullscreen",
           iframe: {
             src: "https://html5.gamemonetize.co/8g62o78s1wjhsiu54xlmql32h7pagsek/",
             width: "720",
@@ -229,133 +229,142 @@ class FridayNightFunkin {
           },
         },
         howToPlay: {
-          title: "Як грати",
-          description: "Ознайомтеся з правилами гри",
+          title: "How to Play",
+          description: "Learn the game rules",
           steps: [
             {
               step: "1",
-              title: "Вибирайте пісню",
-              description: "Оберіть улюблену пісню з колекції",
+              title: "Choose a song",
+              description: "Select your favorite song from the collection",
             },
             {
               step: "2",
-              title: "Натискайте стрілки",
-              description: "Натискайте стрілки в такт з битами",
+              title: "Press arrows",
+              description: "Press arrows in time with the beats",
             },
             {
               step: "3",
-              title: "Залишайтесь в ритмі",
-              description: "Тримайте ритм, щоб набрати бали",
+              title: "Stay in rhythm",
+              description: "Keep the rhythm to score points",
             },
           ],
         },
         reviews: {
-          title: "Відгуки гравців",
-          description: "Що говорять про нас гравці",
+          title: "Player Reviews",
+          description: "What players say about us",
           reviews: [
             {
-              player: "Анна",
+              player: "Anna",
               rating: 5,
-              comment: "Чудова гра! Дуже захоплююча музика.",
+              comment: "Great game! Very exciting music.",
               avatar: "assets/images/avatar1.jpg",
             },
             {
-              player: "Максим",
+              player: "Max",
               rating: 4,
-              comment: "Гарний геймплей, але можна більше пісень.",
+              comment: "Good gameplay, but could use more songs.",
               avatar: "assets/images/avatar2.jpg",
             },
           ],
         },
         news: {
-          title: "Останні новини",
-          description: "Будьте в курсі останніх подій та анонсів",
+          title: "Latest News",
+          description:
+            "Stay up to date with the latest events and announcements",
           articles: [
             {
               id: 1,
-              title: "Нова пісня додана",
-              excerpt: "Додано нову захоплюючу пісню до колекції",
+              title: "New song added",
+              excerpt: "Added a new exciting song to the collection",
               content:
-                "Ми раді повідомити, що до колекції додано нову захоплюючу пісню. Спробуйте її прямо зараз!",
+                "We're excited to announce that a new exciting song has been added to the collection. Try it now!",
               image: "assets/images/post.jpg",
               date: "2025-01-15",
             },
             {
               id: 2,
-              title: "Оновлення інтерфейсу",
-              excerpt: "Покращений користувацький інтерфейс",
+              title: "Interface update",
+              excerpt: "Improved user interface",
               content:
-                "Ми оновили інтерфейс гри для кращого досвіду користувача. Тепер все виглядає ще краще!",
+                "We've updated the game interface for a better user experience. Everything looks even better now!",
               image: "assets/images/post2.jpg",
               date: "2025-01-10",
             },
           ],
         },
         contact: {
-          title: "Зв'яжіться з нами",
-          description: "Маєте питання? Напишіть нам!",
+          title: "Contact Us",
+          description: "Have questions? Write to us!",
           info: {
-            email: "support@cyberstrikearena.com",
-            address: "м. Київ, вул. Вигадана, 123",
+            email: "support@questsagaonline.com",
+            address: "123 Gaming Street, Sydney NSW 2000, Australia",
+            phone: "+61 2 9123 4567",
           },
           form: {
             name: {
-              label: "Ім'я",
-              placeholder: "Введіть ваше ім'я",
+              label: "Name",
+              placeholder: "Enter your name",
             },
             email: {
               label: "Email",
-              placeholder: "Введіть ваш email",
+              placeholder: "Enter your email",
             },
             message: {
-              label: "Повідомлення",
-              placeholder: "Введіть ваше повідомлення",
+              label: "Message",
+              placeholder: "Enter your message",
             },
-            submit: "Надіслати",
-            sending: "Надсилання...",
-            success: "Повідомлення успішно надіслано!",
-            error: "Помилка при надсиланні повідомлення.",
+            submit: "Send",
+            sending: "Sending...",
+            success: "Message sent successfully!",
+            error: "Error sending message.",
           },
         },
         footer: {
           brand: {
-            text: "CyberStrike",
-            accent: "Arena",
+            text: "QuestSaga",
+            accent: "Online",
           },
-          description: "Найкраща ритмічна музична гра для всіх вікових груп.",
+          description: "The best rhythmic music game for all age groups.",
           sections: {
             game: {
-              title: "Гра",
+              title: "Game",
               links: [
-                { text: "Грати зараз", href: "#game" },
-                { text: "Як грати", href: "#how-to-play" },
-                { text: "Правила", href: "#rules" },
+                { text: "Play Now", href: "#game" },
+                { text: "How to Play", href: "#how-to-play" },
+                { text: "Rules", href: "#rules" },
               ],
             },
             community: {
-              title: "Спільнота",
+              title: "Community",
               links: [
-                { text: "Discord", href: "#", external: true },
-                { text: "Telegram", href: "#", external: true },
-                { text: "Форум", href: "#", external: true },
+                {
+                  text: "Discord",
+                  href: "https://discord.com",
+                  external: true,
+                },
+                {
+                  text: "Twitter",
+                  href: "https://twitter.com",
+                  external: true,
+                },
+                { text: "Forum", href: "#", external: true },
               ],
             },
             legal: {
-              title: "Правові питання",
+              title: "Legal",
               links: [
-                { text: "Умови використання", href: "terms.html" },
-                { text: "Політика конфіденційності", href: "privacy.html" },
-                { text: "Файли cookie", href: "cookies.html" },
+                { text: "Terms of Service", href: "terms.html" },
+                { text: "Privacy Policy", href: "privacy.html" },
+                { text: "Cookie Policy", href: "cookies.html" },
               ],
             },
           },
-          copyright: "© 2025 CyberStrike Arena. Всі права захищені.",
+          copyright: "© 2025 QuestSagaOnline.com. All rights reserved.",
         },
         cookieBar: {
-          message:
-            "Ми використовуємо файли cookie для покращення вашого досвіду.",
-          accept: "Прийняти",
-          decline: "Відхилити",
+          message: "We use cookies to improve your experience.",
+          accept: "Accept",
+          decline: "Decline",
         },
       };
     }
@@ -648,7 +657,7 @@ class FridayNightFunkin {
   setupKeyboardControls(gameIframe) {
     if (!gameIframe) return;
 
-    // Список клавіш для перенаправлення в iframe
+    // List of keys to redirect to iframe
     const gameKeys = [
       "ArrowUp",
       "ArrowDown",
@@ -661,12 +670,12 @@ class FridayNightFunkin {
       "Space",
       "Enter",
       "Escape",
-      "KeyZ", // Додаткові клавіші для гри
+      "KeyZ", // Additional game keys
       "KeyX",
       "KeyC",
     ];
 
-    // Функція для фокусування iframe
+    // Function to focus iframe
     const focusIframe = () => {
       try {
         if (gameIframe.contentWindow) {
@@ -677,10 +686,10 @@ class FridayNightFunkin {
       }
     };
 
-    // Функція для відправки події через postMessage
+    // Function to send event via postMessage
     const sendKeyboardEvent = (eventType, event) => {
       try {
-        // Відправляємо подію через postMessage
+        // Send event via postMessage
         gameIframe.contentWindow.postMessage(
           {
             type: "keyboardEvent",
@@ -702,17 +711,17 @@ class FridayNightFunkin {
       }
     };
 
-    // Фокусуємо iframe при кліку на нього
+    // Focus iframe when clicking on it
     gameIframe.addEventListener("click", focusIframe);
 
-    // Обробка натискання клавіш
+    // Handle key press
     document.addEventListener("keydown", (e) => {
-      // Перевіряємо, чи активний iframe і чи це клавіша гри
+      // Check if iframe is active and if it's a game key
       if (
         gameIframe.classList.contains("game-active") &&
         gameKeys.includes(e.code)
       ) {
-        // Перевіряємо, чи користувач не вводить текст в форму
+        // Check if user is not typing in a form
         const activeElement = document.activeElement;
         const isTypingInForm =
           activeElement &&
@@ -721,7 +730,7 @@ class FridayNightFunkin {
             activeElement.tagName === "SELECT" ||
             activeElement.contentEditable === "true");
 
-        // Якщо користувач вводить текст в форму, не блокуємо клавіші
+        // If user is typing in a form, don't block keys
         if (isTypingInForm) {
           return;
         }
@@ -729,21 +738,21 @@ class FridayNightFunkin {
         e.preventDefault();
         e.stopPropagation();
 
-        // Фокусуємо iframe перед відправкою події
+        // Focus iframe before sending event
         focusIframe();
 
-        // Відправляємо подію через postMessage
+        // Send event via postMessage
         sendKeyboardEvent("keydown", e);
       }
     });
 
-    // Обробка відпускання клавіш
+    // Handle key release
     document.addEventListener("keyup", (e) => {
       if (
         gameIframe.classList.contains("game-active") &&
         gameKeys.includes(e.code)
       ) {
-        // Перевіряємо, чи користувач не вводить текст в форму
+        // Check if user is not typing in a form
         const activeElement = document.activeElement;
         const isTypingInForm =
           activeElement &&
@@ -752,7 +761,7 @@ class FridayNightFunkin {
             activeElement.tagName === "SELECT" ||
             activeElement.contentEditable === "true");
 
-        // Якщо користувач вводить текст в форму, не блокуємо клавіші
+        // If user is typing in a form, don't block keys
         if (isTypingInForm) {
           return;
         }
@@ -760,20 +769,20 @@ class FridayNightFunkin {
         e.preventDefault();
         e.stopPropagation();
 
-        // Відправляємо подію через postMessage
+        // Send event via postMessage
         sendKeyboardEvent("keyup", e);
       }
     });
 
-    // Додаємо обробник для автоматичного фокусування при завантаженні гри
+    // Add handler for automatic focusing when game loads
     gameIframe.addEventListener("load", () => {
-      setTimeout(focusIframe, 1000); // Фокусуємо через 1 секунду після завантаження
+      setTimeout(focusIframe, 1000); // Focus after 1 second of loading
     });
   }
 
   toggleFullscreen(wrapper, btnText) {
     if (!document.fullscreenElement) {
-      // Входимо в fullscreen
+      // Enter fullscreen
       wrapper
         .requestFullscreen()
         .then(() => {
@@ -786,7 +795,7 @@ class FridayNightFunkin {
           // Fullscreen entry failed silently
         });
     } else {
-      // Виходимо з fullscreen
+      // Exit fullscreen
       document
         .exitFullscreen()
         .then(() => {
@@ -830,17 +839,17 @@ class FridayNightFunkin {
         this.handleContactForm(e.target);
       });
 
-      // Додаємо обробники для автозаповнення
+      // Add handlers for autocomplete
       const inputs = contactForm.querySelectorAll("input, textarea");
       inputs.forEach((input) => {
-        // Обробник для виявлення автозаповнення
+        // Handler for detecting autocomplete
         input.addEventListener("animationstart", (e) => {
           if (e.animationName === "onAutoFillStart") {
             input.classList.add("autofilled");
           }
         });
 
-        // Обробник для зміни значення
+        // Handler for value change
         input.addEventListener("input", () => {
           if (input.value) {
             input.classList.add("has-value");
@@ -848,16 +857,16 @@ class FridayNightFunkin {
             input.classList.remove("has-value");
           }
 
-          // Очищаємо стани валідації при введенні
+          // Clear validation states on input
           input.classList.remove("error", "invalid", "valid");
         });
 
-        // Обробник для фокусу
+        // Handler for focus
         input.addEventListener("focus", () => {
           input.classList.add("focused");
         });
 
-        // Обробник для втрати фокусу
+        // Handler for blur
         input.addEventListener("blur", () => {
           input.classList.remove("focused");
         });
@@ -1244,10 +1253,10 @@ class FridayNightFunkin {
               <h3 class="news-card__title">${article.title}</h3>
               <p class="news-card__excerpt">${article.excerpt}</p>
               <div class="news-card__meta">
-                <span class="news-card__date">${new Date(
-                  article.date
-                ).toLocaleDateString("uk-UA")}</span>
-                <button class="btn btn--ghost news-card__read-more">Читати далі</button>
+                              <span class="news-card__date">${new Date(
+                                article.date
+                              ).toLocaleDateString("en-US")}</span>
+              <button class="btn btn--ghost news-card__read-more">Read More</button>
               </div>
             </div>
           </div>
@@ -1496,7 +1505,7 @@ class FridayNightFunkin {
       modalImage.src = article.image;
       modalImage.alt = article.title;
       modalDate.textContent = new Date(article.date).toLocaleDateString(
-        "uk-UA"
+        "en-US"
       );
       modalBody.textContent = article.content;
 
@@ -1517,19 +1526,19 @@ class FridayNightFunkin {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
 
-    console.log("📝 Дані форми:", data);
+    console.log("📝 Form data:", data);
 
-    // Очищаємо попередні стани валідації
+    // Clear previous validation states
     this.clearValidationStates(form);
 
-    // Валідація даних
+    // Data validation
     const errors = [];
     const nameInput = form.querySelector("#contact-name");
     const emailInput = form.querySelector("#contact-email-input");
     const messageInput = form.querySelector("#contact-message");
 
     if (!data.name || data.name.trim().length < 2) {
-      errors.push("Ім'я повинно містити мінімум 2 символи");
+      errors.push("Name must contain at least 2 characters");
       if (nameInput) {
         nameInput.classList.add("error");
         nameInput.classList.remove("valid");
@@ -1540,7 +1549,7 @@ class FridayNightFunkin {
     }
 
     if (!data.email || !data.email.includes("@")) {
-      errors.push("Введіть коректний email");
+      errors.push("Please enter a valid email");
       if (emailInput) {
         emailInput.classList.add("error");
         emailInput.classList.remove("valid");
@@ -1551,7 +1560,7 @@ class FridayNightFunkin {
     }
 
     if (!data.message || data.message.trim().length < 10) {
-      errors.push("Повідомлення повинно містити мінімум 10 символів");
+      errors.push("Message must contain at least 10 characters");
       if (messageInput) {
         messageInput.classList.add("error");
         messageInput.classList.remove("valid");
@@ -1562,7 +1571,7 @@ class FridayNightFunkin {
     }
 
     if (errors.length > 0) {
-      alert("Помилки валідації:\n" + errors.join("\n"));
+      alert("Validation errors:\n" + errors.join("\n"));
       return;
     }
 

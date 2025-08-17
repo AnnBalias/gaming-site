@@ -1,0 +1,20 @@
+:root {
+  --font-family: "Rubik", sans-serif;
+
+  --brand-color: #151414;
+  --second-color: #929292;
+  --third-color: #222020;
+  --light-color: #f0ebeb;
+  --link-color: #0ff72a;
+  --title-color: #561559;
+
+  --hover-color: #db0101;
+  --accent-color: #33821b;
+
+  --main-bg: #ffffff;
+  --header-bg: #1daa47;
+  --border-color: #39e11c;
+  --item-color: #a2eb7e;
+
+  --time-function: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}

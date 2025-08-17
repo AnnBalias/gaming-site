@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self';
+               script-src 'self';
+               style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+               font-src 'self' https://fonts.gstatic.com;
+               frame-src 'self' https://html5.gamemonetize.co;
+               connect-src 'self';
+               img-src 'self' data:;
+               media-src 'self';"
+    />
+
+    <title>News - QuestSagaOnline.com</title>
+    <meta
+      name="description"
+      content="Latest news and updates from QuestSagaOnline.com"
+    />
+    <meta
+      name="keywords"
+      content="questsagaonline, news, updates, gaming news"
+    />
+
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/main.min.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    @@include('./components/header.html')
+
+    <!-- News Page Header -->
+    <section class="news-page-header">
+      <div class="container">
+        <div class="news-page-header__content">
+          <h1 class="news-page-header__title">Latest News</h1>
+          <p class="news-page-header__description">
+            Stay up to date with the latest events, updates, and announcements from QuestSagaOnline.com
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- News Page Content -->
+    <section class="news-page">
+      <div class="container">
+        <div class="news-page__content">
+          <div class="news-page__grid" id="news-page-list">
+            <!-- News articles will be populated by JavaScript -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- News Modal -->
+    <div class="modal" id="news-modal">
+      <div class="modal__overlay" id="modal-overlay"></div>
+      <div class="modal__container">
+        <div class="modal__header">
+          <h3 class="modal__title" id="modal-title"></h3>
+          <button class="modal__close" id="modal-close" aria-label="Close modal">
+            <span class="modal__close-icon">×</span>
+          </button>
+        </div>
+        <div class="modal__content">
+          <div class="modal__image">
+            <img id="modal-image" src="" alt="" />
+          </div>
+          <div class="modal__text">
+            <p class="modal__date" id="modal-date"></p>
+            <div class="modal__body" id="modal-body"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Footer -->
+    @@include('./components/footer.html')
+
+    <!-- Cookie Bar -->
+    @@include('./components/cookie-bar.html')
+
+    <!-- Scripts -->
+    <script src="js/utils/builder.js"></script>
+    <script src="js/data/hero.js"></script>
+    <script src="js/data/main.js"></script>
+    <script src="js/utils/cookies-modal.js"></script>
+    <script src="js/utils/contact-form.js"></script>
+    <script src="js/utils/game-handler.js"></script>
+    <script src="js/utils/news-handler.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

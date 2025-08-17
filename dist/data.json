@@ -1,76 +1,76 @@
 {
   "meta": {
-    "title": "CyberStrike Arena - Friday Night Funkin",
-    "description": "Пориньте у божевільні ритми та надзвичайні дуелі. Натискайте стрілки в такт з битами, щоб потрапити в кожну ноту та залишитися в ритмі!",
-    "keywords": "Friday Night Funkin, ритм гра, музична гра, танцювальна гра, битва, музика"
+    "title": "QuestSagaOnline.com - Friday Night Funkin",
+    "description": "Dive into crazy rhythms and extraordinary duels. Press arrows in time with the beats to hit every note and stay in rhythm!",
+    "keywords": "Friday Night Funkin, rhythm game, music game, dance game, battle, music"
   },
   "header": {
     "logo": {
-      "text": "CyberStrike",
-      "accent": "Arena"
+      "text": "QuestSaga",
+      "accent": "Online"
     },
     "navigation": {
-      "home": "Головна",
-      "game": "Гра",
-      "howToPlay": "Як грати",
-      "news": "Новини",
-      "contact": "Контакти"
+      "home": "Home",
+      "game": "Game",
+      "howToPlay": "How to Play",
+      "news": "News",
+      "contact": "Contact"
     },
     "mobileMenu": {
-      "close": "Закрити меню"
+      "close": "Close menu"
     }
   },
   "hero": {
-    "badge": "Ритм Гра",
+    "badge": "Rhythm Game",
     "title": "Friday Night Funkin",
-    "description": "Пориньте у божевільні ритми та надзвичайні дуелі. Натискайте стрілки в такт з битами, щоб потрапити в кожну ноту та залишитися в ритмі! Змагайтеся з усіма видами фанкових ворогів.",
+    "description": "Dive into crazy rhythms and extraordinary duels. Press arrows in time with the beats to hit every note and stay in rhythm! Compete with all kinds of funky enemies.",
     "features": [
       {
         "icon": "gamepad",
-        "text": "Безкоштовно"
+        "text": "Free to Play"
       },
       {
         "icon": "music",
-        "text": "Дивовижна музика"
+        "text": "Amazing Music"
       },
       {
         "icon": "energy",
-        "text": "Швидкий темп"
+        "text": "Fast Paced"
       }
     ],
     "actions": {
-      "playNow": "Грати зараз",
-      "howToPlay": "Як грати"
+      "playNow": "Play Now",
+      "howToPlay": "How to Play"
     },
     "gamePreview": {
       "title": "Friday Night Funkin",
       "stats": {
         "rating": {
           "value": "4.8",
-          "label": "Рейтинг"
+          "label": "Rating"
         },
         "players": {
           "value": "1M+",
-          "label": "Гравців"
+          "label": "Players"
         },
         "songs": {
           "value": "50+",
-          "label": "Пісень"
+          "label": "Songs"
         }
       }
     }
   },
   "game": {
-    "title": "Грати Friday Night Funkin",
-    "description": "Натисніть кнопку нижче, щоб почати гру",
-    "startButton": "Почати гру",
-    "loadingText": "Завантаження гри..."
+    "title": "Play Friday Night Funkin",
+    "description": "Click the button below to start the game",
+    "startButton": "Start Game",
+    "loadingText": "Loading game..."
   },
   "playGame": {
-    "title": "Грати зараз",
-    "description": "Пориньте у світ музичних дуелів прямо зараз!",
-    "fullscreenButton": "На весь екран",
-    "exitFullscreenButton": "Згорнути",
+    "title": "Play Now",
+    "description": "Dive into the world of musical duels right now!",
+    "fullscreenButton": "Fullscreen",
+    "exitFullscreenButton": "Exit Fullscreen",
     "iframe": {
       "src": "https://html5.gamemonetize.co/8g62o78s1wjhsiu54xlmql32h7pagsek/",
       "width": "720",
@@ -78,202 +78,227 @@
     }
   },
   "howToPlay": {
-    "title": "Як грати",
-    "description": "Опануйте основи та станьте музичним воїном за кілька кроків",
+    "title": "How to Play",
+    "description": "Master the basics and become a musical warrior in a few steps",
     "steps": [
       {
         "step": "1",
-        "title": "Використовуйте стрілки",
-        "description": "Натискайте стрілки вгору, вниз, вліво та вправо у відповідності з нотами, що падають"
+        "title": "Use Arrow Keys",
+        "description": "Press up, down, left, and right arrows in accordance with the falling notes"
       },
       {
         "step": "2",
-        "title": "Тримайте ритм",
-        "description": "Синхронізуйте свої натискання з битом музики для отримання більшої кількості очок"
+        "title": "Keep the Rhythm",
+        "description": "Synchronize your presses with the music beat to get more points"
       },
       {
         "step": "3",
-        "title": "Комбо удари",
-        "description": "Правильно натискайте кілька нот поспіль для створення комбо та бонусних очок"
+        "title": "Combo Hits",
+        "description": "Correctly press multiple notes in a row to create combos and bonus points"
       },
       {
         "step": "4",
-        "title": "Уникайте помилок",
-        "description": "Кожна помилка зменшує ваші очки та може призвести до програшу в дуелі"
+        "title": "Avoid Mistakes",
+        "description": "Each mistake reduces your score and may lead to losing the duel"
       },
       {
         "step": "5",
-        "title": "Практикуйтесь",
-        "description": "Грайте різні пісні та складності, щоб покращити свої навички"
+        "title": "Practice",
+        "description": "Play different songs and difficulties to improve your skills"
       }
     ]
   },
   "reviews": {
-    "title": "Відгуки гравців",
-    "description": "Що говорять про гру наші гравці",
+    "title": "Player Reviews",
+    "description": "What our players say about the game",
     "reviews": [
       {
-        "player": "МузичнийГравець",
+        "player": "MusicPlayer",
         "rating": 5,
-        "comment": "Найкраща ритм-гра, в яку я коли-небудь грав! Музика просто неймовірна.",
+        "comment": "Best rhythm game I've ever played! The music is absolutely incredible.",
         "avatar": "assets/images/user.jpg"
       },
       {
-        "player": "РитмМастер",
+        "player": "RhythmMaster",
         "rating": 5,
-        "comment": "Відмінна гра для тренування реакції та музичного слуху. Дуже захоплююче!",
+        "comment": "Excellent game for training reaction and musical ear. Very exciting!",
         "avatar": "assets/images/user.jpg"
       },
       {
-        "player": "ФанкЛюбитель",
+        "player": "FunkLover",
         "rating": 4,
-        "comment": "Класна гра з оригінальним стилем. Графіка та музика на висоті!",
+        "comment": "Cool game with original style. Graphics and music are top notch!",
         "avatar": "assets/images/user.jpg"
       }
     ]
   },
   "news": {
-    "title": "Останні новини",
-    "description": "Будьте в курсі останніх подій та анонсів",
+    "title": "Latest News",
+    "description": "Stay up to date with the latest events and announcements",
     "articles": [
              {
          "id": 1,
-         "title": "Нові пісні додано до CyberStrike Arena",
-         "excerpt": "Додано 5 нових захоплюючих пісень з різними складностями для всіх гравців",
-         "content": "Ми раді повідомити, що до CyberStrike Arena було додано 5 нових пісень! Ці пісні включають різні жанри від поп до року, і кожна має унікальні візуальні ефекти та складність. Новини пісні доступні для всіх гравців безкоштовно.",
+         "title": "New Songs Added to QuestSagaOnline.com",
+         "excerpt": "Added 5 new exciting songs with different difficulties for all players",
+         "content": "We're excited to announce that 5 new songs have been added to QuestSagaOnline.com! These songs include various genres from pop to rock, and each has unique visual effects and difficulty. New songs are available for all players for free.",
         "image": "assets/images/post.jpg",
         "date": "2025-01-15"
       },
              {
          "id": 2,
-         "title": "Оновлення інтерфейсу гри",
-         "excerpt": "Покращений користувацький інтерфейс з новими анімаціями та ефектами",
-         "content": "Ми оновили інтерфейс CyberStrike Arena, додавши нові анімації, покращені візуальні ефекти та більш інтуїтивне управління. Тепер гра виглядає ще більш сучасно та привабливо.",
+         "title": "Game Interface Update",
+         "excerpt": "Improved user interface with new animations and effects",
+         "content": "We've updated the QuestSagaOnline.com interface, adding new animations, improved visual effects, and more intuitive controls. The game now looks even more modern and attractive.",
         "image": "assets/images/post.jpg",
         "date": "2025-01-10"
       },
              {
          "id": 3,
-         "title": "Турнір сезону 2025",
-         "excerpt": "Оголошено про проведення великого турніру з призами для найкращих гравців",
-         "content": "Починається великий турнір CyberStrike Arena 2025! Змагайтеся з гравцями з усього світу та вигравайте цінні призи. Турнір триватиме 2 тижні та включатиме різні категорії складності.",
+         "title": "2025 Season Tournament",
+         "excerpt": "Announced a major tournament with prizes for the best players",
+         "content": "The big QuestSagaOnline.com 2025 tournament is starting! Compete with players from around the world and win valuable prizes. The tournament will last 2 weeks and include various difficulty categories.",
         "image": "assets/images/post.jpg",
         "date": "2025-01-05"
+      },
+             {
+         "id": 4,
+         "title": "Mobile Version Coming Soon",
+         "excerpt": "QuestSagaOnline.com will be available on mobile devices in Q2 2025",
+         "content": "Great news for mobile gamers! We're working hard to bring QuestSagaOnline.com to your smartphones and tablets. The mobile version will feature touch controls optimized for smaller screens, offline mode for practice, and cross-platform progress sync. Expected release date: Q2 2025.",
+        "image": "assets/images/post.jpg",
+        "date": "2024-12-28"
+      },
+             {
+         "id": 5,
+         "title": "Community Challenges Launched",
+         "excerpt": "New weekly challenges with leaderboards and rewards",
+         "content": "We've launched a new Community Challenges feature! Every week, players can participate in themed challenges with special song selections and unique scoring rules. Top performers will be featured on our leaderboards and receive exclusive in-game rewards. Join the community and show off your rhythm skills!",
+        "image": "assets/images/post.jpg",
+        "date": "2024-12-20"
+      },
+             {
+         "id": 6,
+         "title": "Partnership with Music Artists",
+         "excerpt": "Exclusive tracks from popular artists coming to QuestSagaOnline.com",
+         "content": "We're excited to announce partnerships with several popular music artists! Soon, QuestSagaOnline.com will feature exclusive tracks and remixes from well-known musicians. These special songs will be available for a limited time and include unique visual effects and animations. Stay tuned for more details about our upcoming artist collaborations!",
+        "image": "assets/images/post.jpg",
+        "date": "2024-12-15"
       }
     ]
   },
   "contact": {
-    "title": "Зв'яжіться з нами",
-    "description": "Маєте питання або пропозиції? Напишіть нам!",
+    "title": "Contact Us",
+    "description": "Have questions or suggestions? Write to us!",
     "form": {
       "name": {
-        "label": "Ваше ім'я",
-        "placeholder": "Введіть ваше ім'я"
+        "label": "Your Name",
+        "placeholder": "Enter your name"
       },
       "email": {
         "label": "Email",
-        "placeholder": "Введіть ваш email"
+        "placeholder": "Enter your email"
       },
       "message": {
-        "label": "Повідомлення",
-        "placeholder": "Введіть ваше повідомлення"
+        "label": "Message",
+        "placeholder": "Enter your message"
       },
-      "submit": "Надіслати повідомлення",
-      "sending": "Надсилання...",
-      "success": "Дякуємо за ваше повідомлення! Ми зв'яжемося з вами найближчим часом.",
-      "error": "Вибачте, сталася помилка при надсиланні повідомлення. Спробуйте ще раз."
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Thank you for your message! We'll get back to you soon.",
+      "error": "Sorry, an error occurred while sending the message. Please try again."
     },
     "info": {
-      "email": "support@cyberstrikearena.com",
-      "address": "м. Київ, вул. Вигадана, 123",
-      "discord": "Приєднуйтесь до нашого Discord серверу"
+      "email": "support@questsagaonline.com",
+      "address": "123 Gaming Street, Sydney NSW 2000, Australia",
+      "phone": "+61 2 9123 4567",
+      "discord": "Join our Discord server"
     }
   },
   "disclaimer": {
-    "title": "Дисклеймер",
-    "description": "Важлива інформація про використання нашого сайту та гри",
+    "title": "Disclaimer",
+    "description": "Important information about using our website and game",
     "blocks": [
       {
-        "title": "Умови використання",
-        "content": "Використовуючи наш сайт та граючи в Friday Night Funkin, ви погоджуєтеся з наступними умовами. Гра призначена для розваги та не містить контенту, що може зашкодити дітям або підліткам."
+        "title": "Terms of Use",
+        "content": "By using our website and playing Friday Night Funkin, you agree to the following terms. The game is intended for entertainment and does not contain content that may harm children or teenagers."
       },
       {
-        "title": "Вікові обмеження",
-        "content": "Гра Friday Night Funkin призначена для гравців віком від 7 років. Діти молодшого віку повинні грати під наглядом дорослих."
+        "title": "Age Restrictions",
+        "content": "Friday Night Funkin is intended for players aged 7 and older. Younger children should play under adult supervision."
       },
       {
-        "title": "Відповідальність",
-        "content": "Ми не несемо відповідальності за будь-які збитки, які можуть виникнути внаслідок використання нашого сайту або гри. Грайте відповідально та не забувайте про перерви."
+        "title": "Liability",
+        "content": "We are not responsible for any damages that may arise from using our website or game. Play responsibly and don't forget to take breaks."
       },
       {
-        "title": "Технічні вимоги",
-        "content": "Для комфортної гри потрібен сучасний веб-браузер з підтримкою HTML5. Рекомендується стабільне інтернет-з'єднання для завантаження гри."
+        "title": "Technical Requirements",
+        "content": "For comfortable gameplay, you need a modern web browser with HTML5 support. A stable internet connection is recommended for loading the game."
       },
       {
-        "title": "Конфіденційність",
-        "content": "Ми збираємо мінімальну кількість даних, необхідних для роботи сайту. Ваша конфіденційність важлива для нас. Детальну інформацію дивіться в Політиці конфіденційності."
+        "title": "Privacy",
+        "content": "We collect minimal data necessary for the website to function. Your privacy is important to us. See our Privacy Policy for detailed information."
       },
       {
-        "title": "Зміни в умовах",
-        "content": "Ми залишаємо за собою право змінювати ці умови в будь-який час. Зміни набувають чинності з моменту їх публікації на сайті."
+        "title": "Changes to Terms",
+        "content": "We reserve the right to change these terms at any time. Changes take effect from the moment they are published on the website."
       }
     ]
   },
   "footer": {
     "brand": {
-      "text": "CyberStrike",
-      "accent": "Arena"
+      "text": "QuestSaga",
+      "accent": "Online"
     },
-    "description": "© Всі права захищені, 2025",
+    "description": "© All rights reserved, 2025",
     "sections": {
       "game": {
-        "title": "Гра",
+        "title": "Game",
         "links": [
           {
-            "text": "Огляд",
+            "text": "Overview",
             "href": "#game"
           },
           {
-            "text": "Як грати",
+            "text": "How to Play",
             "href": "#how-to-play"
           },
           {
-            "text": "Відгуки",
+            "text": "Reviews",
             "href": "#reviews"
           }
         ]
       },
       "community": {
-        "title": "Спільнота",
+        "title": "Community",
         "links": [
           {
-            "text": "Новини",
+            "text": "News",
             "href": "#news"
           },
           {
-            "text": "Контакти",
+            "text": "Contact",
             "href": "#contact"
           },
           {
             "text": "Discord",
-            "href": "/",
+            "href": "https://discord.com",
             "external": true
           }
         ]
       },
       "legal": {
-        "title": "Правові питання",
+        "title": "Legal",
         "links": [
           {
-            "text": "Політика конфіденційності",
+            "text": "Privacy Policy",
             "href": "privacy.html"
           },
           {
-            "text": "Умови використання",
+            "text": "Terms of Service",
             "href": "terms.html"
           },
           {
-            "text": "Політика файлів cookie",
+            "text": "Cookie Policy",
             "href": "cookies.html"
           }
         ]
@@ -282,26 +307,26 @@
     "social": {
       "twitter": {
         "icon": "bird",
-        "href": "/"
+        "href": "https://twitter.com"
       },
       "youtube": {
         "icon": "youtube",
-        "href": "/"
+        "href": "https://youtube.com"
       },
       "discord": {
         "icon": "gamepad",
-        "href": "/"
+        "href": "https://discord.com"
       }
     },
-    "copyright": "© Всі права захищені, 2025"
+    "copyright": "© All rights reserved, 2025"
   },
   "cookieBar": {
-    "message": "Ми використовуємо файли cookie для покращення вашого досвіду на нашому сайті.",
-    "accept": "Прийняти",
-    "decline": "Відхилити",
-    "learnMore": "Дізнатися більше"
+    "message": "We use cookies to improve your experience on our website.",
+    "accept": "Accept",
+    "decline": "Decline",
+    "learnMore": "Learn More"
   },
   "modal": {
-    "close": "Закрити"
+    "close": "Close"
   }
 }

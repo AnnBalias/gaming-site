@@ -24,8 +24,10 @@ function html() {
 // SCSS task
 function styles() {
   return gulp
-    .src("src/scss/**/*.scss")
-    .pipe(sass().on("error", sass.logError))
+    .src("src/scss/main.scss")
+    .pipe(sass({
+      includePaths: ['src/scss']
+    }).on("error", sass.logError))
     .pipe(autoprefixer())
     .pipe(gulp.dest("dist/css"))
     .pipe(cleanCSS())

@@ -1,0 +1,24 @@
+.disclaimer-block,
+.cookie-policy-block,
+.privacy-policy-block {
+  margin-bottom: 30px;
+}
+
+.disclaimer-block h3,
+.cookie-policy-block h3,
+.privacy-policy-block h3 {
+  margin-bottom: 10px;
+
+  font-weight: 600;
+  font-size: clamp(1.125rem, 0.676vw + 0.959rem, 1.5rem);
+  line-height: clamp(1.35rem, 1.082vw + 1.084rem, 1.95rem);
+  text-transform: uppercase;
+}
+
+.disclaimer-block p,
+.cookie-policy-block p,
+.privacy-policy-block p {
+  font-size: clamp(1rem, 0.225vw + 0.945rem, 1.125rem);
+  line-height: clamp(1.2rem, 0.474vw + 1.084rem, 1.463rem);
+  text-align: justify;
+}

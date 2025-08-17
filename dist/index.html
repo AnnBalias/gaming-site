@@ -1,26 +1,28 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       http-equiv="Content-Security-Policy"
       content="default-src 'self';
-               script-src 'self' 'unsafe-inline';
+               script-src 'self';
                style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
                font-src 'self' https://fonts.gstatic.com;
                frame-src 'self' https://html5.gamemonetize.co;
-               connect-src 'self';"
+               connect-src 'self';
+               img-src 'self' data:;
+               media-src 'self';"
     />
 
-    <title>CyberStrike Arena - Ритмічна музична битва</title>
+    <title>QuestSagaOnline.com - Rhythmic Music Battle</title>
     <meta
       name="description"
-      content="Пориньте у божевільні ритми та надзвичайні дуелі. Натискайте стрілки в такт з битами, щоб потрапити в кожну ноту та залишитися в ритмі!"
+      content="Dive into crazy rhythms and extraordinary duels. Press arrows in time with the beats to hit every note and stay in rhythm!"
     />
     <meta
       name="keywords"
-      content="cyberstrike arena, ритм гра, музична гра, танцювальна гра, битва, музика"
+      content="questsagaonline, rhythm game, music game, dance game, battle, music"
     />
 
     <!-- Preconnect to external domains -->
@@ -34,6 +36,7 @@
     />
 
     <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
 
     <!-- Stylesheets -->
@@ -45,28 +48,28 @@
   <div class="container">
     <div class="header__content">
       <div class="header__logo">
-        <a href="index.html" class="logo">
-          <span class="logo__text">CyberStrike</span>
-          <span class="logo__accent">Arena</span>
+        <a href="./" class="logo">
+          <span class="logo__text">QuestSaga</span>
+          <span class="logo__accent">Online</span>
         </a>
       </div>
 
       <nav class="header__nav">
         <ul class="nav__list">
           <li class="nav__item">
-            <a href="#hero" class="nav__link">Головна</a>
+            <a href="./" class="nav__link">Home</a>
           </li>
           <li class="nav__item">
-            <a href="#game" class="nav__link">Гра</a>
+            <a href="#game" class="nav__link">Game</a>
           </li>
           <li class="nav__item">
-            <a href="#how-to-play" class="nav__link">Як грати</a>
+            <a href="#how-to-play" class="nav__link">How to Play</a>
           </li>
           <li class="nav__item">
-            <a href="#news" class="nav__link">Новини</a>
+            <a href="#news" class="nav__link">News</a>
           </li>
           <li class="nav__item">
-            <a href="#contact" class="nav__link">Контакти</a>
+            <a href="#contact" class="nav__link">Contact</a>
           </li>
         </ul>
       </nav>
@@ -88,19 +91,19 @@
       </button>
       <ul class="mobile-menu__list">
         <li class="mobile-menu__item">
-          <a href="#hero" class="mobile-menu__link">Головна</a>
+          <a href="./" class="mobile-menu__link">Home</a>
         </li>
         <li class="mobile-menu__item">
-          <a href="#game" class="mobile-menu__link">Гра</a>
+          <a href="#game" class="mobile-menu__link">Game</a>
         </li>
         <li class="mobile-menu__item">
-          <a href="#how-to-play" class="mobile-menu__link">Як грати</a>
+          <a href="#how-to-play" class="mobile-menu__link">How to Play</a>
         </li>
         <li class="mobile-menu__item">
-          <a href="#news" class="mobile-menu__link">Новини</a>
+          <a href="#news" class="mobile-menu__link">News</a>
         </li>
         <li class="mobile-menu__item">
-          <a href="#contact" class="mobile-menu__link">Контакти</a>
+          <a href="#contact" class="mobile-menu__link">Contact</a>
         </li>
       </ul>
     </div>
@@ -286,9 +289,9 @@
 <section class="game-section" id="game">
   <div class="container">
     <div class="game-section__header">
-      <h2 class="section-title game__title">Грати Friday Night Funkin</h2>
+      <h2 class="section-title game__title">Play Friday Night Funkin</h2>
       <p class="section-description game__description">
-        Натисніть кнопку нижче, щоб почати гру
+        Click the button below to start the game
       </p>
     </div>
 
@@ -316,15 +319,15 @@
                   <use href="#gamepad"></use>
                 </svg>
               </div>
-              <h3 class="game-overlay__title">Готові грати?</h3>
+              <h3 class="game-overlay__title">Ready to play?</h3>
               <p class="game-overlay__text">
-                Натисніть, щоб почати музичну битву
+                Click to start the musical battle
               </p>
               <button
                 class="btn btn--primary game-overlay__btn"
                 id="start-game-btn"
               >
-                Почати гру
+                Start Game
               </button>
             </div>
           </div>
@@ -335,9 +338,7 @@
             class="btn btn--secondary game-fullscreen-btn"
             id="fullscreen-btn"
           >
-            <span class="btn__text" id="fullscreen-btn-text"
-              >На весь екран</span
-            >
+            <span class="btn__text" id="fullscreen-btn-text">Fullscreen</span>
             <span class="btn__icon">⛶</span>
           </button>
         </div>
@@ -376,9 +377,9 @@
     <section class="reviews" id="reviews">
   <div class="container">
     <div class="reviews__header">
-      <h2 class="section-title" id="reviews-title">Відгуки гравців</h2>
+      <h2 class="section-title" id="reviews-title">Player Reviews</h2>
       <p class="section-description">
-        Що говорять про гру наші гравці
+        What our players say about the game
       </p>
     </div>
     
@@ -395,15 +396,18 @@
     <section class="news" id="news">
   <div class="container">
     <div class="news__header">
-      <h2 class="section-title" id="news-title">Останні новини</h2>
-      <p class="section-description">
-        Будьте в курсі останніх подій та оголошень
+      <h2 class="section-title" id="news-title">Latest News</h2>
+      <p class="section-description" id="news-description">
+        Stay up to date with the latest events and announcements
       </p>
     </div>
 
     <div class="news__content">
-      <div class="news__grid" id="news-grid">
+      <div class="news__grid" id="news-list">
         <!-- News articles will be populated by JavaScript -->
+      </div>
+      <div class="news__footer">
+        <a href="news.html" class="btn btn--primary">See more</a>
       </div>
     </div>
   </div>
@@ -436,60 +440,60 @@
     <section class="disclaimer-section" id="disclaimer">
   <div class="container">
     <div class="disclaimer-section__header">
-      <h2 class="section-title disclaimer__title">Дисклеймер</h2>
+      <h2 class="section-title disclaimer__title">Disclaimer</h2>
       <p class="section-description disclaimer__description">
-        Важлива інформація про використання нашого сайту та гри
+        Important information about using our website and game
       </p>
     </div>
     
     <div class="disclaimer-section__content">
       <div class="disclaimer-content">
         <div class="disclaimer-block">
-          <h3>Умови використання</h3>
+          <h3>Terms of Use</h3>
           <p>
-            Використовуючи наш сайт та граючи в Friday Night Funkin, ви погоджуєтеся з наступними умовами. 
-            Гра призначена для розваги та не містить контенту, що може зашкодити дітям або підліткам.
+            By using our website and playing Friday Night Funkin, you agree to the following terms. 
+            The game is intended for entertainment and does not contain content that may harm children or teenagers.
           </p>
         </div>
         
         <div class="disclaimer-block">
-          <h3>Вікові обмеження</h3>
+          <h3>Age Restrictions</h3>
           <p>
-            Гра Friday Night Funkin призначена для гравців віком від 7 років. 
-            Діти молодшого віку повинні грати під наглядом дорослих.
+            Friday Night Funkin is intended for players aged 7 and older. 
+            Younger children should play under adult supervision.
           </p>
         </div>
         
         <div class="disclaimer-block">
-          <h3>Відповідальність</h3>
+          <h3>Liability</h3>
           <p>
-            Ми не несемо відповідальності за будь-які збитки, які можуть виникнути внаслідок 
-            використання нашого сайту або гри. Грайте відповідально та не забувайте про перерви.
+            We are not responsible for any damages that may arise from 
+            using our website or game. Play responsibly and don't forget to take breaks.
           </p>
         </div>
         
         <div class="disclaimer-block">
-          <h3>Технічні вимоги</h3>
+          <h3>Technical Requirements</h3>
           <p>
-            Для комфортної гри потрібен сучасний веб-браузер з підтримкою HTML5. 
-            Рекомендується стабільне інтернет-з'єднання для завантаження гри.
+            For comfortable gameplay, you need a modern web browser with HTML5 support. 
+            A stable internet connection is recommended for loading the game.
           </p>
         </div>
         
         <div class="disclaimer-block">
-          <h3>Конфіденційність</h3>
+          <h3>Privacy</h3>
           <p>
-            Ми збираємо мінімальну кількість даних, необхідних для роботи сайту. 
-            Ваша конфіденційність важлива для нас. Детальну інформацію дивіться в 
-            <a href="privacy.html">Політиці конфіденційності</a>.
+            We collect minimal data necessary for the website to function. 
+            Your privacy is important to us. See our 
+            <a href="privacy.html">Privacy Policy</a> for detailed information.
           </p>
         </div>
         
         <div class="disclaimer-block">
-          <h3>Зміни в умовах</h3>
+          <h3>Changes to Terms</h3>
           <p>
-            Ми залишаємо за собою право змінювати ці умови в будь-який час. 
-            Зміни набувають чинності з моменту їх публікації на сайті.
+            We reserve the right to change these terms at any time. 
+            Changes take effect from the moment they are published on the website.
           </p>
         </div>
       </div>
@@ -497,7 +501,7 @@
   </div>
 </section>
 
-    
+
     <!-- Contact Section -->
     <!-- SVG Sprite for icons -->
 <svg
@@ -550,9 +554,9 @@
 <section class="contact" id="contact">
   <div class="container">
     <div class="contact__header">
-      <h2 class="section-title" id="contact-title">Зв'яжіться з нами</h2>
+      <h2 class="section-title" id="contact-title">Contact Us</h2>
       <p class="section-description" id="contact-description">
-        Маєте питання або пропозиції? Напишіть нам!
+        Have questions or suggestions? Write to us!
       </p>
     </div>
 
@@ -565,13 +569,13 @@
             </svg>
           </div>
           <div class="contact__details">
-            <h3 class="contact__label">Пошта</h3>
+            <h3 class="contact__label">Email</h3>
             <a
-              href="mailto:support@cyberstrikearena.com"
+              href="mailto:support@questsagaonline.com"
               class="contact__value"
               id="contact-email"
             >
-              support@cyberstrikearena.com
+              support@questsagaonline.com
             </a>
           </div>
         </div>
@@ -583,18 +587,18 @@
             </svg>
           </div>
           <div class="contact__details">
-            <h3 class="contact__label">Адреса</h3>
+            <h3 class="contact__label">Address</h3>
             <p class="contact__value" id="contact-address">
-              м. Київ, вул. Вигадана, 123
+              123 Gaming Street, Sydney NSW 2000, Australia
             </p>
           </div>
         </div>
 
         <div class="contact__social">
-          <h3 class="contact__label">Слідкуйте за нами</h3>
+          <h3 class="contact__label">Follow Us</h3>
           <div class="social__links">
             <a
-              href="/"
+              href="https://discord.com"
               class="social__link social__link--discord"
               target="_blank"
               rel="noopener"
@@ -607,7 +611,7 @@
               <span class="social__text">Discord</span>
             </a>
             <a
-              href="/"
+              href="https://twitter.com"
               class="social__link social__link--twitter"
               target="_blank"
               rel="noopener"
@@ -620,7 +624,7 @@
               <span class="social__text">Twitter</span>
             </a>
             <a
-              href="/"
+              href="https://youtube.com"
               class="social__link social__link--youtube"
               target="_blank"
               rel="noopener"
@@ -639,40 +643,38 @@
       <div class="contact__form">
         <form class="form" id="contact-form">
           <div class="form__group">
-            <label for="contact-name" class="form__label">Ім'я</label>
+            <label for="contact-name" class="form__label">Name</label>
             <input
               type="text"
               id="contact-name"
               name="name"
               class="form__input"
-              placeholder="Введіть ваше ім'я"
+              placeholder="Enter your name"
               autocomplete="name"
               required
             />
           </div>
 
           <div class="form__group">
-            <label for="contact-email-input" class="form__label">Пошта</label>
+            <label for="contact-email-input" class="form__label">Email</label>
             <input
               type="email"
               id="contact-email-input"
               name="email"
               class="form__input"
-              placeholder="Введіть ваш email"
+              placeholder="Enter your email"
               autocomplete="email"
               required
             />
           </div>
 
           <div class="form__group">
-            <label for="contact-message" class="form__label"
-              >Повідомлення</label
-            >
+            <label for="contact-message" class="form__label">Message</label>
             <textarea
               id="contact-message"
               name="message"
               class="form__textarea"
-              placeholder="Введіть ваше повідомлення"
+              placeholder="Enter your message"
               autocomplete="off"
               rows="3"
               required
@@ -680,7 +682,7 @@
           </div>
 
           <button type="submit" class="btn btn--primary form__submit">
-            <span class="btn__text">Надіслати повідомлення</span>
+            <span class="btn__text">Send Message</span>
             <span class="btn__icon">
               <svg class="icon icon--email" aria-hidden="true">
                 <use href="#email"></use>
@@ -726,47 +728,50 @@
       <div class="footer__main">
         <div class="footer__brand">
           <a href="./" class="footer__logo">
-            <span class="logo__text">CyberStrike</span>
-            <span class="logo__accent">Arena</span>
+            <span class="logo__text">QuestSaga</span>
+            <span class="logo__accent">Online</span>
           </a>
         </div>
 
         <div class="footer__links">
           <div class="footer__section">
-            <h4 class="footer__title">Гра</h4>
+            <h4 class="footer__title">Game</h4>
             <ul class="footer__list">
-              <li><a href="#game" class="footer__link">Огляд</a></li>
+              <li><a href="#game" class="footer__link">Overview</a></li>
               <li>
-                <a href="#how-to-play" class="footer__link">Як грати</a>
+                <a href="#how-to-play" class="footer__link">How to Play</a>
               </li>
-              <li><a href="#reviews" class="footer__link">Відгуки</a></li>
+              <li><a href="#reviews" class="footer__link">Reviews</a></li>
             </ul>
           </div>
 
           <div class="footer__section">
-            <h4 class="footer__title">Спільнота</h4>
+            <h4 class="footer__title">Community</h4>
             <ul class="footer__list">
-              <li><a href="#news" class="footer__link">Новини</a></li>
-              <li><a href="#contact" class="footer__link">Контакти</a></li>
+              <li><a href="#news" class="footer__link">News</a></li>
+              <li><a href="#contact" class="footer__link">Contact</a></li>
               <li>
-                <a href="/" class="footer__link" target="_blank">Discord</a>
-              </li>
-            </ul>
-          </div>
-
-          <div class="footer__section">
-            <h4 class="footer__title">Політика</h4>
-            <ul class="footer__list">
-              <li>
-                <a href="privacy.html" class="footer__link">Конфіденційність</a>
-              </li>
-              <li>
-                <a href="terms.html" class="footer__link">Обслуговування</a>
-              </li>
-              <li>
-                <a href="cookies.html" class="footer__link"
-                  >Використання cookie</a
+                <a
+                  href="https://discord.com"
+                  class="footer__link"
+                  target="_blank"
+                  >Discord</a
                 >
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer__section">
+            <h4 class="footer__title">Legal</h4>
+            <ul class="footer__list">
+              <li>
+                <a href="privacy.html" class="footer__link">Privacy Policy</a>
+              </li>
+              <li>
+                <a href="terms.html" class="footer__link">Terms of Service</a>
+              </li>
+              <li>
+                <a href="cookies.html" class="footer__link">Cookie Policy</a>
               </li>
             </ul>
           </div>
@@ -775,14 +780,15 @@
 
       <div class="footer__bottom">
         <p class="footer__copyright" id="footer-copyright">
-          &copy; всі права захищені, 2025
+          &copy; All rights reserved, 2025
         </p>
         <div class="footer__social">
           <a
-            href="/"
+            href="https://discord.com"
             class="footer__social-link"
             target="_blank"
             rel="noopener"
+            aria-label="Discord"
           >
             <span class="social__icon">
               <svg class="icon icon--bird" aria-hidden="true">
@@ -791,10 +797,11 @@
             </span>
           </a>
           <a
-            href="/"
+            href="https://youtube.com"
             class="footer__social-link"
             target="_blank"
             rel="noopener"
+            aria-label="YouTube"
           >
             <span class="social__icon">
               <svg class="icon icon--youtube" aria-hidden="true">
@@ -827,15 +834,15 @@
     <div class="cookie-bar__content">
       <div class="cookie-bar__text">
         <p id="cookie-message">
-          Ми використовуємо файли cookie для покращення вашого досвіду на нашому сайті.
+          We use cookies to improve your experience on our website.
         </p>
       </div>
       <div class="cookie-bar__actions">
         <button class="btn btn--secondary cookie-bar__btn" id="cookie-accept">
-          Прийняти
+          Accept
         </button>
         <button class="btn btn--outline cookie-bar__btn" id="cookie-decline">
-          Відхилити
+          Decline
         </button>
       </div>
     </div>
@@ -844,6 +851,13 @@
 
 
     <!-- Scripts -->
-    <script src="js/main.min.js" defer></script>
+    <script src="js/utils/builder.js"></script>
+    <script src="js/data/hero.js"></script>
+    <script src="js/data/main.js"></script>
+    <script src="js/utils/cookies-modal.js"></script>
+    <script src="js/utils/contact-form.js"></script>
+    <script src="js/utils/game-handler.js"></script>
+    <script src="js/utils/news-handler.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>

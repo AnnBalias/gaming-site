@@ -122,7 +122,6 @@
   &__description {
     @include body-text;
     font-size: $font-size-lg;
-    color: $dark-text-secondary;
     margin-bottom: $spacing-xl;
     max-width: 500px;
     line-height: 1.6;
@@ -483,5 +482,43 @@
       flex-direction: column;
       gap: $spacing-md;
     }
+  }
+}
+
+// Hero variants
+.hero--news {
+  min-height: 60vh;
+  
+  .hero__content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding-top: 120px;
+    
+    @include mobile {
+      padding-top: 100px;
+    }
+  }
+  
+  .hero__title {
+    font-size: $font-size-5xl;
+    margin-bottom: $spacing-lg;
+    
+    @include mobile {
+      font-size: $font-size-4xl;
+    }
+  }
+  
+  .hero__description {
+    font-size: $font-size-xl;
+    max-width: 600px;
+    margin: 0 auto $spacing-2xl;
+    
+    @include mobile {
+      font-size: $font-size-lg;
+    }
+  }
+  
+  .hero__visual {
+    display: none; // Hide visual section on news page
   }
 }

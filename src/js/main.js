@@ -106,8 +106,7 @@ class FridayNightFunkin {
       if (window.EnvironmentHelpers?.isDevelopment()) {
         try {
           const backendUrl =
-            window.EnvironmentHelpers?.getBackendUrl() ||
-            "http://localhost:9998";
+            window.EnvironmentHelpers?.getBackendUrl() || "api";
           const backendResponse = await fetch(`${backendUrl}/config`, {
             method: "GET",
             headers: {
@@ -223,7 +222,7 @@ class FridayNightFunkin {
           fullscreenButton: "Fullscreen",
           exitFullscreenButton: "Exit Fullscreen",
           iframe: {
-            src: "https://html5.gamemonetize.co/8g62o78s1wjhsiu54xlmql32h7pagsek/",
+            src: "game/",
             width: "720",
             height: "1280",
           },
@@ -1522,11 +1521,39 @@ class FridayNightFunkin {
     }
   }
 
+  showNotification(message, type = "info") {
+    // Create notification element
+    const notification = document.createElement("div");
+    notification.className = `notification notification--${type}`;
+    notification.innerHTML = `
+      <div class="notification__content">
+        <span class="notification__message">${message}</span>
+        <button class="notification__close" aria-label="Close notification">×</button>
+      </div>
+    `;
+
+    // Add to page
+    document.body.appendChild(notification);
+
+    // Auto-remove after 5 seconds
+    setTimeout(() => {
+      if (notification.parentNode) {
+        notification.remove();
+      }
+    }, 5000);
+
+    // Close button functionality
+    const closeBtn = notification.querySelector(".notification__close");
+    if (closeBtn) {
+      closeBtn.addEventListener("click", () => {
+        notification.remove();
+      });
+    }
+  }
+
   async handleContactForm(form) {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
-
-    console.log("📝 Form data:", data);
 
     // Clear previous validation states
     this.clearValidationStates(form);
@@ -1571,7 +1598,10 @@ class FridayNightFunkin {
     }
 
     if (errors.length > 0) {
-      alert("Validation errors:\n" + errors.join("\n"));
+      this.showNotification(
+        "Validation errors:\n" + errors.join("\n"),
+        "error"
+      );
       return;
     }
 
@@ -1586,10 +1616,10 @@ class FridayNightFunkin {
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
-      alert(this.data.contact.form.success);
+      this.showNotification(this.data.contact.form.success, "success");
       form.reset();
     } catch (error) {
-      alert(this.data.contact.form.error);
+      this.showNotification(this.data.contact.form.error, "error");
     } finally {
       submitBtn.innerHTML = originalText;
       submitBtn.disabled = false;
@@ -1696,13 +1726,10 @@ class FridayNightFunkin {
         id: "gamemonetize-sdk",
         src:
           window.Environment?.EXTERNAL_SERVICES?.GAMEMONETIZE?.SDK_URL ||
-          "https://html5.gamemonetize.co/sdk.js",
+          "sdk/gamemonetize.js",
         async: true,
         onload: () => {
           // Script loaded successfully - initialize YYGGames after a delay
-          if (window.EnvironmentHelpers?.isDevelopment()) {
-            console.log("Gamemonetize SDK loaded successfully");
-          }
           // Initialize YYGGames after SDK is loaded
           setTimeout(() => {
             this.initializeYYGGames();
@@ -1770,15 +1797,9 @@ class FridayNightFunkin {
           // Wrap in try-catch to handle any initialization errors
           try {
             window.YYGGames.init();
-            if (window.EnvironmentHelpers?.isDevelopment()) {
-              console.log("YYGGames SDK initialized successfully");
-            }
             return;
           } catch (initError) {
             // YYGGames.init() failed
-            if (window.EnvironmentHelpers?.isDevelopment()) {
-              console.warn("YYGGames.init() failed:", initError);
-            }
           }
         } else if (
           window.YYGGamesForGamemonetize &&
@@ -1787,35 +1808,17 @@ class FridayNightFunkin {
           // Alternative SDK name
           try {
             window.YYGGamesForGamemonetize.init();
-            if (window.EnvironmentHelpers?.isDevelopment()) {
-              console.log(
-                "YYGGamesForGamemonetize SDK initialized successfully"
-              );
-            }
             return;
-          } catch (initError) {
-            if (window.EnvironmentHelpers?.isDevelopment()) {
-              console.warn("YYGGamesForGamemonetize.init() failed:", initError);
-            }
-          }
+          } catch (initError) {}
         }
       } catch (error) {
         // YYGGames not available or failed to initialize
-        if (window.EnvironmentHelpers?.isDevelopment()) {
-          console.warn("YYGGames not available:", error);
-        }
       }
 
       attempts++;
       if (attempts < maxAttempts) {
         // Try again after 2 seconds
         setTimeout(tryInitialize, 2000);
-      } else {
-        if (window.EnvironmentHelpers?.isDevelopment()) {
-          console.warn(
-            "YYGGames SDK not available - continuing without game monetization"
-          );
-        }
       }
     };
 

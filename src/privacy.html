@@ -29,7 +29,6 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
-    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/main.min.css" />
@@ -146,7 +145,47 @@
     <!-- Footer -->
     @@include('./components/footer.html')
 
+    <!-- News Modal -->
+    <div class="modal" id="news-modal">
+      <div class="modal__overlay" id="modal-overlay"></div>
+      <div class="modal__container">
+        <div class="modal__header">
+          <h3 class="modal__title" id="modal-title"></h3>
+          <button
+            class="modal__close"
+            id="modal-close"
+            aria-label="Close modal"
+          >
+            <span class="modal__close-icon">×</span>
+          </button>
+        </div>
+        <div class="modal__content">
+          <div class="modal__image">
+            <img id="modal-image" src="" alt="" />
+          </div>
+          <div class="modal__text">
+            <p class="modal__date" id="modal-date"></p>
+            <div class="modal__body" id="modal-body"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cookie Bar -->
+    @@include('./components/cookie-bar.html')
+
     <!-- Scripts -->
-    <script src="js/main.min.js" defer />
+    <script src="config/environment.js"></script>
+    <script src="js/data/hero.js"></script>
+    <script src="js/data/main.js"></script>
+    <script src="js/utils/builder.js"></script>
+    <script src="js/utils/cookies-modal.js"></script>
+    <script src="js/utils/contact-form.js"></script>
+    <script src="js/utils/news-handler.js"></script>
+    <script src="js/pages/privacy.js" defer></script>
+    <script src="js/main.js" defer></script>
+
+    <!-- SVG Sprite -->
+    @@include('./assets/icons/sprite.svg')
   </body>
 </html>

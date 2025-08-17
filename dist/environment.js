@@ -4,11 +4,11 @@
 const Environment = {
   // Backend configuration
   BACKEND: {
-    URL: "http://localhost:9998",
+    URL: "api",
     TIMEOUT: 3000,
     ENDPOINTS: {
-      CONFIG: "/config",
-      DATA: "/data",
+      CONFIG: "config",
+      DATA: "data",
     },
   },
 
@@ -16,9 +16,8 @@ const Environment = {
   EXTERNAL_SERVICES: {
     GAMEMONETIZE: {
       ENABLED: true,
-      SDK_URL: "https://html5.gamemonetize.co/sdk.js",
-      GAME_URL:
-        "https://html5.gamemonetize.co/8g62o78s1wjhsiu54xlmql32h7pagsek/",
+      SDK_URL: "sdk/gamemonetize.js",
+      GAME_URL: "game/",
       FALLBACK: true,
     },
     YYGGAMES: {

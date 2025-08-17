@@ -72,7 +72,7 @@
     "fullscreenButton": "Fullscreen",
     "exitFullscreenButton": "Exit Fullscreen",
     "iframe": {
-      "src": "https://html5.gamemonetize.co/8g62o78s1wjhsiu54xlmql32h7pagsek/",
+      "src": "game/",
       "width": "720",
       "height": "1280"
     }

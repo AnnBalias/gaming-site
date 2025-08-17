@@ -4,6 +4,7 @@
   "description": "Modern gaming website with component structure",
   "main": "index.js",
   "scripts": {
+    "start": "gulp dev",
     "dev": "gulp dev",
     "build": "gulp build",
     "watch": "gulp watch",

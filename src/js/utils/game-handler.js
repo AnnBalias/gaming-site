@@ -14,7 +14,6 @@ class GameHandler {
     this.startBtn = document.getElementById("start-game-btn");
 
     this.setupEventListeners();
-    this.loadExternalScripts();
   }
 
   setupEventListeners() {
@@ -26,45 +25,6 @@ class GameHandler {
 
     if (this.startBtn) {
       this.startBtn.addEventListener("click", () => this.startGame());
-    }
-  }
-
-  async loadExternalScripts() {
-    try {
-      // Load Gamemonetize SDK
-      await this.loadScript(
-        "https://html5.gamemonetize.co/8g62o78s1wjhsiu54xlmql32h7pagsek/gamemonetize-sdk.js"
-      );
-
-      // Load YYGGames SDK
-      await this.loadScript(
-        "https://html5.gamemonetize.co/8g62o78s1wjhsiu54xlmql32h7pagsek/yyggames-sdk.js"
-      );
-
-      this.initializeSDKs();
-    } catch (error) {
-      // Handle script loading errors silently
-    }
-  }
-
-  loadScript(src) {
-    return new Promise((resolve, reject) => {
-      const script = document.createElement("script");
-      script.src = src;
-      script.onload = resolve;
-      script.onerror = reject;
-      document.head.appendChild(script);
-    });
-  }
-
-  initializeSDKs() {
-    // Initialize YYGGames if available
-    if (typeof YYGGames !== "undefined") {
-      try {
-        YYGGames.init();
-      } catch (error) {
-        // Handle initialization errors silently
-      }
     }
   }
 

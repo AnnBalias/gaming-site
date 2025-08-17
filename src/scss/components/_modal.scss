@@ -1,3 +1,6 @@
+@import '../variables';
+@import '../mixins';
+
 .modal {
   position: fixed;
   top: 0;
@@ -35,9 +38,16 @@
     overflow: hidden;
     box-shadow: $shadow-xl;
     
-    @include mobile {
+    @media (max-width: 730px) {
       width: 95%;
       max-height: 95vh;
+      margin: 10px;
+    }
+    
+    @include mobile {
+      width: 98%;
+      max-height: 98vh;
+      margin: 5px;
     }
   }
   
@@ -47,12 +57,31 @@
     justify-content: space-between;
     padding: $spacing-xl;
     border-bottom: 1px solid rgba($dark-border, 0.3);
+    
+    @media (max-width: 730px) {
+      padding: $spacing-lg;
+    }
+    
+    @include mobile {
+      padding: $spacing-md;
+    }
   }
   
   &__title {
     @include heading-3;
     color: $primary-color;
     margin-bottom: 0;
+    
+    @media (max-width: 730px) {
+      font-size: $font-size-xl;
+      flex: 1;
+      margin-right: $spacing-md;
+    }
+    
+    @include mobile {
+      font-size: $font-size-lg;
+      margin-right: $spacing-sm;
+    }
   }
   
   &__close {
@@ -63,6 +92,7 @@
     border-radius: 50%;
     color: $dark-text;
     transition: all $transition-normal;
+    flex-shrink: 0;
     
     &:hover,
     &:focus {
@@ -70,19 +100,60 @@
       color: $dark-text;
       transform: scale(1.1);
     }
+    
+    @media (max-width: 730px) {
+      width: 36px;
+      height: 36px;
+    }
+    
+    @include mobile {
+      width: 32px;
+      height: 32px;
+    }
   }
   
   &__close-icon {
     font-size: $font-size-xl;
     font-weight: $font-weight-bold;
+    
+    @media (max-width: 730px) {
+      font-size: $font-size-lg;
+    }
+    
+    @include mobile {
+      font-size: $font-size-base;
+    }
   }
   
   &__content {
     max-height: calc(90vh - 120px);
     overflow-y: auto;
     
-    @include mobile {
+    // Стилізація скролбару
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: rgba($dark-text, 0.1);
+      border-radius: 4px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: rgba($primary-color, 0.5);
+      border-radius: 4px;
+      
+      &:hover {
+        background: rgba($primary-color, 0.7);
+      }
+    }
+    
+    @media (max-width: 730px) {
       max-height: calc(95vh - 120px);
+    }
+    
+    @include mobile {
+      max-height: calc(98vh - 120px);
     }
   }
   
@@ -96,16 +167,41 @@
       height: 100%;
       object-fit: cover;
     }
+    
+    @media (max-width: 730px) {
+      height: 250px;
+    }
+    
+    @include mobile {
+      height: 200px;
+    }
   }
   
   &__text {
     padding: $spacing-xl;
+    
+    @media (max-width: 730px) {
+      padding: $spacing-lg;
+    }
+    
+    @include mobile {
+      padding: $spacing-md;
+    }
   }
   
   &__date {
     font-size: $font-size-sm;
     color: $dark-text-secondary;
     margin-bottom: $spacing-lg;
+    
+    @media (max-width: 730px) {
+      font-size: $font-size-xs;
+      margin-bottom: $spacing-md;
+    }
+    
+    @include mobile {
+      margin-bottom: $spacing-sm;
+    }
   }
   
   &__body {
@@ -113,8 +209,26 @@
     color: $dark-text-secondary;
     line-height: 1.7;
     
+    @media (max-width: 730px) {
+      font-size: $font-size-sm;
+      line-height: 1.6;
+    }
+    
+    @include mobile {
+      font-size: $font-size-xs;
+      line-height: 1.5;
+    }
+    
     p {
       margin-bottom: $spacing-md;
+      
+      @media (max-width: 730px) {
+        margin-bottom: $spacing-sm;
+      }
+      
+      @include mobile {
+        margin-bottom: $spacing-xs;
+      }
       
       &:last-child {
         margin-bottom: 0;

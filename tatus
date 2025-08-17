@@ -1,0 +1,5 @@
+[33mc9287f9[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m test-edits
+[33ma0fe709[m Remove disclaimer link from navigation and fix hero section responsiveness for 960px to mobile breakpoint
+[33m8098218[m Add simple deployment workflow for GitHub Pages
+[33mcfbf70d[m Project refactored for GitHub Pages deployment - removed unnecessary files, optimized build process, added deployment configuration
+[33mc748d11[m review

@@ -13,8 +13,11 @@ class GameHandler {
     this.fullscreenBtn = document.getElementById("fullscreen-btn");
     this.startBtn = document.getElementById("start-game-btn");
 
-    this.setupEventListeners();
-    this.loadExternalScripts();
+    // Only initialize if we're on a page with game elements
+    if (this.iframe || this.fullscreenBtn || this.startBtn) {
+      this.setupEventListeners();
+      this.loadExternalScripts();
+    }
   }
 
   setupEventListeners() {
@@ -44,6 +47,7 @@ class GameHandler {
       this.initializeSDKs();
     } catch (error) {
       // Handle script loading errors silently
+      console.log("External scripts loading failed, continuing without SDKs");
     }
   }
 

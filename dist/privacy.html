@@ -6,7 +6,7 @@
     <meta
       http-equiv="Content-Security-Policy"
       content="default-src 'self';
-               script-src 'self';
+               script-src 'self' https://html5.gamemonetize.co;
                style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
                font-src 'self' https://fonts.gstatic.com;
                frame-src 'self' https://html5.gamemonetize.co;
@@ -58,7 +58,7 @@
             <a href="#how-to-play" class="nav__link">How to Play</a>
           </li>
           <li class="nav__item">
-            <a href="#news" class="nav__link">News</a>
+            <a href="./news.html" class="nav__link">News</a>
           </li>
           <li class="nav__item">
             <a href="#contact" class="nav__link">Contact</a>
@@ -92,7 +92,7 @@
           <a href="#how-to-play" class="mobile-menu__link">How to Play</a>
         </li>
         <li class="mobile-menu__item">
-          <a href="#news" class="mobile-menu__link">News</a>
+          <a href="./news.html" class="mobile-menu__link">News</a>
         </li>
         <li class="mobile-menu__item">
           <a href="#contact" class="mobile-menu__link">Contact</a>
@@ -260,7 +260,7 @@
           <div class="footer__section">
             <h4 class="footer__title">Community</h4>
             <ul class="footer__list">
-              <li><a href="#news" class="footer__link">News</a></li>
+              <li><a href="news.html" class="footer__link">News</a></li>
               <li><a href="#contact" class="footer__link">Contact</a></li>
               <li>
                 <a
@@ -277,13 +277,13 @@
             <h4 class="footer__title">Legal</h4>
             <ul class="footer__list">
               <li>
-                <a href="privacy.html" class="footer__link">Privacy Policy</a>
+                <a href="./privacy.html" class="footer__link">Privacy Policy</a>
               </li>
               <li>
-                <a href="terms.html" class="footer__link">Terms of Service</a>
+                <a href="./terms.html" class="footer__link">Terms of Service</a>
               </li>
               <li>
-                <a href="cookies.html" class="footer__link">Cookie Policy</a>
+                <a href="./cookies.html" class="footer__link">Cookie Policy</a>
               </li>
             </ul>
           </div>
@@ -341,6 +341,13 @@
 
 
     <!-- Scripts -->
-    <script src="js/main.min.js" defer />
+    <script src="js/utils/builder.js"></script>
+    <script src="js/data/hero.js"></script>
+    <script src="js/data/main.js"></script>
+    <script src="js/utils/cookies-modal.js"></script>
+    <script src="js/utils/contact-form.js"></script>
+    <script src="js/utils/game-handler.js"></script>
+    <script src="js/utils/news-handler.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>

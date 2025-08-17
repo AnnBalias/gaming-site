@@ -20,6 +20,7 @@ class FridayNightFunkin {
       this.setupEventListeners();
       this.renderContent();
       this.initializeComponents();
+      this.fixNavigation();
 
       // YYGGames will be initialized after external scripts are loaded
     } catch (error) {
@@ -1821,5 +1822,39 @@ class FridayNightFunkin {
 
     // Start trying to initialize after a longer delay to ensure SDK is loaded
     setTimeout(tryInitialize, 3000);
+  }
+
+  fixNavigation() {
+    // Fix navigation based on current page
+    const currentPage = window.location.pathname;
+
+    // Get all navigation links
+    const newsLinks = document.querySelectorAll(
+      'a[href="./news.html"], a[href="news.html"]'
+    );
+    const homeLinks = document.querySelectorAll(
+      'a[href="./"], a[href="#news"]'
+    );
+
+    if (currentPage.includes("news.html")) {
+      // On news page - change "News" links to point to home page
+      newsLinks.forEach((link) => {
+        link.href = "./";
+        link.textContent = "Home";
+      });
+
+      // Change "#news" links to point to home page
+      homeLinks.forEach((link) => {
+        if (link.href.includes("#news")) {
+          link.href = "./";
+        }
+      });
+    } else {
+      // On home page - ensure "News" links point to news page
+      newsLinks.forEach((link) => {
+        link.href = "./news.html";
+        link.textContent = "News";
+      });
+    }
   }
 }

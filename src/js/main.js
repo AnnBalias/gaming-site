@@ -102,35 +102,7 @@ class FridayNightFunkin {
 
   async loadData() {
     try {
-      // First try backend config endpoint (only in development)
-      if (window.EnvironmentHelpers?.isDevelopment()) {
-        try {
-          const backendUrl =
-            window.EnvironmentHelpers?.getBackendUrl() || "api";
-          const backendResponse = await fetch(`${backendUrl}/config`, {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            mode: "cors", // Explicitly request CORS
-            credentials: "omit", // Don't send cookies for cross-origin
-            signal: AbortSignal.timeout(3000), // 3 second timeout
-          });
-
-          if (backendResponse.ok) {
-            this.data = await backendResponse.json();
-            return;
-          }
-        } catch (backendError) {
-          // Backend not available or CORS error, continue with local data
-          if (window.EnvironmentHelpers?.isDevelopment()) {
-            console.warn(
-              "Backend not available or CORS error, using local data:",
-              backendError.message
-            );
-          }
-        }
-      }
+      // Removed backend config request since no backend API is needed
 
       // Try multiple paths for data.json
       const paths = ["data.json", "./data.json", "/data.json", "../data.json"];

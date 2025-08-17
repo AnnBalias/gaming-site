@@ -103,36 +103,8 @@ class FridayNightFunkin {
 
   async loadData() {
     try {
-      // First try backend config endpoint (only in development)
-      if (window.EnvironmentHelpers?.isDevelopment()) {
-        try {
-          const backendUrl =
-            window.EnvironmentHelpers?.getBackendUrl() ||
-            "http://localhost:9998";
-          const backendResponse = await fetch(`${backendUrl}/config`, {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            mode: "cors", // Explicitly request CORS
-            credentials: "omit", // Don't send cookies for cross-origin
-            signal: AbortSignal.timeout(3000), // 3 second timeout
-          });
-
-          if (backendResponse.ok) {
-            this.data = await backendResponse.json();
-            return;
-          }
-        } catch (backendError) {
-          // Backend not available or CORS error, continue with local data
-          if (window.EnvironmentHelpers?.isDevelopment()) {
-            console.warn(
-              "Backend not available or CORS error, using local data:",
-              backendError.message
-            );
-          }
-        }
-      }
+      // Skip backend config endpoint to avoid connection errors
+      // Use local data directly
 
       // Try multiple paths for data.json
       const paths = ["data.json", "./data.json", "/data.json", "../data.json"];
@@ -605,35 +577,27 @@ class FridayNightFunkin {
         // Iframe loaded successfully
         gameIframe.classList.add("loaded");
 
-        // Try to handle game initialization errors
+        // Add comprehensive error handling for iframe
         try {
           if (gameIframe.contentWindow) {
             // Add error handler for game window
             gameIframe.contentWindow.addEventListener("error", (e) => {
               // Silently handle game errors
               e.preventDefault();
+              return false;
             });
 
-            // Check for YYGGames object and handle initialization with timeout
-            setTimeout(() => {
-              try {
-                if (
-                  gameIframe.contentWindow &&
-                  gameIframe.contentWindow.YYGGames &&
-                  typeof gameIframe.contentWindow.YYGGames === "object"
-                ) {
-                  // Safely initialize YYGGames if available
-                  if (
-                    typeof gameIframe.contentWindow.YYGGames.init === "function"
-                  ) {
-                    gameIframe.contentWindow.YYGGames.init();
-                  }
-                }
-              } catch (error) {
-                // YYGGames initialization failed - ignore silently
-                // This is expected for cross-origin iframes or blocked scripts
+            // Add unhandledrejection handler for iframe
+            gameIframe.contentWindow.addEventListener(
+              "unhandledrejection",
+              (e) => {
+                // Silently handle promise rejections
+                e.preventDefault();
               }
-            }, 2000); // Wait 2 seconds for SDK to load
+            );
+
+            // Disable YYGGames initialization to prevent errors
+            // The game will handle its own initialization
           }
         } catch (error) {
           // Cross-origin error - ignore silently
@@ -1527,7 +1491,7 @@ class FridayNightFunkin {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
 
-    console.log("📝 Form data:", data);
+    // Form data processed
 
     // Clear previous validation states
     this.clearValidationStates(form);
@@ -1686,142 +1650,13 @@ class FridayNightFunkin {
   }
 
   loadExternalScriptsSafely() {
-    // Check if external services are enabled
-    if (!window.EnvironmentHelpers?.isServiceEnabled("GAMEMONETIZE")) {
-      return;
-    }
-
-    // Safe loading of external scripts with fallbacks
-    const scripts = [
-      {
-        id: "gamemonetize-sdk",
-        src:
-          window.Environment?.EXTERNAL_SERVICES?.GAMEMONETIZE?.SDK_URL ||
-          "https://html5.gamemonetize.co/sdk.js",
-        async: true,
-        onload: () => {
-          // Script loaded successfully - initialize YYGGames after a delay
-          if (window.EnvironmentHelpers?.isDevelopment()) {
-            console.log("Gamemonetize SDK loaded successfully");
-          }
-          // Initialize YYGGames after SDK is loaded
-          setTimeout(() => {
-            this.initializeYYGGames();
-          }, 1000);
-        },
-        fallback: () => {
-          // Handle gamemonetize SDK failure
-          if (window.EnvironmentHelpers?.isDevelopment()) {
-            console.warn(
-              "Gamemonetize SDK failed to load - continuing without ads"
-            );
-          }
-        },
-      },
-    ];
-
-    scripts.forEach((scriptConfig) => {
-      try {
-        const script = document.createElement("script");
-        script.id = scriptConfig.id;
-        script.src = scriptConfig.src;
-        script.async = scriptConfig.async || false;
-
-        script.onerror = () => {
-          // Script failed to load - use fallback
-          if (scriptConfig.fallback) {
-            scriptConfig.fallback();
-          }
-        };
-
-        script.onload = () => {
-          // Script loaded successfully
-          if (scriptConfig.onload) {
-            scriptConfig.onload();
-          }
-        };
-
-        document.head.appendChild(script);
-      } catch (error) {
-        // Failed to create or append script - use fallback
-        if (scriptConfig.fallback) {
-          scriptConfig.fallback();
-        }
-      }
-    });
+    // Skip external scripts to prevent errors
+    // The game will handle its own SDK initialization
   }
 
   initializeYYGGames() {
-    // Check if YYGGames service is enabled
-    if (!window.EnvironmentHelpers?.isServiceEnabled("YYGGAMES")) {
-      return;
-    }
-
-    // Safe initialization of YYGGames SDK
-    const maxAttempts =
-      window.Environment?.EXTERNAL_SERVICES?.YYGGAMES?.MAX_ATTEMPTS || 3;
-    const initTimeout =
-      window.Environment?.EXTERNAL_SERVICES?.YYGGAMES?.INIT_TIMEOUT || 3000;
-    let attempts = 0;
-
-    const tryInitialize = () => {
-      try {
-        // Check if YYGGames SDK is loaded and ready
-        if (window.YYGGames && typeof window.YYGGames.init === "function") {
-          // Wrap in try-catch to handle any initialization errors
-          try {
-            window.YYGGames.init();
-            if (window.EnvironmentHelpers?.isDevelopment()) {
-              console.log("YYGGames SDK initialized successfully");
-            }
-            return;
-          } catch (initError) {
-            // YYGGames.init() failed
-            if (window.EnvironmentHelpers?.isDevelopment()) {
-              console.warn("YYGGames.init() failed:", initError);
-            }
-          }
-        } else if (
-          window.YYGGamesForGamemonetize &&
-          typeof window.YYGGamesForGamemonetize.init === "function"
-        ) {
-          // Alternative SDK name
-          try {
-            window.YYGGamesForGamemonetize.init();
-            if (window.EnvironmentHelpers?.isDevelopment()) {
-              console.log(
-                "YYGGamesForGamemonetize SDK initialized successfully"
-              );
-            }
-            return;
-          } catch (initError) {
-            if (window.EnvironmentHelpers?.isDevelopment()) {
-              console.warn("YYGGamesForGamemonetize.init() failed:", initError);
-            }
-          }
-        }
-      } catch (error) {
-        // YYGGames not available or failed to initialize
-        if (window.EnvironmentHelpers?.isDevelopment()) {
-          console.warn("YYGGames not available:", error);
-        }
-      }
-
-      attempts++;
-      if (attempts < maxAttempts) {
-        // Try again after 2 seconds
-        setTimeout(tryInitialize, 2000);
-      } else {
-        if (window.EnvironmentHelpers?.isDevelopment()) {
-          console.warn(
-            "YYGGames SDK not available - continuing without game monetization"
-          );
-        }
-      }
-    };
-
-    // Start trying to initialize after a longer delay to ensure SDK is loaded
-    setTimeout(tryInitialize, 3000);
+    // Skip YYGGames initialization to prevent errors
+    // The game will handle its own SDK initialization
   }
 
   fixNavigation() {

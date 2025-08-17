@@ -166,12 +166,10 @@
   try {
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', function() {
-        // Iframe is ready
-        console.log('Iframe keyboard handler initialized');
+              // Iframe is ready
       });
     } else {
       // Iframe is already loaded
-      console.log('Iframe keyboard handler initialized');
     }
   } catch (error) {
     // Handle initialization errors silently

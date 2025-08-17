@@ -34,20 +34,11 @@ class GameHandler {
 
   async loadExternalScripts() {
     try {
-      // Load Gamemonetize SDK
-      await this.loadScript(
-        "https://html5.gamemonetize.co/8g62o78s1wjhsiu54xlmql32h7pagsek/gamemonetize-sdk.js"
-      );
-
-      // Load YYGGames SDK
-      await this.loadScript(
-        "https://html5.gamemonetize.co/8g62o78s1wjhsiu54xlmql32h7pagsek/yyggames-sdk.js"
-      );
-
-      this.initializeSDKs();
+      // Skip external scripts to prevent errors
+      // The game will handle its own SDK initialization
     } catch (error) {
       // Handle script loading errors silently
-      console.log("External scripts loading failed, continuing without SDKs");
+      // External scripts loading failed, continuing without SDKs
     }
   }
 
@@ -62,14 +53,8 @@ class GameHandler {
   }
 
   initializeSDKs() {
-    // Initialize YYGGames if available
-    if (typeof YYGGames !== "undefined") {
-      try {
-        YYGGames.init();
-      } catch (error) {
-        // Handle initialization errors silently
-      }
-    }
+    // Skip SDK initialization to prevent errors
+    // The game will handle its own SDK initialization
   }
 
   toggleFullscreen() {

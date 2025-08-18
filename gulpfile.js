@@ -6,9 +6,16 @@ const cleanCSS = require("gulp-clean-css");
 const uglify = require("gulp-uglify");
 const rename = require("gulp-rename");
 const browserSync = require("browser-sync").create();
+const replace = require("gulp-replace");
 
-// HTML task
+// Generate version string
+function getVersion() {
+  return Date.now().toString();
+}
+
+// HTML task with version replacement
 function html() {
+  const version = getVersion();
   return gulp
     .src(["src/*.html"])
     .pipe(
@@ -17,6 +24,7 @@ function html() {
         basepath: "@file",
       })
     )
+    .pipe(replace(/\?v=\d+\.\d+\.\d+/g, `?v=${version}`))
     .pipe(gulp.dest("dist"))
     .pipe(browserSync.stream());
 }

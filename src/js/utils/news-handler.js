@@ -154,9 +154,11 @@ class NewsHandler {
     const newsList = document.getElementById("news-list");
     if (!newsList || !this.newsData) return;
 
-    // Render news articles for home page section
-    newsList.innerHTML = this.newsData
-      .slice(0, 3) // Show only first 3 news items
+    // Ensure we only show first 3 items
+    const newsToShow = this.newsData.slice(0, 3);
+
+    // Render news articles for home page section (only first 3)
+    newsList.innerHTML = newsToShow
       .map(
         (news, index) => `
       <article class="news-item" data-index="${index}">
@@ -179,12 +181,12 @@ class NewsHandler {
       )
       .join("");
 
-    // Add "More news" button to footer if it doesn't exist
+    // Add "More news" button to footer
     this.addMoreNewsButton();
   }
 
   addMoreNewsButton() {
-    // Check if we're on the home page and if the news footer exists
+    // Check if we're on the home page and if the news section exists
     const newsSection = document.querySelector(".news");
     if (!newsSection) return;
 
@@ -201,10 +203,20 @@ class NewsHandler {
       }
     }
 
-    // Add the "More news" button if it doesn't exist
-    if (newsFooter && !newsFooter.querySelector(".btn--primary")) {
+    // Always add the "More news" button (replace if exists)
+    if (newsFooter) {
       newsFooter.innerHTML =
         '<a href="news.html" class="btn btn--primary">More news</a>';
+    } else {
+      // If footer creation failed, try to add button directly to news content
+      const newsContent = newsSection.querySelector(".news__content");
+      if (newsContent) {
+        const buttonDiv = document.createElement("div");
+        buttonDiv.className = "news__footer";
+        buttonDiv.innerHTML =
+          '<a href="news.html" class="btn btn--primary">More news</a>';
+        newsContent.appendChild(buttonDiv);
+      }
     }
   }
 

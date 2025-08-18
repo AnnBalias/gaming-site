@@ -111,6 +111,13 @@ class GameHandler {
   }
 
   onIframeError(event) {
+    // Silently handle 404 and other common iframe errors
+    if (
+      window.EnvironmentHelpers &&
+      window.EnvironmentHelpers.shouldSilentFail("iframe error")
+    ) {
+      return;
+    }
     console.error("Iframe error:", event);
     this.handleLoadError("Iframe failed to load");
   }

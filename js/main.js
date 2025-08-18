@@ -1205,19 +1205,27 @@ class FridayNightFunkin {
     // Add to page
     document.body.appendChild(notification);
 
+    // Function to close notification with animation
+    const closeNotification = () => {
+      notification.classList.add("closing");
+      setTimeout(() => {
+        if (notification.parentNode) {
+          notification.remove();
+        }
+      }, 300);
+    };
+
     // Auto-remove after 5 seconds
     setTimeout(() => {
       if (notification.parentNode) {
-        notification.remove();
+        closeNotification();
       }
     }, 5000);
 
     // Close button functionality
     const closeBtn = notification.querySelector(".notification__close");
     if (closeBtn) {
-      closeBtn.addEventListener("click", () => {
-        notification.remove();
-      });
+      closeBtn.addEventListener("click", closeNotification);
     }
   }
 

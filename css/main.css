@@ -1935,7 +1935,7 @@ textarea[readonly] {
 
 .game-section {
   padding-top: 4rem;
-  padding-bottom: 0;
+  padding-bottom: 4rem;
   background: #1a1a1a;
 }
 .game-section__header {
@@ -4025,77 +4025,3 @@ section {
   }
 }
 
-.notification {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 10000;
-  max-width: 400px;
-  background: #ffffff;
-  border-radius: 1rem;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  border-left: 4px solid #00d4ff;
-  animation: slideInRight 0.3s ease-out;
-}
-.notification--success {
-  border-left-color: #10b981;
-}
-.notification--error {
-  border-left-color: #ef4444;
-}
-.notification--warning {
-  border-left-color: #f59e0b;
-}
-.notification__content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.5rem;
-}
-.notification__message {
-  color: #ffffff;
-  font-size: 0.875rem;
-  line-height: 1.4;
-  margin-right: 1rem;
-}
-.notification__close {
-  background: none;
-  border: none;
-  color: #6c757d;
-  font-size: 1.25rem;
-  cursor: pointer;
-  padding: 0;
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0.25rem;
-  transition: all 0.2s ease;
-}
-.notification__close:hover {
-  background: rgba(108, 117, 125, 0.1);
-  color: #ffffff;
-}
-
-@keyframes slideInRight {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-@media (max-width: 767px) {
-  .notification {
-    top: 10px;
-    right: 10px;
-    left: 10px;
-    max-width: none;
-  }
-  .notification__content {
-    padding: 1rem;
-  }
-}

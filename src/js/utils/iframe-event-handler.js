@@ -7,21 +7,38 @@ class IframeEventHandler {
   }
 
   init() {
-    // Wait for DOM to be loaded
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => this.setupIframeEvents());
+    // Wait for DOM to be fully loaded and game handler to be available
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", () =>
+        this.waitForGameHandler()
+      );
     } else {
+      this.waitForGameHandler();
+    }
+  }
+
+  waitForGameHandler() {
+    // Wait for game handler to be initialized
+    if (window.gameHandler) {
       this.setupIframeEvents();
+    } else {
+      // Retry after a short delay
+      setTimeout(() => this.waitForGameHandler(), 100);
     }
   }
 
   setupIframeEvents() {
-    const iframe = document.getElementById('game-iframe');
-    
+    const iframe = document.getElementById("game-iframe");
+
     if (iframe) {
       // Add event listeners for iframe events
-      iframe.addEventListener('load', (event) => this.handleIframeLoad(event));
-      iframe.addEventListener('error', (event) => this.handleIframeError(event));
+      iframe.addEventListener("load", (event) => this.handleIframeLoad(event));
+      iframe.addEventListener("error", (event) =>
+        this.handleIframeError(event)
+      );
+    } else {
+      // If iframe doesn't exist yet, retry after a short delay
+      setTimeout(() => this.setupIframeEvents(), 100);
     }
   }
 
